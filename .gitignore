@@ -1,0 +1,8 @@
+# Local PRISM Streamlit session ZIP cache (per browser session)
+.prism_session_cache/
+
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store

@@ -1,0 +1,6 @@
+2024-03-12T10:15:00.000+05:30
+WARNING: Read Failed. group:1 disk:0 AU:1000 offset:10000 size:8192
+2024-03-12T10:15:22.000+05:30
+ORA-15080: synchronous I/O operation to a disk failed
+2024-03-12T10:15:25.000+05:30
+ORA-15130: diskgroup "DATA" is being dismounted

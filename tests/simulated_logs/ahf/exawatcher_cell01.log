@@ -1,0 +1,66 @@
+# EXAWATCHER ARCHIVE: cell01
+# COLLECTION START: 2024-03-07 03:10:00
+#####################################################################
+name:                   AFR_2024-03-07T03:10:00_cell01
+alertType:              Stateless
+message:                Normal Operations
+severity:               clear
+
+CellCLI> list celldisk attributes name,status,errorCount
+CD_00_cell01    normal  0
+CD_01_cell01    normal  0
+CD_02_cell01    normal  0
+CD_03_cell01    normal  0
+CD_04_cell01    normal  0
+CD_05_cell01    normal  0
+CD_06_cell01    normal  0
+CD_07_cell01    normal  0
+CD_08_cell01    normal  0
+CD_09_cell01    normal  0
+CD_10_cell01    normal  0
+CD_11_cell01    normal  0
+
+CellCLI> list flashdisk attributes name,status,errorCount
+FD_00_cell01    normal  0
+FD_01_cell01    normal  0
+FD_02_cell01    normal  0
+FD_03_cell01    normal  0
+
+name:                   AFR_2024-03-07T03:12:00_cell01
+alertType:              Stateless
+message:                Smart Scan Metrics Generated
+severity:               clear
+SmartScan bytes returned: 104857600
+SmartScan bytes saved: 98457600
+SmartScan efficiency: 95%
+
+# COLLECTION TIMESTAMP: 2024-03-07 03:14:50
+name:                   AFR_2024-03-07T03:14:50_cell01
+alertType:              Stateless
+message:                Smart Scan Metrics Generated
+severity:               clear
+SmartScan bytes returned: 204857600
+SmartScan bytes saved: 198457600
+SmartScan efficiency: 97%
+
+#####################################################################
+# COLLECTION TIMESTAMP: 2024-03-07 03:15:00
+# CRITICAL EVENT DETECTED
+#####################################################################
+name:                   AFR_2024-03-07T03:15:00_cell01
+alertType:              Stateful
+message:                Flash disk FD_00_cell01 failed
+metricObjectName:       FD_00_cell01
+severity:               critical
+
+name:           FD_00_cell01
+cellDiskType:   FlashDisk
+status:         failed
+errorCount:     182
+
+CellCLI> list flashdisk attributes name,status,errorCount
+FD_00_cell01    failed  182
+FD_01_cell01    normal  0
+FD_02_cell01    normal  0
+FD_03_cell01    normal  0
+# COLLECTION END

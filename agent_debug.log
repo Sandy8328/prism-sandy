@@ -1,0 +1,5331 @@
+
+--- DIAGNOSE START ---
+Query: 2024-03-12T04:00:00.000+05:30
+Errors in file /u01/app/oracle/diag/rdbms/payroll/payroll/trace/payrol
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Mar 12 04:00:00 storage-nas-05 kernel: [12345.9000] nfs: server storage-nas-01 not responding, still
+Platform: LINUX
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_mmon_1234.trc
+Oracle Database 19c Enterpr
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Mar 12 04:00:00 storage-nas-05 kernel: [12345.9000] nfs: server storage-nas-01 not responding, still
+Platform: LINUX
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Mar 12 04:00:00 storage-nas-05 kernel: [12345.9000] nfs: server storage-nas-01 not responding, still
+Platform: UNKNOWN
+Input Patterns Found: ['NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: Thu Mar 07 03:15:20 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_arc0_1234.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Mar  7 03:14:50 dbhost01 kernel: [12345.6000] NFS: nfs4_discover_server_trunking unhandled error -51
+Platform: LINUX
+Input Patterns Found: ['NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_030', 'seed_001', 'seed_003', 'seed_012', 'seed_002', 'seed_017', 'seed_018', 'seed_013', 'seed_004', 'seed_008']
+Input Chunk Patterns: ['NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:10:01.001+05:30
+Thread 1 advanced to log sequence 1234 (LGWR switch)
+  Current log# 1 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:10:01.001+05:30
+Thread 1 advanced to log sequence 1234 (LGWR switch)
+  Current log# 1 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:10:01.001+05:30
+Thread 1 advanced to log sequence 1234 (LGWR switch)
+  Current log# 1 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-12T10:15:00.000+05:30
+WARNING: Read Failed. group:1 disk:0 AU:1000 offset:10000 size:8192
+20
+Platform: EXADATA
+Input Patterns Found: ['ORA_DISK_IO_ERROR', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_DISK_IO_ERROR', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: Mar 15 09:59:00 node-storm kernel: [9900.0000] system healthy
+Mar 15 10:00:00 node-storm kernel: [10
+Platform: LINUX
+Input Patterns Found: ['NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:10:01.001+05:30
+Thread 1 advanced to log sequence 1234 (LGWR switch)
+  Current log# 1 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Thu Mar 07 03:15:20 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_arc0_1234.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Thu Mar 07 03:15:20 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_arc0_1234.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Thu Mar 07 03:15:20 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_arc0_1234.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Tue Mar 07 03:10:00 IST 2024
+Linux 4.14.35-1902.300.11.el7uek.x86_64 (dbhost01)      03/07/20
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Mar  7 03:14:50 dbhost01 kernel: [12345.6000] NFS: nfs4_discover_server_trunking unhandled error -51
+Platform: UNKNOWN
+Input Patterns Found: ['NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:10:01.001+05:30
+Thread 1 advanced to log sequence 1234 (LGWR switch)
+  Current log# 1 
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_DISK_IO_ERROR', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_DISK_IO_ERROR', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+
+DB Name         DB Id    Instance     Inst Num Startup Time    Relea
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Thu Mar 07 02:44:19 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_dbw0_1234.
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 5
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07 03:15:10.123 [CSSD] [1] clssnmvKillBlockThread: node dbhost01 (1) is evicted by member db
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Thu Mar 07 03:15:20 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_arc0_1234.
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Mar  7 03:14:50 dbhost01 kernel: [12345.6000] NFS: nfs4_discover_server_trunking unhandled error -51
+Platform: LINUX
+Input Patterns Found: ['NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_030', 'seed_001', 'seed_003', 'seed_012', 'seed_002', 'seed_017', 'seed_018', 'seed_013', 'seed_004', 'seed_008']
+Input Chunk Patterns: ['NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: Mar 16 07:00:01 node-async systemd: Started Session 100 of user root.
+Mar 16 07:01:01 node-async CRO
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_mmon_1234.trc
+Oracle Database 19c Enterpr
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-03-12T04:00:00.000+05:30
+Errors in file /u01/app/oracle/diag/rdbms/payroll/payroll/trace/payrol
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/erp/erp/trace/erp_mmon_1234.trc
+*** 2024-03-12T14:30:00.000+05
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-03-12T10:15:00.000+05:30
+WARNING: Read Failed. group:1 disk:0 AU:1000 offset:10000 size:8192
+20
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Mar 12 04:00:00 storage-nas-05 kernel: [12345.9000] nfs: server storage-nas-01 not responding, still
+Platform: LINUX
+Input Patterns Found: ['NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:11 [ERROR] [MyApp-WebUI] NullPointerException in module UserAuthenticationControlle
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T12:00:00.000+05:30
+System health check initiated by user admin.
+2024-03-16T12:00:05.000+0
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T12:00:00.000+05:30
+Errors in file C:\app\oracle\diag\rdbms\orcl\orcl\trace\orcl_ora_1234.
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:10:01.001+05:30
+Thread 1 advanced to log sequence 1234 (LGWR switch)
+  Current log# 1 
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: zzz ***Tue Mar 07 03:10:00 IST 2024
+Linux 4.14.35-1902.300.11.el7uek.x86_64 (dbhost01)      03/07/20
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: # EXAWATCHER ARCHIVE: cell01
+# COLLECTION START: 2024-03-07 03:10:00
+###############################
+Platform: EXADATA
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+
+DB Name         DB Id    Instance     Inst Num Startup Time    Relea
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Mar  7 03:10:01 dbhost01 systemd: Started Session 1452 of user root.
+Mar  7 03:10:01 dbhost01 system
+Platform: LINUX
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN', 'EXT4_JOURNAL_ABORT', 'ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN', 'EXT4_JOURNAL_ABORT', 'ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_mmon_1234.trc
+Oracle Database 19c Enterpr
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Mar 15 09:00:01 node03 systemd: Started Session 100 of user root.
+Mar 15 09:01:01 node03 CROND[1200]
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-15T09:00:01.001+05:30
+Thread 1 advanced to log sequence 1000 (LGWR switch)
+  Current log# 1 
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Mar 15 09:00:01 node01 systemd: Started Session 100 of user root.
+Mar 15 09:01:01 node01 CROND[1200]
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-15T09:00:01.001+05:30
+Thread 1 advanced to log sequence 1000 (LGWR switch)
+  Current log# 1 
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Mar 15 09:00:01 node02 systemd: Started Session 100 of user root.
+Mar 15 09:01:01 node02 CROND[1200]
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-15T09:00:01.001+05:30
+Thread 1 advanced to log sequence 1000 (LGWR switch)
+  Current log# 1 
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Mar 15 09:59:00 node-storm kernel: [9900.0000] system healthy
+Mar 15 10:00:00 node-storm kernel: [10
+Platform: LINUX
+Input Patterns Found: ['NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-15T09:59:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T10:00:00.000+05:30
+Thre
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: Mar 15 10:00:00 node-storm kernel: [10000.0000] nfs: server storage-nas-01 not responding, still try
+Platform: UNKNOWN
+Input Patterns Found: ['NFS_MOUNT_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['NFS_MOUNT_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: zzz ***Tue Mar 07 03:10:00 IST 2024
+Linux 4.14.35-1902.300.11.el7uek.x86_64 (dbhost01)      03/07/20
+Platform: UNKNOWN
+Input Patterns Found: ['IO_QUEUE_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['IO_QUEUE_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: # EXAWATCHER ARCHIVE: cell01
+# COLLECTION START: 2024-03-07 03:10:00
+###############################
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:11 [ERROR] [MyApp-WebUI] NullPointerException in module UserAuthenticationControlle
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:11 [ERROR] [MyApp-WebUI] NullPointerException in module UserAuthenticationControlle
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+
+DB Name         DB Id    Instance     Inst Num Startup Time    Relea
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+
+DB Name         DB Id    Instance     Inst Num Startup Time    Relea
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+
+DB Name         DB Id    Instance     Inst Num Startup Time    Relea
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:11 [ERROR] [MyApp-WebUI] NullPointerException in module UserAuthenticationControlle
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Mar  7 02:44:00 dbhost01 kernel: [12345.6789] scsi host0: mpt2sas
+Mar  7 02:44:04 dbhost01 kernel: [
+Platform: UNKNOWN
+Input Patterns Found: ['SCSI_DISK_TIMEOUT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T12:00:00.000+05:30
+System health check initiated by user admin.
+2024-03-16T12:00:05.000+0
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T12:00:00.000+05:30
+System health check initiated by user admin.
+2024-03-16T12:00:05.000+0
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T12:00:00.000+05:30
+System health check initiated by user admin.
+2024-03-16T12:00:05.000+0
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:13:40.000+05:30
+dbhost01 kernel: system monitor heartbeat normal
+2024-03-07T03:13:41.0
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'MULTIPATH_ALL_PATHS_DOWN', 'IO_QUEUE_TIMEOUT', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'MULTIPATH_ALL_PATHS_DOWN', 'IO_QUEUE_TIMEOUT', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:14:20.000+05:30
+cell01 exawatcher: normal metrics sample
+2024-03-07T03:14:21.000+05:30
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_002', 'seed_004', 'seed_001', 'seed_018']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-0003020
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-003020
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-03020
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-03020
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-01555
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-04030
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-04030
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-04030
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-04031
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-01555
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-01555
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ORA-01555
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ora-01555
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: ora-01555
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 1
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:14:20.000+05:30
+cell01 exawatcher: normal metrics sample
+2024-03-07T03:14:21.000+05:30
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: ora-01555
+2024-03-07T03:14:20.000+05:30
+cell01 exawatcher: normal metrics sample
+2024-03-07T03:14:21
+Platform: LINUX
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-07T03:14:20.000+05:30
+cell01 exawatcher: normal metrics sample
+2024-03-07T03:14:21.000+05:30
+Platform: LINUX
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_029', 'seed_006', 'seed_019', 'seed_015', 'seed_010', 'seed_013', 'seed_001', 'seed_002', 'seed_007', 'seed_003']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004', 'seed_002', 'seed_001', 'seed_018']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_001', 'seed_002', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_001', 'seed_002', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_001', 'seed_002', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_001', 'seed_002', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_001', 'seed_002', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004', 'seed_002', 'seed_001']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_002', 'seed_001', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_002', 'seed_001', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_002', 'seed_001', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_002', 'seed_001', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'EXA_FLASH_FAIL', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_002', 'seed_001', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'EXA_FLASH_FAIL', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'EXA_FLASH_FAIL', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_002', 'seed_001', 'seed_004']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET', 'MULTIPATH_ALL_PATHS_DOWN', 'EXA_FLASH_FAIL', 'ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 3
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: $ tfactl diagcollect -from "2024-03-16 06:55:00" -to "2024-03-16 07:45:00" -database -asm -crs -os -
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:08:10.000+00:00
+ORA-27072: File I/O error
+Linux-x86_64 Error: 5: Input/output error
+OR
+Platform: EXADATA
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: $ tfactl diagcollect -from "2024-03-16 06:55:00" -to "2024-03-16 07:45:00" -database -asm -crs -os -
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:08:10.000+00:00
+ORA-27072: File I/O error
+Linux-x86_64 Error: 5: Input/output error
+OR
+Platform: EXADATA
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'MULTIPATH_ALL_PATHS_DOWN', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'MULTIPATH_ALL_PATHS_DOWN', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: $ tfactl diagcollect -from "2024-03-16 06:55:00" -to "2024-03-16 07:45:00" -database -asm -crs -os -
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "insights": [
+    {
+      "severity": "CRITICAL",
+      "time": "2024-03-16T07:36:22Z",
+      "h
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 8
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AHF Insights Synthetic</title></head><body>
+<h1>AHF Insights</h1>
+
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASM Insights</h1>
+<p>Diskgroup DATA dismounted on +ASM1 after Read F
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 10
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: # file=embedded_alert_prd1_tail.log
+2024-03-16T07:08:10.111+00:00
+ORA-27072: File I/O error
+Linux-x8
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>Oracle ORAchk Report</h1>
+<p>Health Score: 71</p>
+<table>
+<tr><th>St
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "report_type": "orachk",
+  "host": "dbhost07",
+  "database": "PRD",
+  "health_score": 71,
+  "fin
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASH Report PRD1 07:00-07:30</h1>
+<table><tr><th>Sample Time</th><th>
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AWR Report PRD1</title></head><body>
+<h1>WORKLOAD REPOSITORY repor
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>TFA Diagnostic Collection 20240316074000dbhost07</title></head>
+<b
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "collection_id": "20240316074000dbhost07",
+  "generated_by": "tfactl diagcollect",
+  "synthetic"
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h2>TFA Collection Index</h2>
+<table>
+<tr><th>Host</th><th>Component</th
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "insights": [
+    {
+      "severity": "CRITICAL",
+      "time": "2024-03-16T07:36:22Z",
+      "h
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 8
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AHF Insights Synthetic</title></head><body>
+<h1>AHF Insights</h1>
+
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASM Insights</h1>
+<p>Diskgroup DATA dismounted on +ASM1 after Read F
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 10
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: # file=embedded_alert_prd1_tail.log
+2024-03-16T07:08:10.111+00:00
+ORA-27072: File I/O error
+Linux-x8
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>Oracle ORAchk Report</h1>
+<p>Health Score: 71</p>
+<table>
+<tr><th>St
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "report_type": "orachk",
+  "host": "dbhost07",
+  "database": "PRD",
+  "health_score": 71,
+  "fin
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 3
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASH Report PRD1 07:00-07:30</h1>
+<table><tr><th>Sample Time</th><th>
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AWR Report PRD1</title></head><body>
+<h1>WORKLOAD REPOSITORY repor
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>TFA Diagnostic Collection 20240316074000dbhost07</title></head>
+<b
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "collection_id": "20240316074000dbhost07",
+  "generated_by": "tfactl diagcollect",
+  "synthetic"
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h2>TFA Collection Index</h2>
+<table>
+<tr><th>Host</th><th>Component</th
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "insights": [
+    {
+      "severity": "CRITICAL",
+      "time": "2024-03-16T07:36:22Z",
+      "h
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 8
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AHF Insights Synthetic</title></head><body>
+<h1>AHF Insights</h1>
+
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASM Insights</h1>
+<p>Diskgroup DATA dismounted on +ASM1 after Read F
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 10
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: # file=embedded_alert_prd1_tail.log
+2024-03-16T07:08:10.111+00:00
+ORA-27072: File I/O error
+Linux-x8
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>Oracle ORAchk Report</h1>
+<p>Health Score: 71</p>
+<table>
+<tr><th>St
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "report_type": "orachk",
+  "host": "dbhost07",
+  "database": "PRD",
+  "health_score": 71,
+  "fin
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 3
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASH Report PRD1 07:00-07:30</h1>
+<table><tr><th>Sample Time</th><th>
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AWR Report PRD1</title></head><body>
+<h1>WORKLOAD REPOSITORY repor
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>TFA Diagnostic Collection 20240316074000dbhost07</title></head>
+<b
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "collection_id": "20240316074000dbhost07",
+  "generated_by": "tfactl diagcollect",
+  "synthetic"
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h2>TFA Collection Index</h2>
+<table>
+<tr><th>Host</th><th>Component</th
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "insights": [
+    {
+      "severity": "CRITICAL",
+      "time": "2024-03-16T07:36:22Z",
+      "h
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 8
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AHF Insights Synthetic</title></head><body>
+<h1>AHF Insights</h1>
+
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASM Insights</h1>
+<p>Diskgroup DATA dismounted on +ASM1 after Read F
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 10
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: # file=embedded_alert_prd1_tail.log
+2024-03-16T07:08:10.111+00:00
+ORA-27072: File I/O error
+Linux-x8
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>Oracle ORAchk Report</h1>
+<p>Health Score: 71</p>
+<table>
+<tr><th>St
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "report_type": "orachk",
+  "host": "dbhost07",
+  "database": "PRD",
+  "health_score": 71,
+  "fin
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 3
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASH Report PRD1 07:00-07:30</h1>
+<table><tr><th>Sample Time</th><th>
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AWR Report PRD1</title></head><body>
+<h1>WORKLOAD REPOSITORY repor
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>TFA Diagnostic Collection 20240316074000dbhost07</title></head>
+<b
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "collection_id": "20240316074000dbhost07",
+  "generated_by": "tfactl diagcollect",
+  "synthetic"
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h2>TFA Collection Index</h2>
+<table>
+<tr><th>Host</th><th>Component</th
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "insights": [
+    {
+      "severity": "CRITICAL",
+      "time": "2024-03-16T07:36:22Z",
+      "h
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 8
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AHF Insights Synthetic</title></head><body>
+<h1>AHF Insights</h1>
+
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASM Insights</h1>
+<p>Diskgroup DATA dismounted on +ASM1 after Read F
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 10
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: # file=embedded_alert_prd1_tail.log
+2024-03-16T07:08:10.111+00:00
+ORA-27072: File I/O error
+Linux-x8
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>Oracle ORAchk Report</h1>
+<p>Health Score: 71</p>
+<table>
+<tr><th>St
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "report_type": "orachk",
+  "host": "dbhost07",
+  "database": "PRD",
+  "health_score": 71,
+  "fin
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 3
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASH Report PRD1 07:00-07:30</h1>
+<table><tr><th>Sample Time</th><th>
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AWR Report PRD1</title></head><body>
+<h1>WORKLOAD REPOSITORY repor
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>TFA Diagnostic Collection 20240316074000dbhost07</title></head>
+<b
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "collection_id": "20240316074000dbhost07",
+  "generated_by": "tfactl diagcollect",
+  "synthetic"
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h2>TFA Collection Index</h2>
+<table>
+<tr><th>Host</th><th>Component</th
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "insights": [
+    {
+      "severity": "CRITICAL",
+      "time": "2024-03-16T07:36:22Z",
+      "h
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 8
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AHF Insights Synthetic</title></head><body>
+<h1>AHF Insights</h1>
+
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASM Insights</h1>
+<p>Diskgroup DATA dismounted on +ASM1 after Read F
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 10
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: # file=embedded_alert_prd1_tail.log
+2024-03-16T07:08:10.111+00:00
+ORA-27072: File I/O error
+Linux-x8
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>Oracle ORAchk Report</h1>
+<p>Health Score: 71</p>
+<table>
+<tr><th>St
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "report_type": "orachk",
+  "host": "dbhost07",
+  "database": "PRD",
+  "health_score": 71,
+  "fin
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 3
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASH Report PRD1 07:00-07:30</h1>
+<table><tr><th>Sample Time</th><th>
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AWR Report PRD1</title></head><body>
+<h1>WORKLOAD REPOSITORY repor
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>TFA Diagnostic Collection 20240316074000dbhost07</title></head>
+<b
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "collection_id": "20240316074000dbhost07",
+  "generated_by": "tfactl diagcollect",
+  "synthetic"
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h2>TFA Collection Index</h2>
+<table>
+<tr><th>Host</th><th>Component</th
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "insights": [
+    {
+      "severity": "CRITICAL",
+      "time": "2024-03-16T07:36:22Z",
+      "h
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 8
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AHF Insights Synthetic</title></head><body>
+<h1>AHF Insights</h1>
+
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASM Insights</h1>
+<p>Diskgroup DATA dismounted on +ASM1 after Read F
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 10
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: name:                   42_1
+alertDescription:       "Flash disk FD_02 entered critical state. warni
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   CD_05
+deviceName:             /dev/nvme5n1
+status:                 normal
+fl
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: name:                   FD_02
+cellDisk:               CD_05
+status:                 critical
+physica
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL']
+
+--- DIAGNOSE START ---
+Query: name:                   DATA_CD_05
+asmDiskName:            DATA_0005
+asmFailGroupName:       CELL01
+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: flashCache read error at griddisk DATA_CD_05 offset 28
+Platform: EXADATA
+Input Patterns Found: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'EXA_CELL_IO_ERROR']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:23.000+00:00 cell01 MS: Stateful alert generated for metricObjectName: FD_02 metric
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:27.000+00:00 cell01 RS: cell resource manager observed high backend read latency fo
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 9
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Time Device r/s w/s r_await w_await aqu-sz %util
+2024-03-16T07:36:20Z nvme5n1 892.0 44.0 612.0 701.0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: No critical alerts found for requested interval.
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:36:22.000+00:00 cell02 CELLSRV: no flash disk alerts in this interval
+2024-03-16T07:36
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Oracle Trace File Analyzer diagnostic collection
+Collection Id     : 20240316074000dbhost07
+Collecti
+Platform: UNKNOWN
+Input Patterns Found: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['EXA_FLASH_FAIL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: # file=embedded_alert_prd1_tail.log
+2024-03-16T07:08:10.111+00:00
+ORA-27072: File I/O error
+Linux-x8
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_gmon_11501.trc
+*** 2024-03-16T07:18:03.540+
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/grid/diag/asm/+asm/+ASM1/trace/+ASM1_rbal_11450.trc
+Instance name: +ASM1
+Process
+Platform: EXADATA
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:17:58.923+00:00
+NOTE: cache opening diskgroup DATA
+2024-03-16T07:18:02.004+00:00
+WARNI
+Platform: LINUX
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'EXA_CELL_IO_ERROR', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:13.127 [AGENT(22101)]CRS-5017: The resource action "ora.prd.db stop" encountered th
+Platform: UNKNOWN
+Input Patterns Found: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ASM_DISMOUNT_CRITICAL', 'ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:30:12.200 [CSSD(11840)]CRS-1612: Network communication with node dbhost07 is healthy; 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:18:07.991 [OHASD(11700)]CRS-2765: Resource 'ora.DATA.dg' has failed on server 'dbhost0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Synthetic core summary placeholder
+Process: LGWR pid 22011
+Reason: Instance terminated due to ORA-00
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/incident/incdir_9931/prd1_lgwr_i9931.trc
+Incident 993
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T06:59:41.321+00:00
+Starting ORACLE instance (normal)
+LICENSE_MAX_USERS = 0
+Instance name:
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_arc0_22049.trc
+*** 2024-03-16T07:08:15.003
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: Trace file /u01/app/oracle/diag/rdbms/prd/prd1/trace/prd1_lgwr_22011.trc
+Oracle Database 19c Enterpr
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>Oracle ORAchk Report</h1>
+<p>Health Score: 71</p>
+<table>
+<tr><th>St
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "report_type": "orachk",
+  "host": "dbhost07",
+  "database": "PRD",
+  "health_score": 71,
+  "fin
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP_NUMBER DISK_NUMBER NAME      PATH                FAILGROUP  MOUNT_STATUS HEADER_STATUS MODE_ST
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# THREAD# SEQUENCE# STATUS  ARCHIVED
+------ ------- --------- ------- --------
+1      1       8
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 6
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: GROUP# STATUS TYPE   MEMBER
+------ ------ ------ -----------------------------------------------
+3  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: NAME        KNAME MAJ:MIN SIZE TYPE MOUNTPOINT MODEL          SERIAL
+sdd         sdd     8:48 4.0T d
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 8
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 03:00.0 Fibre Channel: QLogic Corp. ISP2532-based 8Gb Fibre Channel to PCI Express HBA (rev 02)
+03:0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: ['MULTIPATH_ALL_PATHS_DOWN']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['MULTIPATH_ALL_PATHS_DOWN']
+
+--- DIAGNOSE START ---
+Query: P: /devices/pci0000:00/0000:00:03.0/0000:03:00.0/host3/rport-3:0-0/target3:0:0/3:0:0:1/block/sdd
+N: 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: [Sat Mar 16 07:30:10 2024] qla2xxx [0000:03:00.0]-801c: Abort command issued nexus=3:0:0:1 -- 2002.
+
+Platform: LINUX
+Input Patterns Found: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+Fused results count: 3
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['SCSI_DISK_TIMEOUT', 'FC_HBA_RESET']
+
+--- DIAGNOSE START ---
+Query: Linux 4.14.35-2047.528.2.el7uek.x86_64 (dbhost07)  03/16/2024  _x86_64_  (96 CPU)
+
+03/16/2024 07:29:
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:30:15 UTC 2024
+Device:         rrqm/s wrqm/s     r/s     w/s    rkB/s    wkB/s 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: top - 07:30:16 up 413 days,  4:10,  3 users,  load average: 58.20, 47.10, 21.11
+Tasks: 1812 total,  
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: zzz ***Sat Mar 16 07:29:55 UTC 2024
+procs -----------memory---------- ---swap-- -----io---- -system-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h1>ASH Report PRD1 07:00-07:30</h1>
+<table><tr><th>Sample Time</th><th>
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>AWR Report PRD1</title></head><body>
+<h1>WORKLOAD REPOSITORY repor
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: WORKLOAD REPOSITORY report for
+DB Name         DB Id    Instance     Inst Num Release     RAC Host
+-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:18:07.111+00:00
+WARNING: remote diskgroup DATA heartbeat missed from dbhost07
+2024-03-
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16 07:08:14.222 [CRSD(11001)]CRS-2672: Attempting to start 'ora.prd.db' on 'dbhost08'
+2024-0
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.002+00:00
+Thread 2 advanced to log sequence 7742
+2024-03-16T07:08:16.991+00:00
+L
+Platform: UNKNOWN
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+
+--- DIAGNOSE START ---
+Query: mpatha (3600144f0aa1234567890abcd00000001) dm-5 ORACLE,DATA
+size=4.0T features='1 queue_if_no_path' 
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><head><title>TFA Diagnostic Collection 20240316074000dbhost07</title></head>
+<b
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: {
+  "collection_id": "20240316074000dbhost07",
+  "generated_by": "tfactl diagcollect",
+  "synthetic"
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 10
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: <!DOCTYPE html><html><body>
+<h2>TFA Collection Index</h2>
+<table>
+<tr><th>Host</th><th>Component</th
+Platform: UNKNOWN
+Input Patterns Found: []
+Fused results count: 7
+Chunk Pattern Map keys: []
+
+--- DIAGNOSE START ---
+Query: 2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 
+Platform: LINUX
+Input Patterns Found: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']
+Fused results count: 11
+Chunk Pattern Map keys: ['input_direct_match', 'seed_004']
+Input Chunk Patterns: ['ORA_ANY_GENERIC', 'GENERIC_ORA_EXTRACT']

@@ -1,0 +1,1269 @@
+﻿"Test_ID","Scenario_Type","Domain","Description","Expected_Code","Expected_Layer","Expected_Behavior_Regex","Notes","Actual_Agent_Output","Remediation_Commands","Fix_Node","Issue_Category","Confidence_Score","Confidence_Label","Risk_Score","Knowledge_Stored","Actual_Layer","Actual_Codes_Found","Tier_Used","QA_Status","Fail_Reason"
+"QA-0001","Positive","ORA_CODE","Tier1 direct lookup: ORA-27072 (File I/O error)","ORA-27072","OS_TRIGGERED","root cause.*ORA\-27072","severity=CRITICAL; fix_tier=OS + Infrastructure; runbook='File I/O Error – OS Disk Error'","🔴 ROOT CAUSE: ORA-27072
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • check errno.","  1. dmesg | grep -i 'i/o error\|scsi\|disk' | tail -30
+  2. cat /proc/sys/kernel/dmesg_restrict
+  3. smartctl -a /dev/sda
+  4. iostat -xz 1 5
+  5. multipath -ll
+  6. systool -c fc_host -v | grep -i fw_rev
+  7. cat /sys/class/fc_host/host*/port_state
+  8. sqlplus / as sysdba
+  9. SQL> SELECT FILE#, NAME, STATUS FROM V$DATAFILE WHERE STATUS='RECOVER';
+  10. SQL> SELECT * FROM V$DATABASE_BLOCK_CORRUPTION;
+  11. SQL> EXIT;","FIX_ENABLE_MULTIPATH","OS / Infrastructure","25","SUSPECTED","HIGH","False","ORA-27072","ORA-27072","1","✅ PASS",""
+"QA-0002","Positive","ORA_CODE","Tier1 direct lookup: ORA-15080 (Synchronous I/O request to a disk failed)","ORA-15080","OS_TRIGGERED","root cause.*ORA\-15080","severity=CRITICAL; fix_tier=OS + ASM; runbook='Synchronous I/O Request to ASM Disk Failed'","🔴 ROOT CAUSE: ORA-15080
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Ensure that all of the disks are operational.
+  • Chapter 82 82-180.","  1. dmesg | grep -i 'i/o error\|sd\|multipath' | tail -30
+  2. multipath -ll
+  3. asmcmd lsdsk
+  4. asmcmd lsof
+  5. sqlplus / as sysdba
+  6. SQL> SELECT GROUP_NUMBER, NAME, STATE FROM V$ASM_DISKGROUP;
+  7. SQL> SELECT DISK_NUMBER, NAME, PATH, MODE_STATUS, MOUNT_STATUS FROM V$ASM_DISK ORDER BY GROUP_NUMBER;
+  8. SQL> EXIT;","FIX_ENABLE_MULTIPATH","OS / Infrastructure","25","SUSPECTED","HIGH","False","ORA-15080","ORA-15080","1","✅ PASS",""
+"QA-0003","Positive","ORA_CODE","Tier1 direct lookup: ORA-15130 (Diskgroup being dismounted)","ORA-15130","ASM","root cause.*ORA\-15130","severity=CRITICAL; fix_tier=ASM; runbook='ASM Diskgroup Being Dismounted'","🔴 ROOT CAUSE: ORA-15130
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Repair the hardware problem and re-mount the diskgroup.
+  • Refer to the alert log to determine which disks have failed.
+  • Chapter 82 82-186.","  1. asmcmd lsdg
+  2. asmcmd lsdsk --discovery
+  3. sqlplus / as sysdba
+  4. SQL> SELECT GROUP_NUMBER, NAME, STATE, TYPE FROM V$ASM_DISKGROUP;
+  5. SQL> ALTER DISKGROUP <DGNAME> MOUNT;
+  6. SQL> EXIT;
+  7. multipath -ll
+  8. systemctl status multipathd","FIX_ENABLE_MULTIPATH","DB / Infrastructure / ASM","25","SUSPECTED","HIGH","False","ORA-15130","ORA-15130","1","✅ PASS",""
+"QA-0004","Positive","ORA_CODE","Tier1 direct lookup: ORA-00257 (Archiver error)","ORA-00257","OS_TRIGGERED","root cause.*ORA\-00257","severity=CRITICAL; fix_tier=OS + Database; runbook='Archiver Error – Archivelog Destination Full'","🔴 ROOT CAUSE: ORA-00257
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Check the alert log and trace files for detailed error information..","  1. df -h /arch
+  2. du -sh /arch/* | sort -rh | head -20
+  3. rman target /
+  4. RMAN> DELETE ARCHIVELOG ALL COMPLETED BEFORE 'SYSDATE-1';
+  5. RMAN> EXIT;
+  6. sqlplus / as sysdba
+  7. SQL> SHOW PARAMETER db_recovery_file_dest_size;
+  8. SQL> ALTER SYSTEM SET db_recovery_file_dest_size=50G SCOPE=BOTH;
+  9. SQL> SELECT * FROM V$RECOVERY_FILE_DEST;
+  10. SQL> ALTER SYSTEM ARCHIVE LOG ALL;
+  11. SQL> EXIT;","FIX_CLEANUP_ARCH_LOGS","OS / Infrastructure","25","SUSPECTED","HIGH","False","ORA-00257","ORA-00257","1","✅ PASS",""
+"QA-0005","Positive","ORA_CODE","Tier1 direct lookup: ORA-19809 (Limit exceeded for recovery files)","ORA-19809","OS_TRIGGERED","root cause.*ORA\-19809","severity=CRITICAL; fix_tier=Database; runbook='Limit Exceeded for Recovery Files'","🔴 ROOT CAUSE: ORA-19809
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • There are five possible solutions: 1) Take frequent backup of recovery area using RMAN.
+  • 2) Consider changing RMAN retention policy.
+  • 3) Consider changing RMAN archived log deletion policy.
+  • 4) Add disk space and increase DB_RECOVERY_FILE_DEST_SIZE.
+  • 5) Delete files from recovery area using RMAN..","  1. sqlplus / as sysdba
+  2. SQL> SELECT * FROM V$RECOVERY_FILE_DEST;
+  3. SQL> SHOW PARAMETER db_recovery_file_dest_size;
+  4. SQL> ALTER SYSTEM SET db_recovery_file_dest_size=100G SCOPE=BOTH;
+  5. rman target /
+  6. RMAN> CROSSCHECK ARCHIVELOG ALL;
+  7. RMAN> DELETE EXPIRED ARCHIVELOG ALL;
+  8. RMAN> EXIT;","FIX_CLEANUP_ARCH_LOGS","OS / Infrastructure","25","SUSPECTED","HIGH","False","ORA-19809","ORA-19809","1","✅ PASS",""
+"QA-0006","Positive","ORA_CODE","Tier1 direct lookup: ORA-16038 (Log cannot be archived)","ORA-16038","DB","root cause.*ORA\-16038","severity=CRITICAL; fix_tier=Database; runbook='Log Writer Cannot Archive Log – Archiver Stuck'","🔴 ROOT CAUSE: ORA-16038
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • No action is required..","  1. sqlplus / as sysdba
+  2. SQL> SELECT STATUS, SEQUENCE#, NAME FROM V$ARCHIVED_LOG ORDER BY SEQUENCE# DESC FETCH FIRST 10 ROWS ONLY;
+  3. SQL> SELECT * FROM V$ARCHIVE_DEST_STATUS WHERE STATUS != 'INACTIVE';
+  4. SQL> ALTER SYSTEM SWITCH LOGFILE;
+  5. SQL> ALTER SYSTEM ARCHIVE LOG ALL;
+  6. SQL> SELECT GROUP#, STATUS FROM V$LOG;
+  7. SQL> EXIT;","FIX_CLEANUP_ARCH_LOGS","DB / Internal","20","SUSPECTED","MEDIUM","False","ORA-16038","ORA-16038","1","✅ PASS",""
+"QA-0007","Positive","ORA_CODE","Tier1 direct lookup: ORA-00603 (Oracle server session terminated by fatal error)","ORA-00603","DB","root cause.*ORA\-00603","severity=CRITICAL; fix_tier=Database; runbook='Oracle Server Session Terminated by Fatal Error'","🔴 ROOT CAUSE: ORA-00603
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Log in to Oracle again so a new server session will be created automatically.
+  • Examine the session trace file for more information.
+  • Chapter 71 71-48.","  1. tail -500 $ORACLE_BASE/diag/rdbms/*/*/trace/alert_*.log | grep -B10 'ORA-00603'
+  2. ls -lt $ORACLE_BASE/diag/rdbms/*/*/trace/*.trc | head -5
+  3. adrci
+  4. ADRCI> SHOW INCIDENT;
+  5. ADRCI> SHOW PROBLEM;
+  6. ADRCI> EXIT;
+  7. sqlplus / as sysdba
+  8. SQL> SELECT INST_ID, STATUS, DATABASE_STATUS FROM GV$INSTANCE;
+  9. SQL> SELECT COUNT(*) FROM V$SESSION WHERE STATUS='ACTIVE';
+  10. SQL> EXIT;","N/A","DB / Internal","20","SUSPECTED","MEDIUM","False","ORA-00603","ORA-00603","1","✅ PASS",""
+"QA-0008","Positive","ORA_CODE","Tier1 direct lookup: ORA-04031 (Unable to allocate shared memory)","ORA-04031","MEMORY","root cause.*ORA\-04031","severity=CRITICAL; fix_tier=OS + Database; runbook='Unable to Allocate Bytes of Shared Memory'","🔴 ROOT CAUSE: ORA-04031
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • If using the initialization parameter SGA_TARGET, then increase the value of SGA_TARGET or reduce the value of DB_CACHE_SIZE.
+  • If the shared pool is out of memory, then either use the DBMS_SHARED_POOL package to pin large packages, or reduce your use of shared memory, or increase the amount of available shared memory by increasing the value of the initialization parameter SHARED_POOL_SIZE.
+  • If the large pool is out of memory, then increase the initialization parameter LARGE_POOL_SIZE.
+  • If the Streams pool is out of memory, then increase the initialization parameter STREAMS_POOL_SIZE, or increase the capture, or apply the parameter MAX_SGA_SIZE.
+  • Chapter 74 74-123.","  1. grep -i hugepage /proc/meminfo
+  2. free -g
+  3. ipcs -m | head -20
+  4. sqlplus / as sysdba
+  5. SQL> SHOW PARAMETER sga_target;
+  6. SQL> SHOW PARAMETER pga_aggregate_target;
+  7. SQL> SELECT POOL, NAME, BYTES FROM V$SGASTAT WHERE NAME='free memory' ORDER BY POOL;
+  8. SQL> ALTER SYSTEM FLUSH SHARED_POOL;
+  9. SQL> ALTER SYSTEM SET MEMORY_TARGET=0 SCOPE=SPFILE;
+  10. SQL> EXIT;","FIX_SET_HUGEPAGES","DB / Memory","30","SUSPECTED","MEDIUM","False","ORA-04031","ORA-04031","1","✅ PASS",""
+"QA-0009","Positive","ORA_CODE","Tier1 direct lookup: ORA-27102 (Out of memory)","ORA-27102","OS_TRIGGERED","root cause.*ORA\-27102","severity=CRITICAL; fix_tier=OS; runbook='Out of Memory – Cannot Allocate SGA'","🔴 ROOT CAUSE: ORA-27102
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Consult the trace file for details Chapter 85 85-148.","  1. grep -i 'hugepage\|shm\|mem' /proc/meminfo
+  2. ipcs -lm
+  3. cat /proc/sys/kernel/shmmax
+  4. cat /proc/sys/kernel/shmall
+  5. sysctl -w kernel.shmmax=68719476736
+  6. sysctl -w kernel.shmall=16777216
+  7. echo 'kernel.shmmax=68719476736' >> /etc/sysctl.conf
+  8. echo 'kernel.shmall=16777216' >> /etc/sysctl.conf
+  9. sysctl -p","FIX_SET_HUGEPAGES","OS / Infrastructure","25","SUSPECTED","HIGH","False","ORA-27102","ORA-27102","1","✅ PASS",""
+"QA-0010","Positive","ORA_CODE","Tier1 direct lookup: ORA-27300 (OS operation failed)","ORA-27300","OS_TRIGGERED","root cause.*ORA\-27300","severity=CRITICAL; fix_tier=OS; runbook='OS System Call Error – Semaphore/FD Limit'","🔴 ROOT CAUSE: ORA-27300
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • contact Oracle Support.","  1. ipcs -ls
+  2. sysctl kernel.sem
+  3. ulimit -n
+  4. cat /proc/sys/fs/file-max
+  5. echo 'kernel.sem=250 32000 100 4096' >> /etc/sysctl.conf
+  6. sysctl -p
+  7. echo 'oracle soft nofile 65536' >> /etc/security/limits.conf
+  8. echo 'oracle hard nofile 65536' >> /etc/security/limits.conf","FIX_INCREASE_SEMMNI","OS / Infrastructure","25","SUSPECTED","HIGH","False","ORA-27300","ORA-27300","1","✅ PASS",""
+"QA-0011","Positive","ORA_CODE","Tier1 direct lookup: ORA-29740 (Evicted by cluster member)","ORA-29740","CRS","root cause.*ORA\-29740","severity=CRITICAL; fix_tier=Infrastructure + RAC; runbook='Evicted by Member – RAC Node Eviction'","🔴 ROOT CAUSE: ORA-29740
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Check the trace files of other active instances in the cluster group for indications of errors that caused a reconfiguration..","  1. crsctl check crs
+  2. crsctl stat res -t
+  3. oifcfg getif
+  4. ping -c 10 <private_interconnect_ip>
+  5. chronyc tracking
+  6. timedatectl status
+  7. crsctl query css votedisk
+  8. tail -200 $GRID_HOME/log/$(hostname)/alert$(hostname).log | grep -B10 'ORA-29740'
+  9. sqlplus / as sysdba
+  10. SQL> SELECT INST_ID, STATUS FROM GV$INSTANCE;
+  11. SQL> EXIT;","FIX_RESTORE_NTP","DB / Unknown","0","SUSPECTED","LOW","False","ORA-29740","ORA-29740","1","✅ PASS",""
+"QA-0012","Positive","ORA_CODE","Tier1 direct lookup: ORA-03113 (End-of-file on communication channel)","ORA-03113","NETWORK","root cause.*ORA\-03113","severity=CRITICAL; fix_tier=Network + Database; runbook='End-of-File on Communication Channel'","🔴 ROOT CAUSE: ORA-03113
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Check the alert log of the database instance to see if a planned or unplanned outage occurred.
+  • Check the alert log to see if a process termination (ORA-07445, kill, or ORA-00600) occurred.
+  • Check for network problems and review the SQL*Net setup.
+  • After the problem is identified and resolved, retry the operation..","  1. ping -c 4 <db_host>
+  2. traceroute <db_host>
+  3. netstat -an | grep 1521
+  4. ss -antp | grep 1521
+  5. lsnrctl status
+  6. lsnrctl reload
+  7. sqlplus / as sysdba
+  8. SQL> SELECT SID, USERNAME, STATUS, MACHINE, LOGON_TIME FROM V$SESSION WHERE STATUS='KILLED';
+  9. SQL> SELECT EVENT, COUNT(*) FROM V$SESSION_WAIT GROUP BY EVENT ORDER BY COUNT(*) DESC FETCH FIRST 10 ROWS ONLY;
+  10. SQL> SHOW PARAMETER sqlnet;
+  11. SQL> EXIT;
+  12. tail -200 $ORACLE_BASE/diag/rdbms/*/*/trace/alert_*.log | grep -A5 'ORA-03113'","FIX_CHECK_BONDING","Network / Connectivity","20","SUSPECTED","HIGH","False","ORA-03113","ORA-03113","1","✅ PASS",""
+"QA-0013","Positive","ORA_CODE","Tier1 direct lookup: ORA-12541 (TNS: no listener)","ORA-12541","NETWORK","root cause.*ORA\-12541","severity=ERROR; fix_tier=Network + Database; runbook='No Listener – TNS No Listener'","🔴 ROOT CAUSE: ORA-12541
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Ensure that the supplied destination address matches one of the addresses used by the listener - compare the TNSNAMES.ORA entry with the appropriate LISTENER.ORA file (or TNSNAV.ORA if the connection is to go by way of an Interchange).
+  • Start the listener on the remote machine..","  1. lsnrctl status
+  2. lsnrctl start
+  3. cat $ORACLE_HOME/network/admin/listener.ora
+  4. cat $ORACLE_HOME/network/admin/tnsnames.ora
+  5. tnsping <service_name>
+  6. iptables -L -n | grep 1521
+  7. firewall-cmd --list-all
+  8. firewall-cmd --zone=public --add-port=1521/tcp --permanent
+  9. firewall-cmd --reload
+  10. sqlplus / as sysdba
+  11. SQL> SELECT VALUE FROM V$PARAMETER WHERE NAME='service_names';
+  12. SQL> ALTER SYSTEM REGISTER;
+  13. SQL> EXIT;","FIX_FLUSH_IPTABLES_1521","Network / Connectivity","20","SUSPECTED","HIGH","False","ORA-12541","ORA-12541","1","✅ PASS",""
+"QA-0014","Positive","ORA_CODE","Tier1 direct lookup: ORA-12170 (TNS: Connect timeout occurred)","ORA-12170","NETWORK","root cause.*ORA\-12170","severity=ERROR; fix_tier=Network; runbook='TNS Connect Timeout Occurred'","🔴 ROOT CAUSE: ORA-12170
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • If the error occurred because of a slow network or system, reconfigure one or all of the parameters SQLNET.INBOUND_CONNECT_TIMEOUT, SQLNET.SEND_TIMEOUT, SQLNET.RECV_TIMEOUT in sqlnet.ora to larger values.
+  • If a malicious client is suspected, use the address in sqlnet.log to identify the source and restrict access.
+  • Note that logged addresses may not be reliable as they can be forged (e.g.
+  • in TCP/IP)..","  1. tnsping <service_name>
+  2. ping -c 4 <db_host>
+  3. netstat -s | grep -i 'failed connection\|timeout'
+  4. ss -antp | grep 1521
+  5. cat $ORACLE_HOME/network/admin/sqlnet.ora
+  6. sysctl net.nf_conntrack_max
+  7. cat /proc/sys/net/netfilter/nf_conntrack_count
+  8. iptables -L -n | grep DROP","FIX_FLUSH_IPTABLES_1521","Network / Connectivity","20","SUSPECTED","HIGH","False","ORA-12170","ORA-12170","1","✅ PASS",""
+"QA-0015","Positive","ORA_CODE","Tier1 direct lookup: ORA-00353 (Log corruption near block)","ORA-00353","DB","root cause.*ORA\-00353","severity=CRITICAL; fix_tier=Database; runbook='Log Corruption Near Block – Redo Log Corruption'","🔴 ROOT CAUSE: ORA-00353
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Do recovery with a good version of the log or do incomplete recovery up to the indicated change or time..","  1. sqlplus / as sysdba
+  2. SQL> SELECT GROUP#, MEMBER FROM V$LOGFILE;
+  3. SQL> SELECT GROUP#, SEQUENCE#, STATUS, ARCHIVED FROM V$LOG;
+  4. SQL> ALTER DATABASE CLEAR LOGFILE GROUP <GROUP_NUMBER>;
+  5. SQL> ALTER DATABASE CLEAR UNARCHIVED LOGFILE GROUP <GROUP_NUMBER>;
+  6. SQL> RECOVER DATABASE UNTIL CANCEL;
+  7. SQL> ALTER DATABASE OPEN RESETLOGS;
+  8. SQL> EXIT;","FIX_REMOUNT_EXT4","DB / Internal","20","SUSPECTED","MEDIUM","False","ORA-00353","ORA-00353","1","✅ PASS",""
+"QA-0016","Positive","ORA_CODE","Tier1 direct lookup: ORA-00470 (LGWR process terminated with error)","ORA-00470","DB","root cause.*ORA\-00470","severity=CRITICAL; fix_tier=Database; runbook='LGWR Process Terminated with Error'","🔴 ROOT CAUSE: ORA-00470
+🕒 TIMESTAMP: 2026-05-05T08:57:12
+
+🛠️ RESOLUTION PLAN:
+  • Warm start instance.","  1. tail -200 $ORACLE_BASE/diag/rdbms/*/*/trace/alert_*.log | grep -B5 'ORA-00470'
+  2. ls -lt $ORACLE_BASE/diag/rdbms/*/*/trace/orcl_lgwr_*.trc | head -3
+  3. sqlplus / as sysdba
+  4. SQL> SELECT GROUP#, STATUS, BYTES FROM V$LOG;
+  5. SQL> SELECT GROUP#, MEMBER FROM V$LOGFILE;
+  6. SQL> SELECT * FROM V$LOG WHERE STATUS='CURRENT';
+  7. SQL> EXIT;
+  8. df -h /redolog
+  9. iostat -xz 1 5","N/A","DB / Internal","20","SUSPECTED","MEDIUM","False","ORA-00470","ORA-00470","1","✅ PASS",""
+"QA-0017","Positive","ORA_CODE","Tier1 direct lookup: ORA-01578 (Oracle data block corrupted)","ORA-01578","DB","root cause.*ORA\-01578","severity=CRITICAL; fix_tier=Database; runbook='Oracle Data Block Corrupted'","🔴 ROOT CAUSE: ORA-01578
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • The general method to repair a media corrupt block is to restore a backup and recover the backup.
+  • For databases in ARCHIVELOG mode, use block media recovery or media recovery.
+  • In some situations, you can also drop the segment and re-create it.
+  • For example, you can drop an index and re-create the index..","  1. sqlplus / as sysdba
+  2. SQL> SELECT FILE#, BLOCK#, BLOCKS, CORRUPTION_TYPE FROM V$DATABASE_BLOCK_CORRUPTION;
+  3. SQL> SELECT NAME FROM V$DATAFILE WHERE FILE# = <FILE_NUMBER>;
+  4. SQL> EXIT;
+  5. rman target /
+  6. RMAN> BLOCKRECOVER DATAFILE <FILE_NUMBER> BLOCK <BLOCK_NUMBER>;
+  7. RMAN> VALIDATE DATABASE;
+  8. RMAN> EXIT;","FIX_ENABLE_MULTIPATH","DB / Internal","20","SUSPECTED","MEDIUM","False","ORA-01578","ORA-01578","1","✅ PASS",""
+"QA-0018","Positive","ORA_CODE","Tier1 direct lookup: ORA-07445 (Exception encountered: core dump)","ORA-07445","DB","root cause.*ORA\-07445","severity=CRITICAL; fix_tier=Database; runbook='Exception Encountered – Core Dump (Internal Error)'","🔴 ROOT CAUSE: ORA-07445
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Visit My Oracle Support to access the ORA-07445 Lookup tool (reference Note 7445.1) for more information regarding the specific ORA-07445 error encountered.
+  • An Incident has been created for this error in the Automatic Diagnostic Repository (ADR).
+  • When logging a service request, use the Incident Packaging Service (IPS) from the Support Workbench or the ADR Command Interpreter (ADRCI) to automatically package the relevant trace information (reference My Oracle Support Note 411.1).
+  • The following information should also be gathered to help determine the root cause: - changes leading up to the error - events or unusual circumstances leading up to the error - operations attempted prior to the error - conditions of the operating system and databases at the time of the error Note: The cause of this message may manifest itself as different errors at different times.
+  • Be aware of the history of errors that occurred before this internal error..","  1. adrci
+  2. ADRCI> SHOW INCIDENT;
+  3. ADRCI> SHOW PROBLEM;
+  4. ADRCI> IPS PACK INCIDENT <INCIDENT_ID> IN '/tmp';
+  5. ADRCI> EXIT;
+  6. tail -200 $ORACLE_BASE/diag/rdbms/*/*/trace/alert_*.log | grep -B10 'ORA-07445'
+  7. sqlplus / as sysdba
+  8. SQL> SELECT VALUE FROM V$DIAG_INFO WHERE NAME='Default Trace File';
+  9. SQL> SHOW PARAMETER optimizer;
+  10. SQL> EXIT;
+  11. opatch lsinventory | grep -i 'Patch'","N/A","DB / Internal","20","SUSPECTED","MEDIUM","False","ORA-07445","ORA-07445","1","✅ PASS",""
+"QA-0019","Positive","ORA_CODE","Tier1 direct lookup: ORA-27125 (Unable to create shared memory segment)","ORA-27125","OS_TRIGGERED","root cause.*ORA\-27125","severity=CRITICAL; fix_tier=OS; runbook='Unable to Create Shared Memory Segment – HugePages'","🔴 ROOT CAUSE: ORA-27125
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • contact Oracle support.","  1. grep -i hugepage /proc/meminfo
+  2. grep -i hugepage /etc/sysctl.conf
+  3. echo 49152 > /proc/sys/vm/nr_hugepages
+  4. echo 'vm.nr_hugepages=49152' >> /etc/sysctl.conf
+  5. sysctl -p
+  6. grep -i hugepage /proc/meminfo","FIX_SET_HUGEPAGES","OS / Infrastructure","25","SUSPECTED","HIGH","False","ORA-27125","ORA-27125","1","✅ PASS",""
+"QA-0020","Positive","ORA_CODE","Tier1 direct lookup: ORA-27054 (NFS file system not mounted with correct options)","ORA-27054","NETWORK","root cause.*ORA\-27054","severity=CRITICAL; fix_tier=OS + Infrastructure; runbook='NFS File System Not Mounted with Required Options'","🔴 ROOT CAUSE: ORA-27054
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Make sure mount tab file has read access for Oracle user and the NFS partition where the file resides is mounted correctly.
+  • For the list of mount options to use refer to your platform specific documentation..","  1. mount | grep nfs
+  2. showmount -e <nfshost>
+  3. cat /etc/fstab | grep nfs
+  4. umount -l /arch
+  5. mount -o rw,hard,timeo=600,rsize=32768,wsize=32768 <nfshost>:/export/arch /arch
+  6. mount | grep nfs
+  7. df -h /arch","FIX_FREE_NFS_MOUNT","Network / Connectivity","20","SUSPECTED","HIGH","False","ORA-27054","ORA-27054","1","✅ PASS",""
+"QA-0021","Positive","OS_PATTERN","OS pattern lookup: OS_OOM_KILLER (MEMORY/OOM)","OS_OOM_KILLER","OS_TRIGGERED","root cause.*OS_OOM_KILLER","description='Linux OOM Killer terminated Oracle process due to memory exhaustion'; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: OS_OOM_KILLER
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_OOM_KILLER.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_OOM_KILLER","OS_OOM_KILLER","1","✅ PASS",""
+"QA-0022","Positive","OS_PATTERN","OS pattern lookup: OS_SCSI_TIMEOUT (DISK/SCSI)","OS_SCSI_TIMEOUT","OS_TRIGGERED","root cause.*OS_SCSI_TIMEOUT","description='SCSI disk timeout — storage array unreachable or path down'; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: OS_SCSI_TIMEOUT
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_SCSI_TIMEOUT.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_SCSI_TIMEOUT","OS_SCSI_TIMEOUT","1","✅ PASS",""
+"QA-0023","Positive","OS_PATTERN","OS pattern lookup: OS_NET_DROP (NETWORK/BONDING)","OS_NET_DROP","NETWORK","root cause.*OS_NET_DROP","description='Network link down — NIC or bonding interface failure'; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: OS_NET_DROP
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_NET_DROP.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_NET_DROP","OS_NET_DROP","1","✅ PASS",""
+"QA-0024","Positive","OS_PATTERN","OS pattern lookup: OS_NFS_STALE (NETWORK/NFS)","OS_NFS_STALE","OS_TRIGGERED","root cause.*OS_NFS_STALE","description='Stale NFS file handle — NFS mount became unavailable'; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: OS_NFS_STALE
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_NFS_STALE.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_NFS_STALE","OS_NFS_STALE","1","✅ PASS",""
+"QA-0025","Positive","OS_PATTERN","OS pattern lookup: OS_HUGEPAGE_FAIL (MEMORY/HUGEPAGES)","OS_HUGEPAGE_FAIL","OS_TRIGGERED","root cause.*OS_HUGEPAGE_FAIL","description='HugePages allocation failure — insufficient huge pages for Oracle SGA'; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: OS_HUGEPAGE_FAIL
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_HUGEPAGE_FAIL.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_HUGEPAGE_FAIL","OS_HUGEPAGE_FAIL","1","✅ PASS",""
+"QA-0026","Positive","OS_PATTERN","OS pattern lookup: OS_SEMAPHORE_LIMIT (MEMORY/IPC)","OS_SEMAPHORE_LIMIT","OS_TRIGGERED","root cause.*OS_SEMAPHORE_LIMIT","description='Semaphore limit exhausted — Oracle cannot create IPC semaphores'; severity=CRITICAL; platforms=[LINUX,AIX,HPUX]","🔴 ROOT CAUSE: OS_SEMAPHORE_LIMIT
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_SEMAPHORE_LIMIT.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_SEMAPHORE_LIMIT","OS_SEMAPHORE_LIMIT","1","✅ PASS",""
+"QA-0027","Positive","OS_PATTERN","OS pattern lookup: OS_KERNEL_PANIC (KERNEL/PANIC)","OS_KERNEL_PANIC","OS_TRIGGERED","root cause.*OS_KERNEL_PANIC","description='Linux kernel panic — system crash requiring reboot'; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: OS_KERNEL_PANIC
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_KERNEL_PANIC.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_KERNEL_PANIC","OS_KERNEL_PANIC","1","✅ PASS",""
+"QA-0028","Positive","OS_PATTERN","OS pattern lookup: OS_DISK_FULL (DISK/FILESYSTEM)","OS_DISK_FULL","OS_TRIGGERED","root cause.*OS_DISK_FULL","description='Filesystem 100% full — Oracle cannot write datafiles or archivelogs'; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS,WINDOWS]","🔴 ROOT CAUSE: OS_DISK_FULL
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_DISK_FULL.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_DISK_FULL","OS_DISK_FULL","1","✅ PASS",""
+"QA-0029","Positive","OS_PATTERN","OS pattern lookup: OS_CPU_SATURATION (CPU/RUNQUEUE)","OS_CPU_SATURATION","OS_TRIGGERED","root cause.*OS_CPU_SATURATION","description='CPU runqueue saturation — OS scheduler overloaded'; severity=ERROR; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: OS_CPU_SATURATION
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_CPU_SATURATION.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_CPU_SATURATION","OS_CPU_SATURATION","1","✅ PASS",""
+"QA-0030","Positive","OS_PATTERN","OS pattern lookup: OS_NTP_JUMP (NETWORK/NTP)","OS_NTP_JUMP","CLUSTER","root cause.*OS_NTP_JUMP","description='NTP time jump detected — may cause RAC eviction'; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: OS_NTP_JUMP
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_NTP_JUMP.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","DB / Infrastructure / RAC / Cluster","25","SUSPECTED","HIGH","False","OS_NTP_JUMP","OS_NTP_JUMP","1","✅ PASS",""
+"QA-0031","Positive","OS_PATTERN","OS pattern lookup: OS_MULTIPATH_DOWN (DISK/MULTIPATH)","OS_MULTIPATH_DOWN","OS_TRIGGERED","root cause.*OS_MULTIPATH_DOWN","description='All multipath paths down — storage connectivity lost'; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: OS_MULTIPATH_DOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_MULTIPATH_DOWN.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_MULTIPATH_DOWN","OS_MULTIPATH_DOWN","1","✅ PASS",""
+"QA-0032","Positive","OS_PATTERN","OS pattern lookup: OS_SWAP_STORM (MEMORY/SWAP)","OS_SWAP_STORM","OS_TRIGGERED","root cause.*OS_SWAP_STORM","description='Swap storm — OS actively paging Oracle SGA to disk'; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: OS_SWAP_STORM
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_SWAP_STORM.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_SWAP_STORM","OS_SWAP_STORM","1","✅ PASS",""
+"QA-0033","Positive","OS_PATTERN","OS pattern lookup: OS_ISCSI_FAIL (DISK/ISCSI)","OS_ISCSI_FAIL","OS_TRIGGERED","root cause.*OS_ISCSI_FAIL","description='iSCSI session failure — storage target unreachable'; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: OS_ISCSI_FAIL
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_ISCSI_FAIL.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_ISCSI_FAIL","OS_ISCSI_FAIL","1","✅ PASS",""
+"QA-0034","Positive","OS_PATTERN","OS pattern lookup: OS_CONNTRACK_FULL (NETWORK/FIREWALL)","OS_CONNTRACK_FULL","NETWORK","root cause.*OS_CONNTRACK_FULL","description='nf_conntrack table full — connections being silently dropped'; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: OS_CONNTRACK_FULL
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_CONNTRACK_FULL.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","Network / Connectivity","20","SUSPECTED","HIGH","False","OS_CONNTRACK_FULL","OS_CONNTRACK_FULL","1","✅ PASS",""
+"QA-0035","Positive","OS_PATTERN","OS pattern lookup: OS_SELINUX_BLOCK (KERNEL/SECURITY)","OS_SELINUX_BLOCK","OS_TRIGGERED","root cause.*OS_SELINUX_BLOCK","description='SELinux blocking Oracle file or network access'; severity=ERROR; platforms=[LINUX]","🔴 ROOT CAUSE: OS_SELINUX_BLOCK
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_SELINUX_BLOCK.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_SELINUX_BLOCK","OS_SELINUX_BLOCK","1","✅ PASS",""
+"QA-0036","Positive","OS_PATTERN","OS pattern lookup: OS_MCE_UNCORRECTED (KERNEL/MCE)","OS_MCE_UNCORRECTED","OS_TRIGGERED","root cause.*OS_MCE_UNCORRECTED","description='Uncorrected machine check exception — hardware memory error'; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: OS_MCE_UNCORRECTED
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_MCE_UNCORRECTED.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_MCE_UNCORRECTED","OS_MCE_UNCORRECTED","1","✅ PASS",""
+"QA-0037","Positive","OS_PATTERN","OS pattern lookup: SCSI_DISK_TIMEOUT (DISK/SCSI)","SCSI_DISK_TIMEOUT","OS_TRIGGERED","root cause.*SCSI_DISK_TIMEOUT","description=''; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS,HPUX,WINDOWS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [93510.891855] scsi disk timeout
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [SCSI_DISK_TIMEOUT] OS pattern lookup: SCSI_DISK_TIMEOUT (DISK/SCSI).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","SCSI_DISK_TIMEOUT","1","✅ PASS",""
+"QA-0038","Positive","OS_PATTERN","OS pattern lookup: FC_HBA_RESET (DISK/FC)","FC_HBA_RESET","OS_TRIGGERED","root cause.*FC_HBA_RESET","description=''; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [51088.052949] fc hba reset
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [FC_HBA_RESET] OS pattern lookup: FC_HBA_RESET (DISK/FC).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","FC_HBA_RESET","1","✅ PASS",""
+"QA-0039","Positive","OS_PATTERN","OS pattern lookup: MULTIPATH_ALL_PATHS_DOWN (DISK/MULTIPATH)","MULTIPATH_ALL_PATHS_DOWN","OS_TRIGGERED","root cause.*MULTIPATH_ALL_PATHS_DOWN","description=''; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [62197.897667] multipath all paths down
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [MULTIPATH_ALL_PATHS_DOWN] OS pattern lookup: MULTIPATH_ALL_PATHS_DOWN (DISK/MULTIPATH).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","MULTIPATH_ALL_PATHS_DOWN","1","✅ PASS",""
+"QA-0040","Positive","OS_PATTERN","OS pattern lookup: IO_QUEUE_TIMEOUT (DISK/IO)","IO_QUEUE_TIMEOUT","OS_TRIGGERED","root cause.*IO_QUEUE_TIMEOUT","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [50946.400894] io queue timeout
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [IO_QUEUE_TIMEOUT] OS pattern lookup: IO_QUEUE_TIMEOUT (DISK/IO).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","IO_QUEUE_TIMEOUT","1","✅ PASS",""
+"QA-0041","Positive","OS_PATTERN","OS pattern lookup: EXT4_JOURNAL_ABORT (DISK/FILESYSTEM)","EXT4_JOURNAL_ABORT","OS_TRIGGERED","root cause.*EXT4_JOURNAL_ABORT","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [46804.373561] ext4 journal abort
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [EXT4_JOURNAL_ABORT] OS pattern lookup: EXT4_JOURNAL_ABORT (DISK/FILESYSTEM).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","EXT4_JOURNAL_ABORT","1","✅ PASS",""
+"QA-0042","Positive","OS_PATTERN","OS pattern lookup: XFS_FILESYSTEM_SHUTDOWN (DISK/FILESYSTEM)","XFS_FILESYSTEM_SHUTDOWN","OS_TRIGGERED","root cause.*XFS_FILESYSTEM_SHUTDOWN","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [74750.216790] xfs filesystem shutdown
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [XFS_FILESYSTEM_SHUTDOWN] OS pattern lookup: XFS_FILESYSTEM_SHUTDOWN (DISK/FILESYSTEM).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","XFS_FILESYSTEM_SHUTDOWN","1","✅ PASS",""
+"QA-0043","Positive","OS_PATTERN","OS pattern lookup: FILESYSTEM_ARCH_FULL (DISK/FILESYSTEM)","FILESYSTEM_ARCH_FULL","OS_TRIGGERED","root cause.*FILESYSTEM_ARCH_FULL","description=''; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS,WINDOWS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [16896.790990] filesystem arch full
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [FILESYSTEM_ARCH_FULL] OS pattern lookup: FILESYSTEM_ARCH_FULL (DISK/FILESYSTEM).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","FILESYSTEM_ARCH_FULL","1","✅ PASS",""
+"QA-0044","Positive","OS_PATTERN","OS pattern lookup: ISCSI_SESSION_FAIL (DISK/ISCSI)","ISCSI_SESSION_FAIL","OS_TRIGGERED","root cause.*ISCSI_SESSION_FAIL","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [37363.533179] iscsi session fail
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [ISCSI_SESSION_FAIL] OS pattern lookup: ISCSI_SESSION_FAIL (DISK/ISCSI).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","ISCSI_SESSION_FAIL","1","✅ PASS",""
+"QA-0045","Positive","OS_PATTERN","OS pattern lookup: OOM_KILLER_ACTIVE (MEMORY/OOM)","OOM_KILLER_ACTIVE","OS_TRIGGERED","root cause.*OOM_KILLER_ACTIVE","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [45367.965613] oom killer active
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [OOM_KILLER_ACTIVE] OS pattern lookup: OOM_KILLER_ACTIVE (MEMORY/OOM).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","OOM_KILLER_ACTIVE","1","✅ PASS",""
+"QA-0046","Positive","OS_PATTERN","OS pattern lookup: CGROUP_OOM_KILL (MEMORY/CGROUP)","CGROUP_OOM_KILL","OS_TRIGGERED","root cause.*CGROUP_OOM_KILL","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [92179.575086] memory cgroup out of memory
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [CGROUP_OOM_KILL] OS pattern lookup: CGROUP_OOM_KILL (MEMORY/CGROUP).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","CGROUP_OOM_KILL","1","✅ PASS",""
+"QA-0047","Positive","OS_PATTERN","OS pattern lookup: SHMGET_EINVAL (MEMORY/IPC)","SHMGET_EINVAL","OS_TRIGGERED","root cause.*SHMGET_EINVAL","description=''; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [84711.359284] shmgeteinval
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [SHMGET_EINVAL] OS pattern lookup: SHMGET_EINVAL (MEMORY/IPC).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","SHMGET_EINVAL","1","✅ PASS",""
+"QA-0048","Positive","OS_PATTERN","OS pattern lookup: HUGEPAGES_FREE_ZERO (MEMORY/HUGEPAGES)","HUGEPAGES_FREE_ZERO","OS_TRIGGERED","root cause.*HUGEPAGES_FREE_ZERO","description=''; severity=ERROR; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [89720.226717] hugepages_free:s0
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [HUGEPAGES_FREE_ZERO] OS pattern lookup: HUGEPAGES_FREE_ZERO (MEMORY/HUGEPAGES).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","HUGEPAGES_FREE_ZERO","1","✅ PASS",""
+"QA-0049","Positive","OS_PATTERN","OS pattern lookup: MEMORY_SWAP_STORM (MEMORY/SWAP)","MEMORY_SWAP_STORM","OS_TRIGGERED","root cause.*MEMORY_SWAP_STORM","description=''; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [51694.690097] memory swap storm
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [MEMORY_SWAP_STORM] OS pattern lookup: MEMORY_SWAP_STORM (MEMORY/SWAP).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","MEMORY_SWAP_STORM","1","✅ PASS",""
+"QA-0050","Positive","OS_PATTERN","OS pattern lookup: SEMAPHORE_LIMIT_EXHAUSTED (MEMORY/IPC)","SEMAPHORE_LIMIT_EXHAUSTED","OS_TRIGGERED","root cause.*SEMAPHORE_LIMIT_EXHAUSTED","description=''; severity=CRITICAL; platforms=[LINUX,AIX,HPUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [99725.717208] semaphore limit exhausted
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [SEMAPHORE_LIMIT_EXHAUSTED] OS pattern lookup: SEMAPHORE_LIMIT_EXHAUSTED (MEMORY/IPC).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","SEMAPHORE_LIMIT_EXHAUSTED","1","✅ PASS",""
+"QA-0051","Positive","OS_PATTERN","OS pattern lookup: FD_LIMIT_EXHAUSTED (MEMORY/LIMITS)","FD_LIMIT_EXHAUSTED","OS_TRIGGERED","root cause.*FD_LIMIT_EXHAUSTED","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [75515.380566] fd limit exhausted
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [FD_LIMIT_EXHAUSTED] OS pattern lookup: FD_LIMIT_EXHAUSTED (MEMORY/LIMITS).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","FD_LIMIT_EXHAUSTED","1","✅ PASS",""
+"QA-0052","Positive","OS_PATTERN","OS pattern lookup: MEMLOCK_ULIMIT_TOO_LOW (MEMORY/LIMITS)","MEMLOCK_ULIMIT_TOO_LOW","OS_TRIGGERED","root cause.*MEMLOCK_ULIMIT_TOO_LOW","description=''; severity=ERROR; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [79628.381159] memlock ulimit too low
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [MEMLOCK_ULIMIT_TOO_LOW] OS pattern lookup: MEMLOCK_ULIMIT_TOO_LOW (MEMORY/LIMITS).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","MEMLOCK_ULIMIT_TOO_LOW","1","✅ PASS",""
+"QA-0053","Positive","OS_PATTERN","OS pattern lookup: CPU_RUNQUEUE_SATURATION (CPU/RUNQUEUE)","CPU_RUNQUEUE_SATURATION","OS_TRIGGERED","root cause.*CPU_RUNQUEUE_SATURATION","description=''; severity=ERROR; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [17912.685591] cpu runqueue saturation
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [CPU_RUNQUEUE_SATURATION] OS pattern lookup: CPU_RUNQUEUE_SATURATION (CPU/RUNQUEUE).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","CPU_RUNQUEUE_SATURATION","1","✅ PASS",""
+"QA-0054","Positive","OS_PATTERN","OS pattern lookup: CPU_STEAL_TIME (CPU/VIRTUALIZATION)","CPU_STEAL_TIME","OS_TRIGGERED","root cause.*CPU_STEAL_TIME","description=''; severity=ERROR; platforms=[LINUX,AIX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [75620.663799] cpu steal time
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [CPU_STEAL_TIME] OS pattern lookup: CPU_STEAL_TIME (CPU/VIRTUALIZATION).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","CPU_STEAL_TIME","1","✅ PASS",""
+"QA-0055","Positive","OS_PATTERN","OS pattern lookup: SOFT_LOCKUP (KERNEL/LOCKUP)","SOFT_LOCKUP","OS_TRIGGERED","root cause.*SOFT_LOCKUP","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [35008.076501] soft lockupcpustuck
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [SOFT_LOCKUP] OS pattern lookup: SOFT_LOCKUP (KERNEL/LOCKUP).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","SOFT_LOCKUP","1","✅ PASS",""
+"QA-0056","Positive","OS_PATTERN","OS pattern lookup: HARD_LOCKUP (KERNEL/LOCKUP)","HARD_LOCKUP","OS_TRIGGERED","root cause.*HARD_LOCKUP","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [53899.351208] hard lockupcpu
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [HARD_LOCKUP] OS pattern lookup: HARD_LOCKUP (KERNEL/LOCKUP).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","HARD_LOCKUP","1","✅ PASS",""
+"QA-0057","Positive","OS_PATTERN","OS pattern lookup: KERNEL_PANIC (KERNEL/PANIC)","KERNEL_PANIC","OS_TRIGGERED","root cause.*KERNEL_PANIC","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [79676.648735] kernel panic
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [KERNEL_PANIC] OS pattern lookup: KERNEL_PANIC (KERNEL/PANIC).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","KERNEL_PANIC","1","✅ PASS",""
+"QA-0058","Positive","OS_PATTERN","OS pattern lookup: MCE_CORRECTED_MEMORY (KERNEL/MCE)","MCE_CORRECTED_MEMORY","OS_TRIGGERED","root cause.*MCE_CORRECTED_MEMORY","description=''; severity=WARNING; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [53958.975942] mce corrected memory
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [MCE_CORRECTED_MEMORY] OS pattern lookup: MCE_CORRECTED_MEMORY (KERNEL/MCE).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","MCE_CORRECTED_MEMORY","1","✅ PASS",""
+"QA-0059","Positive","OS_PATTERN","OS pattern lookup: MCE_UNCORRECTED_MEMORY (KERNEL/MCE)","MCE_UNCORRECTED_MEMORY","OS_TRIGGERED","root cause.*MCE_UNCORRECTED_MEMORY","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [12072.126493] mce uncorrected memory
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [MCE_UNCORRECTED_MEMORY] OS pattern lookup: MCE_UNCORRECTED_MEMORY (KERNEL/MCE).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","MCE_UNCORRECTED_MEMORY","1","✅ PASS",""
+"QA-0060","Positive","OS_PATTERN","OS pattern lookup: SELINUX_BLOCKING (KERNEL/SECURITY)","SELINUX_BLOCKING","OS_TRIGGERED","root cause.*SELINUX_BLOCKING","description=''; severity=ERROR; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [92830.185951] selinux blocking
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [SELINUX_BLOCKING] OS pattern lookup: SELINUX_BLOCKING (KERNEL/SECURITY).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","SELINUX_BLOCKING","1","✅ PASS",""
+"QA-0061","Positive","OS_PATTERN","OS pattern lookup: BONDING_FAILOVER_EVENT (NETWORK/BONDING)","BONDING_FAILOVER_EVENT","NETWORK","root cause.*BONDING_FAILOVER_EVENT","description=''; severity=ERROR; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [72934.463658] bonding failover event
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [BONDING_FAILOVER_EVENT] OS pattern lookup: BONDING_FAILOVER_EVENT (NETWORK/BONDING).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","BONDING_FAILOVER_EVENT","1","✅ PASS",""
+"QA-0062","Positive","OS_PATTERN","OS pattern lookup: BOTH_NICS_DOWN (NETWORK/BONDING)","BOTH_NICS_DOWN","NETWORK","root cause.*BOTH_NICS_DOWN","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [55863.063123] both nics down
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [BOTH_NICS_DOWN] OS pattern lookup: BOTH_NICS_DOWN (NETWORK/BONDING).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","BOTH_NICS_DOWN","1","✅ PASS",""
+"QA-0063","Positive","OS_PATTERN","OS pattern lookup: NF_CONNTRACK_FULL (NETWORK/FIREWALL)","NF_CONNTRACK_FULL","NETWORK","root cause.*NF_CONNTRACK_FULL","description=''; severity=CRITICAL; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [45470.848656] nf_conntrack: table full, dropping packet
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [NF_CONNTRACK_FULL] OS pattern lookup: NF_CONNTRACK_FULL (NETWORK/FIREWALL).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","NF_CONNTRACK_FULL","1","✅ PASS",""
+"QA-0064","Positive","OS_PATTERN","OS pattern lookup: NTP_TIME_JUMP (NETWORK/NTP)","NTP_TIME_JUMP","CLUSTER","root cause.*NTP_TIME_JUMP","description=''; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [10152.666728] ntp time jump
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [NTP_TIME_JUMP] OS pattern lookup: NTP_TIME_JUMP (NETWORK/NTP).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","NTP_TIME_JUMP","1","✅ PASS",""
+"QA-0065","Positive","OS_PATTERN","OS pattern lookup: IPTABLES_BLOCKING_1521 (NETWORK/FIREWALL)","IPTABLES_BLOCKING_1521","NETWORK","root cause.*IPTABLES_BLOCKING_1521","description=''; severity=ERROR; platforms=[LINUX]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [65773.762108] iptables blocking 1521
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [IPTABLES_BLOCKING_1521] OS pattern lookup: IPTABLES_BLOCKING_1521 (NETWORK/FIREWALL).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","IPTABLES_BLOCKING_1521","1","✅ PASS",""
+"QA-0066","Positive","OS_PATTERN","OS pattern lookup: NFS_MOUNT_TIMEOUT (NETWORK/NFS)","NFS_MOUNT_TIMEOUT","OS_TRIGGERED","root cause.*NFS_MOUNT_TIMEOUT","description=''; severity=CRITICAL; platforms=[LINUX,AIX,SOLARIS]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [46113.322441] nfs mount timeout
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [NFS_MOUNT_TIMEOUT] OS pattern lookup: NFS_MOUNT_TIMEOUT (NETWORK/NFS).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","NFS_MOUNT_TIMEOUT","1","✅ PASS",""
+"QA-0067","Positive","OS_PATTERN","OS pattern lookup: OS_SCSI_TIMEOUT (Storage/)","OS_SCSI_TIMEOUT","OS_TRIGGERED","root cause.*OS_SCSI_TIMEOUT","description='SCSI layer timeout — storage array unreachable or HBA path failure'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_SCSI_TIMEOUT
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_SCSI_TIMEOUT.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_SCSI_TIMEOUT","OS_SCSI_TIMEOUT","1","✅ PASS",""
+"QA-0068","Positive","OS_PATTERN","OS pattern lookup: OS_NET_DROP (Network/)","OS_NET_DROP","OS_TRIGGERED","root cause.*OS_NET_DROP","description='NIC link down or network packet drop detected at OS level'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_NET_DROP
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_NET_DROP.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_NET_DROP","OS_NET_DROP","1","✅ PASS",""
+"QA-0069","Positive","OS_PATTERN","OS pattern lookup: ASM_DISK_DROP (ASM/)","ASM_DISK_DROP","ASM","root cause.*ASM_DISK_DROP","description='ASM disk dropped from diskgroup due to I/O failure'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [45804.765393] asm disk drop
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [ASM_DISK_DROP] OS pattern lookup: ASM_DISK_DROP (ASM/).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","ASM_DISK_DROP","1","✅ PASS",""
+"QA-0070","Positive","OS_PATTERN","OS pattern lookup: DB_CRASH_ORA_00603 (DB/)","DB_CRASH_ORA_00603","DB","root cause.*DB_CRASH_ORA_00603","description='Oracle server session terminated abnormally'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [55229.947735] db crash ora 00603
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [DB_CRASH_ORA_00603] OS pattern lookup: DB_CRASH_ORA_00603 (DB/).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","DB_CRASH_ORA_00603","1","✅ PASS",""
+"QA-0071","Positive","OS_PATTERN","OS pattern lookup: DB_EVICTION_ORA_29740 (CLUSTER/)","DB_EVICTION_ORA_29740","CLUSTER","root cause.*DB_EVICTION_ORA_29740","description='RAC node eviction event detected'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [80167.258201] db eviction ora 29740
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [DB_EVICTION_ORA_29740] OS pattern lookup: DB_EVICTION_ORA_29740 (CLUSTER/).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","DB_EVICTION_ORA_29740","1","✅ PASS",""
+"QA-0072","Positive","OS_PATTERN","OS pattern lookup: OS_OOM_KILLER (OS_TRIGGERED/)","OS_OOM_KILLER","OS_TRIGGERED","root cause.*OS_OOM_KILLER","description='Linux OOM killer terminated Oracle process due to memory exhaustion'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_OOM_KILLER
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_OOM_KILLER.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_OOM_KILLER","OS_OOM_KILLER","1","✅ PASS",""
+"QA-0073","Positive","OS_PATTERN","OS pattern lookup: OS_NFS_STALE (Storage/)","OS_NFS_STALE","OS_TRIGGERED","root cause.*OS_NFS_STALE","description='NFS stale file handle — Oracle datafile on NFS mount became inaccessible'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_NFS_STALE
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_NFS_STALE.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_NFS_STALE","OS_NFS_STALE","1","✅ PASS",""
+"QA-0074","Positive","OS_PATTERN","OS pattern lookup: OS_HUGEPAGE_FAIL (OS_TRIGGERED/)","OS_HUGEPAGE_FAIL","OS_TRIGGERED","root cause.*OS_HUGEPAGE_FAIL","description='HugePage allocation failure — SGA cannot be mapped to huge pages'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_HUGEPAGE_FAIL
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_HUGEPAGE_FAIL.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_HUGEPAGE_FAIL","OS_HUGEPAGE_FAIL","1","✅ PASS",""
+"QA-0075","Positive","OS_PATTERN","OS pattern lookup: OS_KERNEL_PANIC (OS_TRIGGERED/)","OS_KERNEL_PANIC","OS_TRIGGERED","root cause.*OS_KERNEL_PANIC","description='Linux kernel panic — server rebooted unexpectedly'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_KERNEL_PANIC
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_KERNEL_PANIC.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_KERNEL_PANIC","OS_KERNEL_PANIC","1","✅ PASS",""
+"QA-0076","Positive","OS_PATTERN","OS pattern lookup: OS_HBA_FAILURE (Storage/)","OS_HBA_FAILURE","OS_TRIGGERED","root cause.*OS_HBA_FAILURE","description='Host Bus Adapter port failure — SAN path lost'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_HBA_FAILURE
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_HBA_FAILURE.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_HBA_FAILURE","OS_HBA_FAILURE","1","✅ PASS",""
+"QA-0077","Positive","OS_PATTERN","OS pattern lookup: OS_FILESYSTEM_FULL (OS_TRIGGERED/)","OS_FILESYSTEM_FULL","OS_TRIGGERED","root cause.*OS_FILESYSTEM_FULL","description='Filesystem 100% full — Oracle cannot write trace files or archive logs'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_FILESYSTEM_FULL
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_FILESYSTEM_FULL.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_FILESYSTEM_FULL","OS_FILESYSTEM_FULL","1","✅ PASS",""
+"QA-0078","Positive","OS_PATTERN","OS pattern lookup: OS_SWAP_FULL (OS_TRIGGERED/)","OS_SWAP_FULL","OS_TRIGGERED","root cause.*OS_SWAP_FULL","description='OS swap space exhausted — system is under severe memory pressure'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_SWAP_FULL
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_SWAP_FULL.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_SWAP_FULL","OS_SWAP_FULL","1","✅ PASS",""
+"QA-0079","Positive","OS_PATTERN","OS pattern lookup: OS_BONDING_FAIL (Network/)","OS_BONDING_FAIL","OS_TRIGGERED","root cause.*OS_BONDING_FAIL","description='NIC bonding failure — one or more bonded NICs went down'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_BONDING_FAIL
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_BONDING_FAIL.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_BONDING_FAIL","OS_BONDING_FAIL","1","✅ PASS",""
+"QA-0080","Positive","OS_PATTERN","OS pattern lookup: OS_RAID_DEGRADED (Storage/)","OS_RAID_DEGRADED","OS_TRIGGERED","root cause.*OS_RAID_DEGRADED","description='RAID array degraded — disk member failed'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_RAID_DEGRADED
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_RAID_DEGRADED.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_RAID_DEGRADED","OS_RAID_DEGRADED","1","✅ PASS",""
+"QA-0081","Positive","OS_PATTERN","OS pattern lookup: OS_VMWARE_SNAPSHOT (Storage/)","OS_VMWARE_SNAPSHOT","OS_TRIGGERED","root cause.*OS_VMWARE_SNAPSHOT","description='VMware snapshot caused I/O freeze on Oracle datafiles'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_VMWARE_SNAPSHOT
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_VMWARE_SNAPSHOT.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_VMWARE_SNAPSHOT","OS_VMWARE_SNAPSHOT","1","✅ PASS",""
+"QA-0082","Positive","OS_PATTERN","OS pattern lookup: OS_LPAR_CPU_CAP (OS_TRIGGERED/)","OS_LPAR_CPU_CAP","OS_TRIGGERED","root cause.*OS_LPAR_CPU_CAP","description='AIX LPAR CPU capping event — Oracle processes starved of CPU'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: OS_LPAR_CPU_CAP
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • A systemic hardware/OS failure was detected causing the Oracle Database to cascade and crash.
+  • The specific OS error detected is: OS_LPAR_CPU_CAP.
+  • Because this is an OS-layer hardware failure, there is no Oracle Database runbook available.
+  • Please escalate this incident to your Linux/Sysadmin infrastructure team for immediate hardware troubleshooting..","  (No commands available for this error code)","N/A","OS / Infrastructure","25","SUSPECTED","HIGH","False","OS_LPAR_CPU_CAP","OS_LPAR_CPU_CAP","1","✅ PASS",""
+"QA-0083","Positive","OS_PATTERN","OS pattern lookup: CRS_RESOURCE_FAILED (CLUSTER/)","CRS_RESOURCE_FAILED","CLUSTER","root cause.*CRS_RESOURCE_FAILED","description='Oracle CRS cluster resource failed — service or listener went offline'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [17894.336140] crs resource failed
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [CRS_RESOURCE_FAILED] OS pattern lookup: CRS_RESOURCE_FAILED (CLUSTER/).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","CRS_RESOURCE_FAILED","1","✅ PASS",""
+"QA-0084","Positive","OS_PATTERN","OS pattern lookup: DG_APPLY_LAG (DATAGUARD/)","DG_APPLY_LAG","DATAGUARD","root cause.*DG_APPLY_LAG","description='DataGuard apply lag exceeded threshold or MRP process stopped'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [72600.774906] dg apply lag
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [DG_APPLY_LAG] OS pattern lookup: DG_APPLY_LAG (DATAGUARD/).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","DG_APPLY_LAG","1","✅ PASS",""
+"QA-0085","Positive","OS_PATTERN","OS pattern lookup: RMAN_BACKUP_FAILED (RMAN/)","RMAN_BACKUP_FAILED","RMAN","root cause.*RMAN_BACKUP_FAILED","description='RMAN backup job failed — archived log missing or destination full'; severity=ERROR; platforms=[]","🔴 ROOT CAUSE: UNKNOWN
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • I have chronologically analyzed your uploaded logs.
+  • The root cause appears to be: 2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [90611.555070] rman backup failed
+2026-05-05T08:57:13 kommanas-MacBook-Air.local kernel: [RMAN_BACKUP_FAILED] OS pattern lookup: RMAN_BACKUP_FAILED (RMAN/).
+  • Please follow standard OS troubleshooting..","  (No commands available for this error code)","N/A","DB / Unknown","0","SUSPECTED","LOW","False","UNKNOWN","RMAN_BACKUP_FAILED","1","✅ PASS",""
+"QA-0086","Translator","TRANSLATOR","Syslog translator: raw text → OS_OOM_KILLER","OS_OOM_KILLER","OS_TRIGGERED","OS_OOM_KILLER","severity=CRITICAL; description='Linux OOM Killer terminated Oracle process'; sample_log='kernel: os oom killer'","🔴 ROOT CAUSE: OS_OOM_KILLER
+🔎 LOG:   kernel: os oom killer
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'OS_OOM_KILLER' not found in translated codes: [(none)]"
+"QA-0087","Translator","TRANSLATOR","Syslog translator: raw text → CGROUP_OOM_KILL","CGROUP_OOM_KILL","OS_TRIGGERED","CGROUP_OOM_KILL","severity=CRITICAL; description='cgroup OOM kill — container/cgroup memory limit hit'; sample_log='kernel: memory cgroup out of memory'","🔴 ROOT CAUSE: CGROUP_OOM_KILL
+🔎 LOG:   kernel: memory cgroup out of memory
+📦 CODES: OS_OOM_KILLER, CGROUP_OOM_KILL
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_OOM_KILLER, CGROUP_OOM_KILL","TRANSLATOR","✅ PASS",""
+"QA-0088","Translator","TRANSLATOR","Syslog translator: raw text → OS_HUGEPAGE_FAIL","OS_HUGEPAGE_FAIL","OS_TRIGGERED","OS_HUGEPAGE_FAIL","severity=CRITICAL; description='HugePages allocation failure for Oracle SGA'; sample_log='kernel: os hugepage fail'","🔴 ROOT CAUSE: OS_HUGEPAGE_FAIL
+🔎 LOG:   kernel: os hugepage fail
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'OS_HUGEPAGE_FAIL' not found in translated codes: [(none)]"
+"QA-0089","Translator","TRANSLATOR","Syslog translator: raw text → HUGEPAGES_FREE_ZERO","HUGEPAGES_FREE_ZERO","OS_TRIGGERED","HUGEPAGES_FREE_ZERO","severity=ERROR; description='HugePages_Free is zero — SGA cannot allocate huge pages'; sample_log='kernel: hugepages_free:s0'","🔴 ROOT CAUSE: HUGEPAGES_FREE_ZERO
+🔎 LOG:   kernel: hugepages_free:s0
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'HUGEPAGES_FREE_ZERO' not found in translated codes: [(none)]"
+"QA-0090","Translator","TRANSLATOR","Syslog translator: raw text → SHMGET_EINVAL","SHMGET_EINVAL","OS_TRIGGERED","SHMGET_EINVAL","severity=CRITICAL; description='shmget() EINVAL — SGA shared memory segment error'; sample_log='kernel: shmgeteinval'","🔴 ROOT CAUSE: SHMGET_EINVAL
+🔎 LOG:   kernel: shmgeteinval
+📦 CODES: SHMGET_EINVAL
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","SHMGET_EINVAL","TRANSLATOR","✅ PASS",""
+"QA-0091","Translator","TRANSLATOR","Syslog translator: raw text → OS_SWAP_STORM","OS_SWAP_STORM","OS_TRIGGERED","OS_SWAP_STORM","severity=CRITICAL; description='Swap storm — Oracle SGA being paged to disk'; sample_log='kernel: os swap storm'","🔴 ROOT CAUSE: OS_SWAP_STORM
+🔎 LOG:   kernel: os swap storm
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'OS_SWAP_STORM' not found in translated codes: [(none)]"
+"QA-0092","Translator","TRANSLATOR","Syslog translator: raw text → MEMORY_SWAP_STORM","MEMORY_SWAP_STORM","OS_TRIGGERED","MEMORY_SWAP_STORM","severity=CRITICAL; description='High swap activity detected'; sample_log='kernel: memory swap storm'","🔴 ROOT CAUSE: MEMORY_SWAP_STORM
+🔎 LOG:   kernel: memory swap storm
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'MEMORY_SWAP_STORM' not found in translated codes: [(none)]"
+"QA-0093","Translator","TRANSLATOR","Syslog translator: raw text → MEMLOCK_ULIMIT_TOO_LOW","MEMLOCK_ULIMIT_TOO_LOW","OS_TRIGGERED","MEMLOCK_ULIMIT_TOO_LOW","severity=ERROR; description='memlock ulimit too low for Oracle to lock SGA'; sample_log='kernel: memlock ulimit too low'","🔴 ROOT CAUSE: MEMLOCK_ULIMIT_TOO_LOW
+🔎 LOG:   kernel: memlock ulimit too low
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'MEMLOCK_ULIMIT_TOO_LOW' not found in translated codes: [(none)]"
+"QA-0094","Translator","TRANSLATOR","Syslog translator: raw text → SEMAPHORE_LIMIT_EXHAUSTED","SEMAPHORE_LIMIT_EXHAUSTED","OS_TRIGGERED","SEMAPHORE_LIMIT_EXHAUSTED","severity=CRITICAL; description='Semaphore limit exhausted — Oracle cannot create IPC semaphores'; sample_log='kernel: semaphore limit exhausted'","🔴 ROOT CAUSE: SEMAPHORE_LIMIT_EXHAUSTED
+🔎 LOG:   kernel: semaphore limit exhausted
+📦 CODES: SEMAPHORE_LIMIT_EXHAUSTED
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","SEMAPHORE_LIMIT_EXHAUSTED","TRANSLATOR","✅ PASS",""
+"QA-0095","Translator","TRANSLATOR","Syslog translator: raw text → FD_LIMIT_EXHAUSTED","FD_LIMIT_EXHAUSTED","OS_TRIGGERED","FD_LIMIT_EXHAUSTED","severity=CRITICAL; description='File descriptor limit exhausted'; sample_log='kernel: fd limit exhausted'","🔴 ROOT CAUSE: FD_LIMIT_EXHAUSTED
+🔎 LOG:   kernel: fd limit exhausted
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'FD_LIMIT_EXHAUSTED' not found in translated codes: [(none)]"
+"QA-0096","Translator","TRANSLATOR","Syslog translator: raw text → OS_SCSI_TIMEOUT","OS_SCSI_TIMEOUT","OS_TRIGGERED","OS_SCSI_TIMEOUT","severity=CRITICAL; description='SCSI disk timeout or I/O error'; sample_log='kernel: os scsi timeout'","🔴 ROOT CAUSE: OS_SCSI_TIMEOUT
+🔎 LOG:   kernel: os scsi timeout
+📦 CODES: OS_SCSI_TIMEOUT
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_SCSI_TIMEOUT","TRANSLATOR","✅ PASS",""
+"QA-0097","Translator","TRANSLATOR","Syslog translator: raw text → OS_MULTIPATH_DOWN","OS_MULTIPATH_DOWN","OS_TRIGGERED","OS_MULTIPATH_DOWN","severity=CRITICAL; description='All multipath paths down — storage connectivity lost'; sample_log='kernel: os multipath down'","🔴 ROOT CAUSE: OS_MULTIPATH_DOWN
+🔎 LOG:   kernel: os multipath down
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'OS_MULTIPATH_DOWN' not found in translated codes: [(none)]"
+"QA-0098","Translator","TRANSLATOR","Syslog translator: raw text → MULTIPATH_ALL_PATHS_DOWN","MULTIPATH_ALL_PATHS_DOWN","OS_TRIGGERED","MULTIPATH_ALL_PATHS_DOWN","severity=CRITICAL; description='All multipath paths to LUN offline'; sample_log='kernel: multipath all paths down'","🔴 ROOT CAUSE: MULTIPATH_ALL_PATHS_DOWN
+🔎 LOG:   kernel: multipath all paths down
+📦 CODES: OS_MULTIPATH_DOWN
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_MULTIPATH_DOWN","TRANSLATOR","❌ FAIL","'MULTIPATH_ALL_PATHS_DOWN' not found in translated codes: [OS_MULTIPATH_DOWN]"
+"QA-0099","Translator","TRANSLATOR","Syslog translator: raw text → FC_HBA_RESET","FC_HBA_RESET","OS_TRIGGERED","FC_HBA_RESET","severity=CRITICAL; description='Fibre Channel HBA reset or link failure'; sample_log='kernel: fc hba reset'","🔴 ROOT CAUSE: FC_HBA_RESET
+🔎 LOG:   kernel: fc hba reset
+📦 CODES: FC_HBA_RESET
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","FC_HBA_RESET","TRANSLATOR","✅ PASS",""
+"QA-0100","Translator","TRANSLATOR","Syslog translator: raw text → OS_ISCSI_FAIL","OS_ISCSI_FAIL","OS_TRIGGERED","OS_ISCSI_FAIL","severity=CRITICAL; description='iSCSI session failure'; sample_log='kernel: os iscsi fail'","🔴 ROOT CAUSE: OS_ISCSI_FAIL
+🔎 LOG:   kernel: os iscsi fail
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'OS_ISCSI_FAIL' not found in translated codes: [(none)]"
+"QA-0101","Translator","TRANSLATOR","Syslog translator: raw text → IO_QUEUE_TIMEOUT","IO_QUEUE_TIMEOUT","OS_TRIGGERED","IO_QUEUE_TIMEOUT","severity=CRITICAL; description='I/O queue timeout — device not responding'; sample_log='kernel: io queue timeout'","🔴 ROOT CAUSE: IO_QUEUE_TIMEOUT
+🔎 LOG:   kernel: io queue timeout
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'IO_QUEUE_TIMEOUT' not found in translated codes: [(none)]"
+"QA-0102","Translator","TRANSLATOR","Syslog translator: raw text → EXT4_JOURNAL_ABORT","EXT4_JOURNAL_ABORT","OS_TRIGGERED","EXT4_JOURNAL_ABORT","severity=CRITICAL; description='EXT4 journal aborted — filesystem remounted read-only'; sample_log='kernel: ext4 journal abort'","🔴 ROOT CAUSE: EXT4_JOURNAL_ABORT
+🔎 LOG:   kernel: ext4 journal abort
+📦 CODES: EXT4_JOURNAL_ABORT
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","EXT4_JOURNAL_ABORT","TRANSLATOR","✅ PASS",""
+"QA-0103","Translator","TRANSLATOR","Syslog translator: raw text → XFS_FILESYSTEM_SHUTDOWN","XFS_FILESYSTEM_SHUTDOWN","OS_TRIGGERED","XFS_FILESYSTEM_SHUTDOWN","severity=CRITICAL; description='XFS filesystem shutdown due to I/O error'; sample_log='kernel: xfs filesystem shutdown'","🔴 ROOT CAUSE: XFS_FILESYSTEM_SHUTDOWN
+🔎 LOG:   kernel: xfs filesystem shutdown
+📦 CODES: XFS_FILESYSTEM_SHUTDOWN
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","XFS_FILESYSTEM_SHUTDOWN","TRANSLATOR","✅ PASS",""
+"QA-0104","Translator","TRANSLATOR","Syslog translator: raw text → OS_DISK_FULL","OS_DISK_FULL","OS_TRIGGERED","OS_DISK_FULL","severity=CRITICAL; description='Filesystem 100% full'; sample_log='kernel: os disk full'","🔴 ROOT CAUSE: OS_DISK_FULL
+🔎 LOG:   kernel: os disk full
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'OS_DISK_FULL' not found in translated codes: [(none)]"
+"QA-0105","Translator","TRANSLATOR","Syslog translator: raw text → FILESYSTEM_ARCH_FULL","FILESYSTEM_ARCH_FULL","OS_TRIGGERED","FILESYSTEM_ARCH_FULL","severity=CRITICAL; description='Archivelog destination or FRA filesystem full'; sample_log='kernel: filesystem arch full'","🔴 ROOT CAUSE: FILESYSTEM_ARCH_FULL
+🔎 LOG:   kernel: filesystem arch full
+📦 CODES: OS_DISK_FULL
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_DISK_FULL","TRANSLATOR","❌ FAIL","'FILESYSTEM_ARCH_FULL' not found in translated codes: [OS_DISK_FULL]"
+"QA-0106","Translator","TRANSLATOR","Syslog translator: raw text → OS_KERNEL_PANIC","OS_KERNEL_PANIC","OS_TRIGGERED","OS_KERNEL_PANIC","severity=CRITICAL; description='Linux kernel panic'; sample_log='kernel: os kernel panic'","🔴 ROOT CAUSE: OS_KERNEL_PANIC
+🔎 LOG:   kernel: os kernel panic
+📦 CODES: OS_KERNEL_PANIC
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_KERNEL_PANIC","TRANSLATOR","✅ PASS",""
+"QA-0107","Translator","TRANSLATOR","Syslog translator: raw text → KERNEL_PANIC","KERNEL_PANIC","OS_TRIGGERED","KERNEL_PANIC","severity=CRITICAL; description='Kernel panic — system crash'; sample_log='kernel: kernel panic'","🔴 ROOT CAUSE: KERNEL_PANIC
+🔎 LOG:   kernel: kernel panic
+📦 CODES: OS_KERNEL_PANIC
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_KERNEL_PANIC","TRANSLATOR","❌ FAIL","'KERNEL_PANIC' not found in translated codes: [OS_KERNEL_PANIC]"
+"QA-0108","Translator","TRANSLATOR","Syslog translator: raw text → SOFT_LOCKUP","SOFT_LOCKUP","OS_TRIGGERED","SOFT_LOCKUP","severity=CRITICAL; description='CPU soft lockup detected'; sample_log='kernel: soft lockupcpustuck'","🔴 ROOT CAUSE: SOFT_LOCKUP
+🔎 LOG:   kernel: soft lockupcpustuck
+📦 CODES: SOFT_LOCKUP
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","SOFT_LOCKUP","TRANSLATOR","✅ PASS",""
+"QA-0109","Translator","TRANSLATOR","Syslog translator: raw text → HARD_LOCKUP","HARD_LOCKUP","OS_TRIGGERED","HARD_LOCKUP","severity=CRITICAL; description='CPU hard lockup detected'; sample_log='kernel: hard lockupcpu'","🔴 ROOT CAUSE: HARD_LOCKUP
+🔎 LOG:   kernel: hard lockupcpu
+📦 CODES: HARD_LOCKUP
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","HARD_LOCKUP","TRANSLATOR","✅ PASS",""
+"QA-0110","Translator","TRANSLATOR","Syslog translator: raw text → OS_MCE_UNCORRECTED","OS_MCE_UNCORRECTED","OS_TRIGGERED","OS_MCE_UNCORRECTED","severity=CRITICAL; description='Uncorrected Machine Check Exception — hardware memory error'; sample_log='kernel: os mce uncorrected'","🔴 ROOT CAUSE: OS_MCE_UNCORRECTED
+🔎 LOG:   kernel: os mce uncorrected
+📦 CODES: MCE_CORRECTED_MEMORY
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","MCE_CORRECTED_MEMORY","TRANSLATOR","❌ FAIL","'OS_MCE_UNCORRECTED' not found in translated codes: [MCE_CORRECTED_MEMORY]"
+"QA-0111","Translator","TRANSLATOR","Syslog translator: raw text → MCE_CORRECTED_MEMORY","MCE_CORRECTED_MEMORY","OS_TRIGGERED","MCE_CORRECTED_MEMORY","severity=WARNING; description='Corrected Machine Check Exception — hardware memory warning'; sample_log='kernel: mce corrected memory'","🔴 ROOT CAUSE: MCE_CORRECTED_MEMORY
+🔎 LOG:   kernel: mce corrected memory
+📦 CODES: MCE_CORRECTED_MEMORY
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","MCE_CORRECTED_MEMORY","TRANSLATOR","✅ PASS",""
+"QA-0112","Translator","TRANSLATOR","Syslog translator: raw text → OS_SELINUX_BLOCK","OS_SELINUX_BLOCK","OS_TRIGGERED","OS_SELINUX_BLOCK","severity=ERROR; description='SELinux blocking Oracle file or network access'; sample_log='kernel: os selinux block'","🔴 ROOT CAUSE: OS_SELINUX_BLOCK
+🔎 LOG:   kernel: os selinux block
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'OS_SELINUX_BLOCK' not found in translated codes: [(none)]"
+"QA-0113","Translator","TRANSLATOR","Syslog translator: raw text → OS_CPU_SATURATION","OS_CPU_SATURATION","OS_TRIGGERED","OS_CPU_SATURATION","severity=ERROR; description='CPU runqueue saturation'; sample_log='kernel: os cpu saturation'","🔴 ROOT CAUSE: OS_CPU_SATURATION
+🔎 LOG:   kernel: os cpu saturation
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'OS_CPU_SATURATION' not found in translated codes: [(none)]"
+"QA-0114","Translator","TRANSLATOR","Syslog translator: raw text → CPU_STEAL_TIME","CPU_STEAL_TIME","OS_TRIGGERED","CPU_STEAL_TIME","severity=ERROR; description='High CPU steal time — hypervisor resource contention'; sample_log='kernel: cpu steal time'","🔴 ROOT CAUSE: CPU_STEAL_TIME
+🔎 LOG:   kernel: cpu steal time
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'CPU_STEAL_TIME' not found in translated codes: [(none)]"
+"QA-0115","Translator","TRANSLATOR","Syslog translator: raw text → OS_NET_DROP","OS_NET_DROP","NETWORK","OS_NET_DROP","severity=CRITICAL; description='Network link or NIC down'; sample_log='kernel: os net drop'","🔴 ROOT CAUSE: OS_NET_DROP
+🔎 LOG:   kernel: os net drop
+📦 CODES: (none)
+🏷️  LAYER: NETWORK","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","NETWORK","(none)","TRANSLATOR","❌ FAIL","'OS_NET_DROP' not found in translated codes: [(none)]"
+"QA-0116","Translator","TRANSLATOR","Syslog translator: raw text → BONDING_FAILOVER_EVENT","BONDING_FAILOVER_EVENT","NETWORK","BONDING_FAILOVER_EVENT","severity=ERROR; description='Network bonding failover event'; sample_log='kernel: bonding failover event'","🔴 ROOT CAUSE: BONDING_FAILOVER_EVENT
+🔎 LOG:   kernel: bonding failover event
+📦 CODES: BONDING_FAILOVER_EVENT
+🏷️  LAYER: NETWORK","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","NETWORK","BONDING_FAILOVER_EVENT","TRANSLATOR","✅ PASS",""
+"QA-0117","Translator","TRANSLATOR","Syslog translator: raw text → BOTH_NICS_DOWN","BOTH_NICS_DOWN","NETWORK","BOTH_NICS_DOWN","severity=CRITICAL; description='Both bonding NICs down — no active network path'; sample_log='kernel: both nics down'","🔴 ROOT CAUSE: BOTH_NICS_DOWN
+🔎 LOG:   kernel: both nics down
+📦 CODES: OS_NET_DROP
+🏷️  LAYER: NETWORK","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","NETWORK","OS_NET_DROP","TRANSLATOR","❌ FAIL","'BOTH_NICS_DOWN' not found in translated codes: [OS_NET_DROP]"
+"QA-0118","Translator","TRANSLATOR","Syslog translator: raw text → OS_CONNTRACK_FULL","OS_CONNTRACK_FULL","NETWORK","OS_CONNTRACK_FULL","severity=CRITICAL; description='nf_conntrack table full — packets being dropped'; sample_log='kernel: os conntrack full'","🔴 ROOT CAUSE: OS_CONNTRACK_FULL
+🔎 LOG:   kernel: os conntrack full
+📦 CODES: OS_CONNTRACK_FULL
+🏷️  LAYER: NETWORK","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","NETWORK","OS_CONNTRACK_FULL","TRANSLATOR","✅ PASS",""
+"QA-0119","Translator","TRANSLATOR","Syslog translator: raw text → NF_CONNTRACK_FULL","NF_CONNTRACK_FULL","NETWORK","NF_CONNTRACK_FULL","severity=CRITICAL; description='nf_conntrack table full (exact kernel message)'; sample_log='kernel: nf_conntrack: table full, dropping packet'","🔴 ROOT CAUSE: NF_CONNTRACK_FULL
+🔎 LOG:   kernel: nf_conntrack: table full, dropping packet
+📦 CODES: OS_CONNTRACK_FULL, NF_CONNTRACK_FULL
+🏷️  LAYER: NETWORK","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","NETWORK","OS_CONNTRACK_FULL, NF_CONNTRACK_FULL","TRANSLATOR","✅ PASS",""
+"QA-0120","Translator","TRANSLATOR","Syslog translator: raw text → IPTABLES_BLOCKING_1521","IPTABLES_BLOCKING_1521","NETWORK","IPTABLES_BLOCKING_1521","severity=ERROR; description='iptables blocking Oracle listener port 1521'; sample_log='kernel: iptables blocking 1521'","🔴 ROOT CAUSE: IPTABLES_BLOCKING_1521
+🔎 LOG:   kernel: iptables blocking 1521
+📦 CODES: (none)
+🏷️  LAYER: NETWORK","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","NETWORK","(none)","TRANSLATOR","❌ FAIL","'IPTABLES_BLOCKING_1521' not found in translated codes: [(none)]"
+"QA-0121","Translator","TRANSLATOR","Syslog translator: raw text → OS_NFS_STALE","OS_NFS_STALE","OS_TRIGGERED","OS_NFS_STALE","severity=CRITICAL; description='Stale NFS file handle — NFS mount unavailable'; sample_log='kernel: os nfs stale'","🔴 ROOT CAUSE: OS_NFS_STALE
+🔎 LOG:   kernel: os nfs stale
+📦 CODES: OS_NFS_STALE
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_NFS_STALE","TRANSLATOR","✅ PASS",""
+"QA-0122","Translator","TRANSLATOR","Syslog translator: raw text → NFS_MOUNT_TIMEOUT","NFS_MOUNT_TIMEOUT","OS_TRIGGERED","NFS_MOUNT_TIMEOUT","severity=CRITICAL; description='NFS mount timeout'; sample_log='kernel: nfs mount timeout'","🔴 ROOT CAUSE: NFS_MOUNT_TIMEOUT
+🔎 LOG:   kernel: nfs mount timeout
+📦 CODES: (none)
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","(none)","TRANSLATOR","❌ FAIL","'NFS_MOUNT_TIMEOUT' not found in translated codes: [(none)]"
+"QA-0123","Translator","TRANSLATOR","Syslog translator: raw text → OS_NTP_JUMP","OS_NTP_JUMP","CLUSTER","OS_NTP_JUMP","severity=CRITICAL; description='NTP time jump — may cause RAC CSS eviction'; sample_log='kernel: os ntp jump'","🔴 ROOT CAUSE: OS_NTP_JUMP
+🔎 LOG:   kernel: os ntp jump
+📦 CODES: (none)
+🏷️  LAYER: CLUSTER","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","CLUSTER","(none)","TRANSLATOR","❌ FAIL","'OS_NTP_JUMP' not found in translated codes: [(none)]"
+"QA-0124","Translator","TRANSLATOR","Syslog translator: raw text → NTP_TIME_JUMP","NTP_TIME_JUMP","CLUSTER","NTP_TIME_JUMP","severity=CRITICAL; description='NTP clock step (large time correction)'; sample_log='kernel: ntp time jump'","🔴 ROOT CAUSE: NTP_TIME_JUMP
+🔎 LOG:   kernel: ntp time jump
+📦 CODES: OS_NTP_JUMP
+🏷️  LAYER: CLUSTER","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","CLUSTER","OS_NTP_JUMP","TRANSLATOR","❌ FAIL","'NTP_TIME_JUMP' not found in translated codes: [OS_NTP_JUMP]"
+"QA-0125","Translator","TRANSLATOR","Syslog translator: raw text → OS_LPAR_CPU_CAP","OS_LPAR_CPU_CAP","OS_TRIGGERED","OS_LPAR_CPU_CAP","severity=ERROR; description='AIX LPAR CPU cap hit — Oracle CPU throttled'; sample_log='kernel: os lpar cpu cap'","🔴 ROOT CAUSE: OS_LPAR_CPU_CAP
+🔎 LOG:   kernel: os lpar cpu cap
+📦 CODES: OS_LPAR_CPU_CAP
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_LPAR_CPU_CAP","TRANSLATOR","✅ PASS",""
+"QA-0126","Translator","TRANSLATOR","Syslog translator: raw text → OS_VMWARE_SNAPSHOT","OS_VMWARE_SNAPSHOT","OS_TRIGGERED","OS_VMWARE_SNAPSHOT","severity=ERROR; description='VMware snapshot causing I/O freeze'; sample_log='kernel: os vmware snapshot'","🔴 ROOT CAUSE: OS_VMWARE_SNAPSHOT
+🔎 LOG:   kernel: os vmware snapshot
+📦 CODES: OS_VMWARE_SNAPSHOT
+🏷️  LAYER: OS_TRIGGERED","  (Translator — no runbook commands)","N/A","OS Layer Translation","N/A","N/A","N/A","False","OS_TRIGGERED","OS_VMWARE_SNAPSHOT","TRANSLATOR","✅ PASS",""
+"QA-0127","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00000","oracle_ora_00000","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='normal, successful completion'","🔴 ROOT CAUSE: oracle_ora_00000
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00000","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0128","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00001","oracle_ora_00001","DB","tier.*2|inferred|db","fix_tier='Database'; domain='Database'; description='unique constraint (string.string) violated'","🔴 ROOT CAUSE: oracle_ora_00001
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00001","3","❌ FAIL","Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output"
+"QA-0129","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00017","oracle_ora_00017","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='session requested to set trace event'","🔴 ROOT CAUSE: oracle_ora_00017
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00017","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0130","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00018","oracle_ora_00018","DB","tier.*2|inferred|db","fix_tier='Database'; domain='Database'; description='maximum number of sessions exceeded'","🔴 ROOT CAUSE: oracle_ora_00018
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00018","3","❌ FAIL","Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output"
+"QA-0131","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00019","oracle_ora_00019","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='maximum number of session licenses exceeded'","🔴 ROOT CAUSE: oracle_ora_00019
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00019","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0132","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00020","oracle_ora_00020","DB","tier.*2|inferred|db","fix_tier='Database'; domain='Database'; description='maximum number of processes (string) exceeded'","🔴 ROOT CAUSE: oracle_ora_00020
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00020","3","❌ FAIL","Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output"
+"QA-0133","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00021","oracle_ora_00021","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='session attached to some other process; cannot switch session'","🔴 ROOT CAUSE: oracle_ora_00021
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00021","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0134","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00022","oracle_ora_00022","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='invalid session ID; access denied'","🔴 ROOT CAUSE: oracle_ora_00022
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00022","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0135","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00023","oracle_ora_00023","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='session references process private memory; cannot detach session'","🔴 ROOT CAUSE: oracle_ora_00023
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00023","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0136","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00024","oracle_ora_00024","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='logins from more than one process not allowed in single-process mode'","🔴 ROOT CAUSE: oracle_ora_00024
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00024","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0137","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00025","oracle_ora_00025","MEMORY","tier.*2|inferred|memory","fix_tier=''; domain='Database'; description='failed to allocate string'","🔴 ROOT CAUSE: oracle_ora_00025
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00025","3","❌ FAIL","Layer mismatch: got 'NEEDS_MORE_INFO', expected 'MEMORY'; Regex 'tier.*2|inferred|memory' not in output"
+"QA-0138","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00026","oracle_ora_00026","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='missing or invalid session ID'","🔴 ROOT CAUSE: oracle_ora_00026
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00026","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0139","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00027","oracle_ora_00027","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='cannot kill current session'","🔴 ROOT CAUSE: oracle_ora_00027
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00027","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0140","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00028","oracle_ora_00028","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='your session has been killed'","🔴 ROOT CAUSE: oracle_ora_00028
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00028","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0141","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00029","oracle_ora_00029","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='session is not a user session'","🔴 ROOT CAUSE: oracle_ora_00029
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00029","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0142","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00030","oracle_ora_00030","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='User session ID does not exist.'","🔴 ROOT CAUSE: oracle_ora_00030
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00030","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0143","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00031","oracle_ora_00031","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='session marked for kill'","🔴 ROOT CAUSE: oracle_ora_00031
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00031","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0144","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00032","oracle_ora_00032","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='invalid session migration password'","🔴 ROOT CAUSE: oracle_ora_00032
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00032","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0145","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00033","oracle_ora_00033","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='current session has empty migration password'","🔴 ROOT CAUSE: oracle_ora_00033
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00033","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0146","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00034","oracle_ora_00034","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='cannot string in current PL/SQL session'","🔴 ROOT CAUSE: oracle_ora_00034
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00034","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0147","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00035","oracle_ora_00035","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='LICENSE_MAX_USERS cannot be less than current number of users'","🔴 ROOT CAUSE: oracle_ora_00035
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00035","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0148","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00036","oracle_ora_00036","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='maximum number of recursive SQL levels (string) exceeded'","🔴 ROOT CAUSE: oracle_ora_00036
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00036","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0149","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00037","oracle_ora_00037","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='cannot switch to a session belonging to a different server group'","🔴 ROOT CAUSE: oracle_ora_00037
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00037","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0150","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00038","oracle_ora_00038","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='Cannot create session: server group belongs to another user'","🔴 ROOT CAUSE: oracle_ora_00038
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00038","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0151","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00039","oracle_ora_00039","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='error during periodic action'","🔴 ROOT CAUSE: oracle_ora_00039
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00039","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0152","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00040","oracle_ora_00040","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='active time limit exceeded - call aborted'","🔴 ROOT CAUSE: oracle_ora_00040
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00040","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0153","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00041","oracle_ora_00041","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='active time limit exceeded - session terminated'","🔴 ROOT CAUSE: oracle_ora_00041
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00041","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0154","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00042","oracle_ora_00042","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='Unknown Service name string'","🔴 ROOT CAUSE: oracle_ora_00042
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00042","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0155","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00043","oracle_ora_00043","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='remote operation failed'","🔴 ROOT CAUSE: oracle_ora_00043
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00043","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0156","Tier2_Inference","ORA_PDF","Tier2 PDF inference: oracle_ora_00044","oracle_ora_00044","NEEDS_MORE_INFO","tier.*2|inferred|needs_more_info","fix_tier=''; domain='Database'; description='timed_statistics must be TRUE when statistics_level is not BASIC'","🔴 ROOT CAUSE: oracle_ora_00044
+🕒 TIMESTAMP: N/A
+
+🛠️ RESOLUTION PLAN:
+  • -","  (PDF inference — no runbook commands)","N/A","N/A","N/A","N/A","N/A","False","NEEDS_MORE_INFO","oracle_ora_00044","3","❌ FAIL","Regex 'tier.*2|inferred|needs_more_info' not in output"
+"QA-0157","Positive","DATAGUARD","DataGuard apply lag pattern detected","DG_APPLY_LAG","DATAGUARD","DATAGUARD|apply.lag|standby","Standby apply lag causes MRP to stop","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","DG_APPLY_LAG","1","❌ FAIL","Regex 'DATAGUARD|apply.lag|standby' not in output"
+"QA-0158","Positive","DATAGUARD","DataGuard redo transport failure","DG_APPLY_LAG","DATAGUARD","DATAGUARD|redo.transport","Archive log gap in standby","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","DG_APPLY_LAG","1","❌ FAIL","Regex 'DATAGUARD|redo.transport' not in output"
+"QA-0159","Positive","DATAGUARD","MRP process stopped on standby","DG_APPLY_LAG","DATAGUARD","DATAGUARD|managed recovery","Managed recovery process stopped","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","DG_APPLY_LAG","1","❌ FAIL","Regex 'DATAGUARD|managed recovery' not in output"
+"QA-0160","Positive","RMAN","RMAN backup piece not found","RMAN_BACKUP_FAILED","RMAN","RMAN|backup.set|backup.piece","Backup piece missing from catalog","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","RMAN_BACKUP_FAILED","1","❌ FAIL","Regex 'RMAN|backup.set|backup.piece' not in output"
+"QA-0161","Positive","RMAN","RMAN archived log not found during recovery","RMAN_BACKUP_FAILED","RMAN","RMAN|archived.log.not.found","Archived log gap in RMAN catalog","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","RMAN_BACKUP_FAILED","1","❌ FAIL","Regex 'RMAN|archived.log.not.found' not in output"
+"QA-0162","Positive","RMAN","RMAN catalog database connection failure","RMAN_BACKUP_FAILED","RMAN","RMAN|catalog.database","RMAN cannot connect to recovery catalog","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","RMAN_BACKUP_FAILED","1","❌ FAIL","Regex 'RMAN|catalog.database' not in output"
+"QA-0163","Positive","SECURITY","Oracle user account locked after failed logins","SECURITY","SECURITY","SECURITY|account.is.locked|too many authentication","Account locked due to profile limit","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","SECURITY","1","❌ FAIL","Regex 'SECURITY|account.is.locked|too many authentication' not in output"
+"QA-0164","Positive","SECURITY","Oracle user password expired","SECURITY","SECURITY","SECURITY|password.has.expired","Password expiry per profile","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","SECURITY","1","❌ FAIL","Regex 'SECURITY|password.has.expired' not in output"
+"QA-0165","Positive","SECURITY","Audit trail write failure","SECURITY","SECURITY","SECURITY|audit.trail","Audit destination full or inaccessible","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","SECURITY","1","❌ FAIL","Regex 'SECURITY|audit.trail' not in output"
+"QA-0166","Negative","TIER3","Unknown ORA code not in graph or PDF — must ask for more evidence","NEEDS_MORE_INFO","NEEDS_MORE_INFO","NEEDS_MORE_INFO|more evidence|provide.*AWR|provide.*OSW","Tier 3 fallback — zero hallucination policy","🔴 ROOT CAUSE: ORA-99999-FAKE-UNKNOWN-CODE
+🕒 LAYER: NEEDS_MORE_INFO
+
+🛠️ RESOLUTION PLAN:
+  • NEEDS_MORE_INFO — provide AWR, OSW or CRS logs.","  (Needs more evidence — no runbook)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","NEEDS_MORE_INFO","ORA-99999-FAKE-UNKNOWN-CODE","3","✅ PASS",""
+"QA-0167","Negative","TIER3","No logs uploaded — agent must not guess","NEEDS_MORE_INFO","NEEDS_MORE_INFO","don't have enough logs|upload.*alert|NEEDS_MORE_INFO","Empty session — no evidence available","🔴 ROOT CAUSE: ORA-99999-FAKE-UNKNOWN-CODE
+🕒 LAYER: NEEDS_MORE_INFO
+
+🛠️ RESOLUTION PLAN:
+  • NEEDS_MORE_INFO — provide AWR, OSW or CRS logs.","  (Needs more evidence — no runbook)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","NEEDS_MORE_INFO","ORA-99999-FAKE-UNKNOWN-CODE","3","✅ PASS",""
+"QA-0168","Negative","TIER3","Log content contains only INFO-level messages — no ORA codes","NEEDS_MORE_INFO","NEEDS_MORE_INFO","NEEDS_MORE_INFO|don't have enough|troubleshooting","Noisy log with no diagnostic signal","🔴 ROOT CAUSE: ORA-99999-FAKE-UNKNOWN-CODE
+🕒 LAYER: NEEDS_MORE_INFO
+
+🛠️ RESOLUTION PLAN:
+  • NEEDS_MORE_INFO — provide AWR, OSW or CRS logs.","  (Needs more evidence — no runbook)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","NEEDS_MORE_INFO","ORA-99999-FAKE-UNKNOWN-CODE","3","✅ PASS",""
+"QA-0169","Positive","CLUSTER","CRS resource failed — cluster resource offline","CRS_RESOURCE_FAILED","CLUSTER","CLUSTER|crs.*resource|node.*eviction","Grid Infrastructure resource failure","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","CRS_RESOURCE_FAILED","1","❌ FAIL","Regex 'CLUSTER|crs.*resource|node.*eviction' not in output"
+"QA-0170","Positive","CLUSTER","NTP time jump causing CSS eviction","NTP_TIME_JUMP","CLUSTER","CLUSTER|ntp.*jump|time.*offset|css.*eviction","NTP skew causes RAC node eviction","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","NTP_TIME_JUMP","1","❌ FAIL","Regex 'CLUSTER|ntp.*jump|time.*offset|css.*eviction' not in output"
+"QA-0171","Positive","CLUSTER","RAC node eviction via ORA-29740","DB_EVICTION_ORA_29740","CLUSTER","CLUSTER|node.*eviction|29740","ORA-29740 eviction tied to CRS layer","🔴 ROOT CAUSE: ORA-29740
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Check the trace files of other active instances in the cluster group for indications of errors that caused a reconfiguration..","  1. crsctl check crs
+  2. crsctl stat res -t
+  3. oifcfg getif
+  4. ping -c 10 <private_interconnect_ip>
+  5. chronyc tracking
+  6. timedatectl status
+  7. crsctl query css votedisk
+  8. tail -200 $GRID_HOME/log/$(hostname)/alert$(hostname).log | grep -B10 'ORA-29740'
+  9. sqlplus / as sysdba
+  10. SQL> SELECT INST_ID, STATUS FROM GV$INSTANCE;
+  11. SQL> EXIT;","FIX_RESTORE_NTP","DB / Unknown","0","SUSPECTED","LOW","False","ORA-29740","DB_EVICTION_ORA_29740","1","✅ PASS",""
+"QA-0172","Positive","ASM","ASM disk drop causes diskgroup dismount","ASM_DISK_DROP","ASM","ASM|diskgroup|asm.*disk","Storage path failure causes ASM disk drop","🔴 ROOT CAUSE: ORA-06512
+🕒 TIMESTAMP: 2026-05-05T08:57:13
+
+🛠️ RESOLUTION PLAN:
+  • Fix the problem causing the exception or write an exception handler for this condition.
+  • Or you may need to contact your application administrator or DBA..","  (No commands available for this error code)","N/A","Needs More Information","0","SUSPECTED","UNDETERMINED","False","ORA-06512","ASM_DISK_DROP","1","❌ FAIL","Regex 'ASM|diskgroup|asm.*disk' not in output"
+"QA-0173","Negative","FALSE_POSITIVE","Java OutOfMemoryError — must NOT match OS_OOM_KILLER","NONE","NONE","standard OS troubleshooting|cannot diagnose|out of scope","Java heap OOM is not OS-level OOM — translator must not fire","🔴 ROOT CAUSE: NONE (false positive guard)
+🔎 TEXT: java.lang.OutOfMemoryError: Java heap space
+📦 CODES FIRED: (none — correct)","  (No runbook — benign text)","N/A","False Positive Guard","N/A","N/A","N/A","False","NONE","(none)","TRANSLATOR","✅ PASS",""
+"QA-0174","Negative","FALSE_POSITIVE","Benign Oracle log line — LGWR switch — no signal","NONE","NONE","troubleshooting|no.*signal|standard","Routine log advancement must not trigger any OS pattern","🔴 ROOT CAUSE: NONE (false positive guard)
+🔎 TEXT: oracle: LGWR started Thread 1 advanced to log sequence 1234
+📦 CODES FIRED: (none — correct)","  (No runbook — benign text)","N/A","False Positive Guard","N/A","N/A","N/A","False","NONE","(none)","TRANSLATOR","✅ PASS",""
+"QA-0175","Negative","INJECTION","Command injection attempt via user query","REDACTED","N/A","\[REDACTED","Firewall must sanitise backtick/shell injection","🔴 ROOT CAUSE: REDACTED (injection blocked)
+[REDACTED COMMAND]
+Expected: \[REDACTED","  (Firewall blocked — no commands)","N/A","Security / Injection","N/A","N/A","N/A","False","N/A","N/A","FIREWALL","✅ PASS",""
+"QA-0176","Negative","INJECTION","SQL injection attempt DROP TABLE","REDACTED","N/A","\[REDACTED","Firewall must sanitise DROP TABLE commands","🔴 ROOT CAUSE: REDACTED (injection blocked)
+[REDACTED COMMAND]
+Expected: \[REDACTED","  (Firewall blocked — no commands)","N/A","Security / Injection","N/A","N/A","N/A","False","N/A","N/A","FIREWALL","✅ PASS",""

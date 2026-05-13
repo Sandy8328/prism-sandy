@@ -1,0 +1,9 @@
+Trace file /u01/app/oracle/diag/rdbms/erp/erp/trace/erp_mmon_1234.trc
+*** 2024-03-12T14:30:00.000+05:30
+ORA-04031: unable to allocate 32 bytes of shared memory ("shared pool","unknown object","sga heap(1,0)","kgl handles")
+Incident 12345 created, dump file: /u01/app/oracle/diag/rdbms/erp/erp/incident/incdir_12345/erp_mmon_1234_i12345.trc
+*** 2024-03-12T14:30:00.000+05:30
+ORA-27072: File I/O error
+Linux-x86_64 Error: 5: Input/output error
+Additional information: 4
+Additional information: 1

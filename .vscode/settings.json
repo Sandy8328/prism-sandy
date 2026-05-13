@@ -1,0 +1,17 @@
+{
+    "workbench.editorAssociations": {
+        "*.parquet": "duckdb.dataFileViewer",
+        "*.csv": "duckdb.dataFileViewer",
+        "*.tsv": "duckdb.dataFileViewer"
+    },
+    "duckdb.databases": [
+        {
+            "alias": "metadata",
+            "type": "file",
+            "path": "/Users/kommanasaisandilya/Downloads/dba_agent/data/duckdb/metadata.duckdb",
+            "readOnly": true,
+            "attached": true
+        }
+    ],
+    "duckdb.defaultDatabase": "metadata"
+}

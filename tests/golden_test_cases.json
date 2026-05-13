@@ -1,0 +1,106 @@
+[
+  {
+    "test_id": "TC-01",
+    "name": "SCSI Disk Timeout → ORA-27072",
+    "description": "Classic I/O cascade: FC HBA reset → SCSI disk timeout → ORA-27072",
+    "input": {
+      "query": "Apr 21 02:44:15 dbhost01 kernel: qla2xxx [0000:04:00.0]-1082:0: LOGO nexus reestablished -- 7:0:1.\nApr 21 02:44:16 dbhost01 kernel: sd 3:0:0:1: [sdb] FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_TIMEOUT.\nApr 21 02:44:16 dbhost01 kernel: blk_update_request: I/O error, dev sdb, sector 1048576.\nApr 21 02:44:17 dbhost01 kernel: Buffer I/O error on dev sdb, logical block 0, lost async page write.",
+      "ora_code": "ORA-27072",
+      "hostname": "dbhost01",
+      "platform": "LINUX"
+    },
+    "expected": {
+      "status": "SUCCESS",
+      "confidence_label_in": ["HIGH", "MEDIUM"],
+      "root_pattern_in": ["SCSI_DISK_TIMEOUT", "FC_HBA_RESET"],
+      "ora_code": "ORA-27072",
+      "causal_chain_contains": "SCSI_DISK_TIMEOUT"
+    }
+  },
+  {
+    "test_id": "TC-02",
+    "name": "OOM Killer → ORA-00603",
+    "description": "OOM killer kills oracle process, instance crashes",
+    "input": {
+      "query": "Apr 21 03:14:18 dbhost01 kernel: oracle invoked oom-killer: gfp_mask=0x280da, order=0, oom_score_adj=0\nApr 21 03:14:18 dbhost01 kernel: Killed process 18291 (oracle) total-vm:25165824kB, anon-rss:18874368kB",
+      "ora_code": "ORA-00603",
+      "hostname": "dbhost01",
+      "platform": "LINUX"
+    },
+    "expected": {
+      "status": "SUCCESS",
+      "confidence_label_in": ["HIGH", "MEDIUM"],
+      "root_pattern_in": ["OOM_KILLER_ACTIVE"],
+      "ora_code": "ORA-00603",
+      "causal_chain_contains": "OOM_KILLER_ACTIVE"
+    }
+  },
+  {
+    "test_id": "TC-03",
+    "name": "Archive Filesystem Full → ORA-00257",
+    "description": "df shows /arch at 100%, archiver stuck",
+    "input": {
+      "query": "/dev/mapper/vg01-arch   200G  200G     0 100% /arch\nFilesystem is full",
+      "ora_code": "ORA-00257",
+      "hostname": "dbhost02",
+      "platform": "LINUX"
+    },
+    "expected": {
+      "status": "SUCCESS",
+      "confidence_label_in": ["HIGH", "MEDIUM"],
+      "root_pattern_in": ["FILESYSTEM_ARCH_FULL"],
+      "ora_code": "ORA-00257"
+    }
+  },
+  {
+    "test_id": "TC-04",
+    "name": "NTP Time Jump → ORA-29740",
+    "description": "NTP clock step causes RAC node eviction",
+    "input": {
+      "query": "Apr 21 02:44:10 racnode01 chronyd: System clock wrong by 12.847201 seconds, stepping\nApr 21 02:44:10 racnode01 chronyd: System clock was stepped by 12.847201 seconds\n2024-04-21 02:44:19.182 [CSSD(18821)]CRS-1625: Node racnode01 is being evicted.",
+      "ora_code": "ORA-29740",
+      "hostname": "racnode01",
+      "platform": "LINUX"
+    },
+    "expected": {
+      "status": "SUCCESS",
+      "confidence_label_in": ["HIGH", "MEDIUM"],
+      "root_pattern_in": ["NTP_TIME_JUMP"],
+      "ora_code": "ORA-29740"
+    }
+  },
+  {
+    "test_id": "TC-05",
+    "name": "shmget EINVAL → ORA-27102",
+    "description": "kernel.shmmax too low for SGA",
+    "input": {
+      "query": "Apr 21 09:00:01 dbhost03 oracle: shmget: errno=22: Invalid argument\nApr 21 09:00:01 dbhost03 oracle: Cannot create shared memory segment, size=17179869184",
+      "ora_code": "ORA-27102",
+      "hostname": "dbhost03",
+      "platform": "LINUX"
+    },
+    "expected": {
+      "status": "SUCCESS",
+      "confidence_label_in": ["HIGH", "MEDIUM"],
+      "root_pattern_in": ["SHMGET_EINVAL"],
+      "ora_code": "ORA-27102"
+    }
+  },
+  {
+    "test_id": "TC-06",
+    "name": "NF Conntrack Full → ORA-12541",
+    "description": "nf_conntrack table full drops packets to listener port",
+    "input": {
+      "query": "Apr 21 14:22:05 dbhost04 kernel: nf_conntrack: nf_conntrack: table full, dropping packet\nApr 21 14:22:05 dbhost04 kernel: nf_conntrack: nf_conntrack: table full, dropping packet",
+      "ora_code": "ORA-12541",
+      "hostname": "dbhost04",
+      "platform": "LINUX"
+    },
+    "expected": {
+      "status": "SUCCESS",
+      "confidence_label_in": ["HIGH", "MEDIUM"],
+      "root_pattern_in": ["NF_CONNTRACK_FULL"],
+      "ora_code": "ORA-12541"
+    }
+  }
+]

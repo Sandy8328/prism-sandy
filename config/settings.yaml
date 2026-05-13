@@ -1,0 +1,251 @@
+# PRISM — Configuration (evidence-first Oracle diagnostics)
+# All thresholds and paths are defined here
+
+embedding:
+  model_name: "all-MiniLM-L6-v2"
+  vector_size: 384
+  batch_size: 32
+  embed_prefix: true        # prepend metadata before raw_text when embedding
+
+llm:
+  enabled: true
+  mode: "advisory"              # off | advisory | enforced — opt in after setting GEMINI_API_KEY
+  provider: "gemini"
+  model: "gemini-1.5-flash"
+  timeout_sec: 20
+  max_events: 200
+  max_candidates: 6
+
+# Bundled ORA message extract (see scripts/build_ora_meanings_from_pdf.py)
+ora_meanings:
+  json_path: "./data/runbooks/ora_meanings.json"
+
+qdrant:
+  collection_name: "oracle_dba_logs"
+  storage_path: "./data/qdrant_storage"
+  distance_metric: "Cosine"
+  on_disk: true
+  upsert_batch_size: 50        # chunk upsert batch size for Qdrant
+  payload_indexes:
+    - field: "hostname"
+      type: "keyword"
+    - field: "ora_code"
+      type: "keyword"
+    - field: "severity"
+      type: "keyword"
+    - field: "category"
+      type: "keyword"
+    - field: "log_source"
+      type: "keyword"
+    - field: "os_pattern"
+      type: "keyword"
+    - field: "platform"
+      type: "keyword"
+
+duckdb:
+  db_path: "./data/duckdb/metadata.duckdb"
+
+# Optional: persist evidence-first runs (normalized events + correlation_run + report_snapshot).
+# Uses sql/evidence_first/evidence_first_schema.duckdb.sql — separate file from retrieval metadata.duckdb.
+evidence_store:
+  enabled: true
+  db_path: "./data/duckdb/evidence_store.duckdb"
+
+# Streamlit session: merged raw size limits (Option C — full session re-diagnose each run).
+prism_session:
+  max_merged_chars: 450000
+  max_turn_chars: 400000
+  max_zip_bytes: 125829120   # 120 MiB per ZIP turn
+  max_zip_files: 120
+
+seeds:
+  jsonl_path: "./data/seeds/errors.jsonl"
+
+retrieval:
+  top_k: 10
+  bm25_weight: 0.40
+  dense_weight: 0.60
+  time_window_minutes: 30
+  min_confidence_pct: 40
+  rrf_k: 60                    # RRF smoothing constant (standard value)
+  prefilter_limit: 500         # max rows DuckDB pre-filter returns
+  domino_lookback_hours: 24    # stateful infra failure lookback window
+  cascade_window_sec: 300      # cascade detection time window
+
+scoring:
+  keyword_match_weight: 40
+  bm25_weight: 30
+  dense_weight: 20
+  temporal_bonus: 10
+
+thresholds:
+  high_confidence: 80
+  medium_confidence: 60
+  low_confidence: 40
+
+chunking:
+  max_chunk_lines: 50
+  chunk_overlap_lines: 3
+  time_window_sec: 60        # syslog grouping window (seconds)
+  crs_window_sec: 30         # CRS event grouping window (seconds)
+  # Metric log source → category mapping.
+  # Add new sources here without any code change.
+  metric_source_category_map:
+    iostat:    "DISK"
+    df:        "DISK"
+    smartctl:  "DISK"
+    vmstat:    "MEMORY"
+    svmon:     "MEMORY"
+    meminfo:   "MEMORY"
+    sar_cpu:   "CPU"
+    sar_q:     "CPU"
+    lparstat:  "CPU"
+    network:   "NETWORK"
+    conntrack: "NETWORK"
+
+
+osw_thresholds:
+  # Run queue > cpu_count × run_queue_multiplier = CPU saturation
+  run_queue_multiplier: 2
+  # Swap activity (KB/s) above this = active memory pressure
+  swap_threshold_kb_s: 200
+  # I/O wait % above this = disk bottleneck
+  iowait_threshold_pct: 20
+  # User CPU % above this = CPU saturation
+  cpu_user_threshold_pct: 80
+
+defaults:
+  timezone: "Asia/Kolkata"
+  platform: "LINUX"
+
+logging:
+  level: "INFO"
+  log_file: "./logs/agent.log"
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+
+reporting:
+  evidence_max_chunks: 5       # max evidence entries shown in report
+  raw_text_preview_chars: 300  # truncation length for raw_text in report
+  auto_package_incident: false # when true, success reports write incident ZIP under ./incidents/
+
+adr:
+  base_path: "/u01/app/oracle/diag"   # ADR home — override for your environment
+  trace_extensions:                    # file types the agent will follow in Phase B
+    - ".trc"
+    - ".trm"
+
+trace_parsing_manifest:
+  # Extraction of basic metadata from the trace header
+  header_patterns:
+    oracle_version: "Oracle Database (.*) Release"
+    db_name:        "DB Name:\\s*([A-Za-z0-9_$#]+)"
+    instance_name:  "Instance name:\\s*([A-Za-z0-9_$#]+)"
+    pid:            "Process ID:\\s*([0-9]+)"
+    sid:            "Session ID:\\s*([0-9]+)"
+    serial:         "Serial #:\\s*([0-9]+)"
+    pname:          "Process name:\\s*([A-Za-z0-9_]+)"
+
+  # Section-based extraction (Call Stack, Error Stack, etc.)
+  sections:
+    call_stack:
+      start_marker: "----- Call Stack -----"
+      end_marker:   "----------------------"
+      max_lines:    50
+    error_stack:
+      start_marker: "----- Error Stack -----"
+      end_marker:   "-----------------------"
+      max_lines:    30
+    binary_info:
+      start_marker: "----- Binary Info -----"
+      end_marker:   "-----------------------"
+      max_lines:    10
+
+  # Logic for what constitutes a "Critical" frame in a call stack
+  stack_highlights:
+    - "kcf"  # Kernel Cache File
+    - "ksedmp" # Kernel Service Error Dump
+    - "kjz"  # Cluster services
+
+security_manifest:
+  # OS Security Patterns (/var/log/secure)
+  syslog_patterns:
+    ssh_failed:   "Failed password for (?:invalid user )?(\\S+) from (\\S+) port (\\d+) ssh2"
+    ssh_accepted: "Accepted password for (\\S+) from (\\S+) port (\\d+) ssh2"
+    sudo_exec:    "sudo:\\s+(\\S+) : TTY=\\S+ ; PWD=\\S+ ; USER=\\S+ ; COMMAND=(.+)"
+    auth_failure: "authentication failure; logname=\\S* uid=\\d+ euid=\\d+ tty=\\S+ ruser=\\S* rhost=(\\S*)"
+  
+  # Severity mapping for security events
+  threat_levels:
+    ssh_failed:   "WARNING"
+    sudo_exec:    "INFO"
+    auth_failure: "ERROR"
+
+audit_manifest:
+  # Oracle Standard Audit (.aud) file patterns
+  # Captures ACTION, USERID, RETURNCODE, and TERMINAL
+  fields:
+    action:      "ACTION\\s*:\\s*\\[\\d+\\]\\s*'(.*)'"
+    userid:      "USERID\\s*:\\s*\\[\\d+\\]\\s*'(.*)'"
+    terminal:    "TERMINAL\\s*:\\s*\\[\\d+\\]\\s*'(.*)'"
+    returncode:  "RETURNCODE\\s*:\\s*\\[\\d+\\]\\s*'(.*)'"
+    db_user:     "DB_USER\\s*:\\s*\\[\\d+\\]\\s*'(.*)'"
+
+packaging_manifest:
+  incident_base_dir: "./incidents"
+  compression_format: "zip"            # zip or tar.gz
+  max_package_size_mb: 50
+  metadata_filename: "findings.json"
+  include_trace_files: true
+  include_audit_logs: true
+
+evidence_weights:
+  # Layer signals (primary ORA code classification)
+  LAYER_MEMORY:             30
+  LAYER_OS_TRIGGERED:       25
+  LAYER_ASM:                25
+  LAYER_DB:                 20
+  LAYER_NETWORK:            20
+  LAYER_CLUSTER:            25
+  ASM_HIGH_POWER_REBALANCE: 25
+  LAYER_Storage:            25
+  LAYER_Network:            20
+  LAYER_Memory:             25
+  LAYER_Filesystem:         20
+  LAYER_SECURITY:           20
+  AUDITD_KILL_9:            30
+  LAYER_DATAGUARD:          25
+  LAYER_RMAN:               20
+  LAYER_NEEDS_MORE_INFO:     0
+  # AWR signals
+  DB_TIME_SPIKE:            15
+  DB_TIME_CRITICAL:         15
+  SHARED_POOL_CONTENTION:   15
+  PARSE_PRESSURE:           15
+  SHARED_POOL_EXHAUSTION:   15
+  HIGH_HARD_PARSE:          10
+  LATCH_CONTENTION:         10
+  # OSW signals
+  CPU_SATURATION:           10
+  CPU_USER_HIGH:            10
+  MEMORY_PRESSURE:          15
+  LOW_PHYSICAL_MEMORY:      15
+  PROCESS_D_STATE_ZOMBIE:   20
+  # CRS
+  CRS_CLEAN:                 5
+
+evidence_rules:
+  # OS events that guarantee 100% confidence (Sudden Death Paradox)
+  fatal_os_events:
+    - OS_KERNEL_PANIC
+    - OS_POWER_FAILURE
+    - OS_OOM_KILLER
+    - OS_SCSI_TIMEOUT
+  # Cry Wolf: ORA-3136 suppressed below this frequency threshold
+  cry_wolf_threshold: 100
+  # Bonus points when AWR symptom vs disease rule fires
+  awr_symptom_bonus: 20
+  # Threshold above which OOM kills a critical daemon = 100% confidence
+  oom_collateral_score: 100

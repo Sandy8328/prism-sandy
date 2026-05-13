@@ -1,0 +1,6 @@
+2024-03-16T07:36:20.000+00:00 cell01 CELLSRV: WARNING: flashCache read error at griddisk DATA_CD_05 offset 28311552 io_time=612ms
+2024-03-16T07:36:21.000+00:00 cell01 CELLSRV: WARNING: Read Failed. group:3 disk:5 AU:781244 offset:8192 size:8192
+2024-03-16T07:36:22.000+00:00 cell01 CELLSRV: warningCode=FLASH_IO_TIMEOUT flashDisk=FD_02 cellDisk=CD_05
+2024-03-16T07:36:23.000+00:00 cell01 MS: alertType: Stateful metricObjectName: FD_02 metricValue: critical
+2024-03-16T07:36:24.000+00:00 cell01 CELLSRV: repeated media read retries exhausted for DATA_CD_05
+2024-03-16T07:36:25.000+00:00 cell01 CELLSRV: IORM throttling raised due to backend latency spike > 500ms

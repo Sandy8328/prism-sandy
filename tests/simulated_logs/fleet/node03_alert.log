@@ -1,0 +1,158 @@
+2024-03-15T09:00:01.001+05:30
+Thread 1 advanced to log sequence 1000 (LGWR switch)
+  Current log# 1 seq# 1000 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:01:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:02:15.555+05:30
+Thread 1 advanced to log sequence 1001 (LGWR switch)
+  Current log# 2 seq# 1001 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:03:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:04:15.555+05:30
+Thread 1 advanced to log sequence 1002 (LGWR switch)
+  Current log# 3 seq# 1002 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:05:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:06:15.555+05:30
+Thread 1 advanced to log sequence 1003 (LGWR switch)
+  Current log# 1 seq# 1003 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:07:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:08:15.555+05:30
+Thread 1 advanced to log sequence 1004 (LGWR switch)
+  Current log# 2 seq# 1004 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:09:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:10:15.555+05:30
+Thread 1 advanced to log sequence 1005 (LGWR switch)
+  Current log# 3 seq# 1005 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:11:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:12:15.555+05:30
+Thread 1 advanced to log sequence 1006 (LGWR switch)
+  Current log# 1 seq# 1006 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:13:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:14:15.555+05:30
+Thread 1 advanced to log sequence 1007 (LGWR switch)
+  Current log# 2 seq# 1007 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:15:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:16:15.555+05:30
+Thread 1 advanced to log sequence 1008 (LGWR switch)
+  Current log# 3 seq# 1008 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:17:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:18:15.555+05:30
+Thread 1 advanced to log sequence 1009 (LGWR switch)
+  Current log# 1 seq# 1009 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:19:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:20:15.555+05:30
+Thread 1 advanced to log sequence 1010 (LGWR switch)
+  Current log# 2 seq# 1010 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:21:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:22:15.555+05:30
+Thread 1 advanced to log sequence 1011 (LGWR switch)
+  Current log# 3 seq# 1011 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:23:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:24:15.555+05:30
+Thread 1 advanced to log sequence 1012 (LGWR switch)
+  Current log# 1 seq# 1012 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:25:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:26:15.555+05:30
+Thread 1 advanced to log sequence 1013 (LGWR switch)
+  Current log# 2 seq# 1013 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:27:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:28:15.555+05:30
+Thread 1 advanced to log sequence 1014 (LGWR switch)
+  Current log# 3 seq# 1014 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:29:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:30:15.555+05:30
+Thread 1 advanced to log sequence 1015 (LGWR switch)
+  Current log# 1 seq# 1015 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:31:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:32:15.555+05:30
+Thread 1 advanced to log sequence 1016 (LGWR switch)
+  Current log# 2 seq# 1016 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:33:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:34:15.555+05:30
+Thread 1 advanced to log sequence 1017 (LGWR switch)
+  Current log# 3 seq# 1017 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:35:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:36:15.555+05:30
+Thread 1 advanced to log sequence 1018 (LGWR switch)
+  Current log# 1 seq# 1018 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:37:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:38:15.555+05:30
+Thread 1 advanced to log sequence 1019 (LGWR switch)
+  Current log# 2 seq# 1019 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:39:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:40:15.555+05:30
+Thread 1 advanced to log sequence 1020 (LGWR switch)
+  Current log# 3 seq# 1020 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:41:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:42:15.555+05:30
+Thread 1 advanced to log sequence 1021 (LGWR switch)
+  Current log# 1 seq# 1021 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:43:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:44:15.555+05:30
+Thread 1 advanced to log sequence 1022 (LGWR switch)
+  Current log# 2 seq# 1022 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:45:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:46:15.555+05:30
+Thread 1 advanced to log sequence 1023 (LGWR switch)
+  Current log# 3 seq# 1023 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:47:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:48:15.555+05:30
+Thread 1 advanced to log sequence 1024 (LGWR switch)
+  Current log# 1 seq# 1024 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:49:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:50:15.555+05:30
+Thread 1 advanced to log sequence 1025 (LGWR switch)
+  Current log# 2 seq# 1025 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:51:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:52:15.555+05:30
+Thread 1 advanced to log sequence 1026 (LGWR switch)
+  Current log# 3 seq# 1026 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:53:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:54:15.555+05:30
+Thread 1 advanced to log sequence 1027 (LGWR switch)
+  Current log# 1 seq# 1027 mem# 0: +DATA/ORCL/ONLINELOG/group_1.257.1001
+2024-03-15T09:55:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:56:15.555+05:30
+Thread 1 advanced to log sequence 1028 (LGWR switch)
+  Current log# 2 seq# 1028 mem# 0: +DATA/ORCL/ONLINELOG/group_2.258.1001
+2024-03-15T09:57:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T09:58:15.555+05:30
+Thread 1 advanced to log sequence 1029 (LGWR switch)
+  Current log# 3 seq# 1029 mem# 0: +DATA/ORCL/ONLINELOG/group_3.259.1001
+2024-03-15T09:59:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T10:00:00.000+05:30
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_lgwr_1234.trc:
+ORA-00204: error in reading (block 1, # blocks 1) of control file
+ORA-00202: control file: '+DATA/ORCL/CONTROLFILE/current.256.1001'
+2024-03-15T10:00:01.000+05:30
+PMON (ospid: 1200): terminating the instance due to error 603
+2024-03-15T10:00:02.000+05:30
+ORA-00603: ORACLE server session terminated by fatal error

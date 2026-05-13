@@ -1,0 +1,8 @@
+Mar 16 07:30:10 dbhost07 kernel: [45101.102] qla2xxx [0000:5e:00.0]-801c:1: Abort command issued nexus=2:0:5 -- 1 2002.
+Mar 16 07:30:11 dbhost07 kernel: [45102.009] qla2xxx [0000:5e:00.0]-801c:1: Adapter reset issued nexus=2:0:5.
+Mar 16 07:30:12 dbhost07 kernel: [45103.441] sd 12:0:0:3: [sdd] tag#74 FAILED Result: hostbyte=DID_TIME_OUT driverbyte=DRIVER_TIMEOUT
+Mar 16 07:30:12 dbhost07 kernel: [45103.442] blk_update_request: I/O error, dev sdd, sector 11922304 op 0x0:(READ)
+Mar 16 07:30:13 dbhost07 kernel: [45104.117] Buffer I/O error on dev sdd, logical block 1490288, async page read
+Mar 16 07:30:14 dbhost07 multipathd[921]: mpatha: remaining active paths: 0
+Mar 16 07:30:15 dbhost07 kernel: [45106.201] device-mapper: multipath: Failing path 8:48.
+Mar 16 07:30:16 dbhost07 kernel: [45107.903] sd 12:0:0:3: [sdd] rejecting I/O to offline device

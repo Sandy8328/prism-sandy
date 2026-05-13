@@ -1,0 +1,5 @@
+2024-03-16T12:00:00.000+05:30
+Errors in file C:\app\oracle\diag\rdbms\orcl\orcl\trace\orcl_ora_1234.trc:
+ORA-27300: OS system dependent operation:CreateFile failed with status: 32
+ORA-27301: OS failure message: The process cannot access the file because it is being used by another process.
+ORA-27302: failure occurred at: sskgpmcreate

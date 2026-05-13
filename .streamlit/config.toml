@@ -1,0 +1,8 @@
+# Official light theme — aligns native Streamlit widgets with ui/app.py CSS
+[theme]
+base = "light"
+primaryColor = "#1e40af"
+backgroundColor = "#f1f5f9"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#0f172a"
+font = "sans serif"

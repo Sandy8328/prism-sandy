@@ -1,0 +1,13 @@
+2024-03-15T09:59:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T10:00:00.000+05:30
+Thread 1 advanced to log sequence 1000
+2024-03-15T10:01:00.000+05:30
+Completed: ALTER SYSTEM ARCHIVE LOG
+2024-03-15T10:01:30.000+05:30
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_lgwr_1234.trc:
+ORA-00204: error in reading (block 1, # blocks 1) of control file
+2024-03-15T10:01:31.000+05:30
+PMON (ospid: 1200): terminating the instance due to error 603
+2024-03-15T10:01:32.000+05:30
+ORA-00603: ORACLE server session terminated by fatal error

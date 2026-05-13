@@ -1,0 +1,4 @@
+Mar 16 15:45:01 webhost22 kernel: [98810.111] nf_conntrack: table full, dropping packet
+Mar 16 15:45:02 webhost22 kernel: [98811.442] Out of memory: Kill process 30112 (java) score 998 or sacrifice child
+Mar 16 15:45:03 webhost22 app[777]: ORA-04031: unable to allocate 4096 bytes of shared memory
+Mar 16 15:45:04 webhost22 app[777]: incident for payments-api pod restart

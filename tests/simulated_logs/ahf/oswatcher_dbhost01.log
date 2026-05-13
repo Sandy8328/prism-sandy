@@ -1,0 +1,59 @@
+zzz ***Tue Mar 07 03:10:00 IST 2024
+Linux 4.14.35-1902.300.11.el7uek.x86_64 (dbhost01)      03/07/2024      _x86_64_        (8 CPU)
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           2.00    0.00    1.00    0.50    0.00   96.50
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda              15.00       200.00       150.00     200000     150000
+sdb               0.00         0.00         0.00          0          0
+sdc             120.00      4000.00      1000.00    4000000    1000000
+
+zzz ***Tue Mar 07 03:11:00 IST 2024
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           3.00    0.00    1.50    0.50    0.00   95.00
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda              12.00       150.00       100.00     150000     100000
+sdb               0.00         0.00         0.00          0          0
+sdc             115.00      3800.00       900.00    3800000     900000
+
+zzz ***Tue Mar 07 03:12:00 IST 2024
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           2.50    0.00    1.20    0.60    0.00   95.70
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda              14.00       180.00       120.00     180000     120000
+sdb               0.00         0.00         0.00          0          0
+sdc             110.00      3500.00       850.00    3500000     850000
+
+zzz ***Tue Mar 07 03:13:00 IST 2024
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           2.20    0.00    1.10    0.50    0.00   96.20
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda              13.00       160.00       110.00     160000     110000
+sdb               0.00         0.00         0.00          0          0
+sdc             105.00      3200.00       800.00    3200000     800000
+
+zzz ***Tue Mar 07 03:14:00 IST 2024
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           2.80    0.00    1.30    0.70    0.00   95.20
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda              16.00       210.00       160.00     210000     160000
+sdb               0.00         0.00         0.00          0          0
+sdc             125.00      4200.00      1100.00    4200000    1100000
+
+zzz ***Tue Mar 07 03:15:05 IST 2024
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.00    0.00   95.00    5.00    0.00    0.00
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda               0.00         0.00         0.00          0          0
+sdb               0.00         0.00         0.00          0          0
+sdc               0.00         0.00         0.00          0          0
+kernel: [12345.9000] sd 0:0:0:0: [sdc] IO QUEUE TIMEOUT. Task blocked for more than 120 seconds.
+kernel: [12345.9001] INFO: task jbd2/sdc-8 blocked for more than 120 seconds.
+kernel: [12345.9002]       Not tainted 4.14.35-1902.300.11.el7uek.x86_64 #2
+
+zzz ***Tue Mar 07 03:16:00 IST 2024
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.00    0.00   98.00    2.00    0.00    0.00
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda               0.00         0.00         0.00          0          0
+sdb               0.00         0.00         0.00          0          0
+sdc               0.00         0.00         0.00          0          0

@@ -1,0 +1,13 @@
+Thu Mar 07 02:44:19 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_dbw0_1234.trc:
+ORA-27072: File I/O error
+Linux-x86_64 Error: 5: Input/output error
+Additional information: 4
+Additional information: 1
+Additional information: -1
+Thu Mar 07 02:44:20 2024
+System State dumped to trace file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_diag_1235.trc
+Thu Mar 07 02:44:21 2024
+USER (ospid: 1234): terminating the instance due to error 27072
+Instance terminated by USER, pid = 1234
+ORA-1092 : opitsk aborting process

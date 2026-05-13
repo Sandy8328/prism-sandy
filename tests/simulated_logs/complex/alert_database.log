@@ -1,0 +1,11 @@
+Thu Mar 07 03:15:20 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_arc0_1234.trc:
+ORA-27054: NFS file system where the file is created or resides is not mounted
+Additional information: 1
+Thu Mar 07 03:15:45 2024
+ORA-00257: archiver error. Connect internal only, until freed.
+Thu Mar 07 03:16:00 2024
+Errors in file /u01/app/oracle/diag/rdbms/orcl/orcl1/trace/orcl1_pmon_1235.trc:
+ORA-00603: ORACLE server session terminated by fatal error
+Thu Mar 07 03:16:05 2024
+Instance terminated by PMON, pid = 1235

@@ -1,0 +1,7 @@
+2024-03-12T04:00:00.000+05:30
+Errors in file /u01/app/oracle/diag/rdbms/payroll/payroll/trace/payroll_lgwr_1234.trc:
+ORA-00204: error in reading (block 1, # blocks 1) of control file
+2024-03-12T04:00:00.005+05:30
+PMON (ospid: 1200): terminating the instance due to error 603
+2024-03-12T04:00:00.010+05:30
+ORA-00603: ORACLE server session terminated by fatal error

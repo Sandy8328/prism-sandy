@@ -1,0 +1,8 @@
+# Oracle RAC & Exadata Architecture: Causality Chains
+
+## Storage Dependencies
+The Oracle Database relies heavily on ASM (Automatic Storage Management). If a physical disk array drops a LUN due to a **SCSI timeout**, it will trigger an **ASM Disk Drop** (ORA-15080). 
+Consequently, if an ASM disk drops and the diskgroup is dismounted, any database instance attempting to write to that diskgroup will suffer an **Oracle Instance Crash** (ORA-00603).
+
+## Network Dependencies
+In a Real Application Clusters (RAC) environment, the private interconnect is critical. If the Linux OS registers a **Network Interface Drop** (eth0 link down), the Oracle Clusterware will detect a missed heartbeat. This directly leads to a **Node Eviction** (ORA-29740) to prevent split-brain syndrome.

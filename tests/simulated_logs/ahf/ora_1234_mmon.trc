@@ -1,0 +1,74 @@
+Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_mmon_1234.trc
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.14.0.0.0
+Build label:    RDBMS_19.14.0.0.0_LINUX.X64_211019
+ORACLE_HOME:    /u01/app/oracle/product/19.0.0/dbhome_1
+System name:    Linux
+Node name:      dbhost01
+Release:        4.14.35-1902.300.11.el7uek.x86_64
+Version:        #2 SMP
+Machine:        x86_64
+Instance name:  orcl
+Redo thread mounted by this instance: 1
+Oracle process number: 35
+Unix process pid: 1234, image: oracle@dbhost01 (MMON)
+
+*** 2024-03-07T03:10:00.123+05:30
+*** SESSION ID:(123.456) 2024-03-07T03:10:00.123+05:30
+*** CLIENT ID:() 2024-03-07T03:10:00.123+05:30
+*** SERVICE NAME:(SYS$BACKGROUND) 2024-03-07T03:10:00.123+05:30
+*** MODULE NAME:() 2024-03-07T03:10:00.123+05:30
+*** ACTION NAME:() 2024-03-07T03:10:00.123+05:30
+*** CONTAINER ID:(1) 2024-03-07T03:10:00.123+05:30
+
+KEBM: MMON started successfully.
+KEBM: Executing auto-flush of AWR repository.
+KEBM: Auto-flush successful. Memory freed: 10MB.
+KJC: Wait for IPC connections
+KJC: connection to instance 2 established
+KJC: message sent successfully
+KJC: memory allocation of 4096 bytes successful.
+KGL: Library cache lock released.
+KGL: Pin released.
+
+*** 2024-03-07T03:11:00.123+05:30
+KEBM: Auto-task ADDM execution starting...
+KEBM: ADDM execution completed in 1.2 seconds.
+KEBM: Found 0 significant findings.
+KGL: Pin requested for object 0x12345678.
+KGL: Pin acquired successfully.
+
+*** 2024-03-07T03:12:00.123+05:30
+KEBM: Auto-task ASH execution starting...
+KEBM: ASH execution completed in 0.5 seconds.
+KEBM: Buffer dump complete.
+KGL: Library cache pin released.
+
+*** 2024-03-07T03:13:00.123+05:30
+KEBM: Segment Advisor execution starting...
+KEBM: Segment Advisor completed in 2.5 seconds.
+KEBM: 0 segments recommended for shrink.
+KGL: Library cache lock acquired.
+KGL: Library cache lock released.
+
+*** 2024-03-07T03:14:00.123+05:30
+KEBM: AWR snapshot 1234 starting...
+KEBM: AWR snapshot 1234 completed in 3.1 seconds.
+
+*** 2024-03-07T03:15:35.123+05:30
+KJC: Message send failed.
+KJC: Connection to instance 2 lost.
+KJC: IPC error 100.
+KJC: Attempting reconnect...
+KJC: Reconnect failed.
+KSIPC: Wait for message timeout.
+
+*** 2024-03-07T03:15:45.123+05:30
+PMON (ospid: 1200): terminating the instance due to error 603
+ORA-00603: ORACLE server session terminated by fatal error
+ORA-27140: attach to SGA failed
+ORA-27300: OS system dependent operation:semop failed with status: 43
+ORA-27301: OS failure message: Identifier removed
+ORA-27302: failure occurred at: sskgpas1
+Incident 12345 created, dump file: /u01/app/oracle/diag/rdbms/orcl/orcl/incident/incdir_12345/orcl_mmon_1234_i12345.trc
+Process terminating...

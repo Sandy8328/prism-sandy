@@ -1,0 +1,119 @@
+Mar 15 09:00:01 node01 systemd: Started Session 100 of user root.
+Mar 15 09:01:01 node01 CROND[1200]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:02:01 node01 systemd: Started Session 101 of user oracle.
+Mar 15 09:03:01 node01 CROND[1205]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:04:01 node01 systemd: Started Session 102 of user root.
+Mar 15 09:05:01 node01 CROND[1210]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:06:01 node01 systemd: Started Session 103 of user oracle.
+Mar 15 09:07:01 node01 CROND[1215]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:08:01 node01 systemd: Started Session 104 of user root.
+Mar 15 09:09:01 node01 CROND[1220]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:10:01 node01 systemd: Started Session 105 of user oracle.
+Mar 15 09:11:01 node01 CROND[1225]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:12:01 node01 systemd: Started Session 106 of user root.
+Mar 15 09:13:01 node01 CROND[1230]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:14:01 node01 systemd: Started Session 107 of user oracle.
+Mar 15 09:15:01 node01 CROND[1235]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:16:01 node01 systemd: Started Session 108 of user root.
+Mar 15 09:17:01 node01 CROND[1240]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:18:01 node01 systemd: Started Session 109 of user oracle.
+Mar 15 09:19:01 node01 CROND[1245]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:20:01 node01 systemd: Started Session 110 of user root.
+Mar 15 09:21:01 node01 CROND[1250]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:22:01 node01 systemd: Started Session 111 of user oracle.
+Mar 15 09:23:01 node01 CROND[1255]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:24:01 node01 systemd: Started Session 112 of user root.
+Mar 15 09:25:01 node01 CROND[1260]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:26:01 node01 systemd: Started Session 113 of user oracle.
+Mar 15 09:27:01 node01 CROND[1265]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:28:01 node01 systemd: Started Session 114 of user root.
+Mar 15 09:29:01 node01 CROND[1270]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:30:01 node01 systemd: Started Session 115 of user oracle.
+Mar 15 09:31:01 node01 CROND[1275]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:32:01 node01 systemd: Started Session 116 of user root.
+Mar 15 09:33:01 node01 CROND[1280]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:34:01 node01 systemd: Started Session 117 of user oracle.
+Mar 15 09:35:01 node01 CROND[1285]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:36:01 node01 systemd: Started Session 118 of user root.
+Mar 15 09:37:01 node01 CROND[1290]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:38:01 node01 systemd: Started Session 119 of user oracle.
+Mar 15 09:39:01 node01 CROND[1295]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:40:01 node01 systemd: Started Session 120 of user root.
+Mar 15 09:41:01 node01 CROND[1300]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:42:01 node01 systemd: Started Session 121 of user oracle.
+Mar 15 09:43:01 node01 CROND[1305]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:44:01 node01 systemd: Started Session 122 of user root.
+Mar 15 09:45:01 node01 CROND[1310]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:46:01 node01 systemd: Started Session 123 of user oracle.
+Mar 15 09:47:01 node01 CROND[1315]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:48:01 node01 systemd: Started Session 124 of user root.
+Mar 15 09:49:01 node01 CROND[1320]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:50:01 node01 systemd: Started Session 125 of user oracle.
+Mar 15 09:51:01 node01 CROND[1325]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:52:01 node01 systemd: Started Session 126 of user root.
+Mar 15 09:53:01 node01 CROND[1330]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:54:01 node01 systemd: Started Session 127 of user oracle.
+Mar 15 09:55:01 node01 CROND[1335]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:56:01 node01 systemd: Started Session 128 of user root.
+Mar 15 09:57:01 node01 CROND[1340]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:58:01 node01 systemd: Started Session 129 of user oracle.
+Mar 15 09:59:01 node01 CROND[1345]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 15 09:59:15 node01 kernel: [10000.0000] Checking if OOM Killer is active... NO
+Mar 15 09:59:15 node01 kernel: [10000.0001] Checking if ORA-04031 occurred... None found
+Mar 15 09:59:20 node01 kernel: [10000.0002] System memory health check passed.
+Mar 15 09:59:30 node01 systemd-logind[900]: Removed session 129.
+Mar 15 09:59:45 node01 kernel: [10045.0000] TCP: time wait bucket table overflow
+Mar 15 09:59:50 node01 kernel: [10050.0000] EXT4-fs (sda1): INFO: recovery complete
+Mar 15 09:59:55 node01 kernel: [10055.0000] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+Mar 15 10:00:00 node01 kernel: [10060.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:05 node01 kernel: [10065.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:10 node01 kernel: [10070.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:15 node01 kernel: [10075.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:20 node01 kernel: [10080.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:25 node01 kernel: [10085.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:30 node01 kernel: [10090.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:35 node01 kernel: [10095.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:40 node01 kernel: [10100.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:45 node01 kernel: [10105.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:50 node01 kernel: [10110.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:00:55 node01 kernel: [10115.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:00 node01 kernel: [10120.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:05 node01 kernel: [10125.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:10 node01 kernel: [10130.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:15 node01 kernel: [10135.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:20 node01 kernel: [10140.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:25 node01 kernel: [10145.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:30 node01 kernel: [10150.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:35 node01 kernel: [10155.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:40 node01 kernel: [10160.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:45 node01 kernel: [10165.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:50 node01 kernel: [10170.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:01:55 node01 kernel: [10175.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:00 node01 kernel: [10180.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:05 node01 kernel: [10185.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:10 node01 kernel: [10190.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:15 node01 kernel: [10195.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:20 node01 kernel: [10200.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:25 node01 kernel: [10205.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:30 node01 kernel: [10210.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:35 node01 kernel: [10215.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:40 node01 kernel: [10220.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:45 node01 kernel: [10225.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:50 node01 kernel: [10230.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:02:55 node01 kernel: [10235.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:00 node01 kernel: [10240.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:05 node01 kernel: [10245.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:10 node01 kernel: [10250.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:15 node01 kernel: [10255.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:20 node01 kernel: [10260.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:25 node01 kernel: [10265.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:30 node01 kernel: [10270.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:35 node01 kernel: [10275.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:40 node01 kernel: [10280.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:45 node01 kernel: [10285.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:50 node01 kernel: [10290.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:03:55 node01 kernel: [10295.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:04:00 node01 kernel: [10300.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:04:05 node01 kernel: [10305.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:04:10 node01 kernel: [10310.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 15 10:04:15 node01 kernel: [10315.0000] nfs: server storage-nas-01 not responding, still trying

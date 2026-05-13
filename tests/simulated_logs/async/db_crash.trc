@@ -1,0 +1,172 @@
+Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_mmon_1234.trc
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.14.0.0.0
+Build label:    RDBMS_19.14.0.0.0_LINUX.X64_211019
+ORACLE_HOME:    /u01/app/oracle/product/19.0.0/dbhome_1
+System name:    Linux
+Node name:      node-async
+Release:        4.14.35-1902.300.11.el7uek.x86_64
+Version:        #2 SMP
+Machine:        x86_64
+Instance name:  orcl
+Redo thread mounted by this instance: 1
+Oracle process number: 35
+Unix process pid: 1234, image: oracle@node-async (MMON)
+
+*** 2024-03-16T08:00:00.123+05:30
+*** SESSION ID:(123.456) 2024-03-16T08:00:00.123+05:30
+*** CLIENT ID:() 2024-03-16T08:00:00.123+05:30
+*** SERVICE NAME:(SYS$BACKGROUND) 2024-03-16T08:00:00.123+05:30
+*** MODULE NAME:() 2024-03-16T08:00:00.123+05:30
+*** ACTION NAME:() 2024-03-16T08:00:00.123+05:30
+*** CONTAINER ID:(1) 2024-03-16T08:00:00.123+05:30
+
+KEBM: MMON started successfully.
+KEBM: Executing auto-flush of AWR repository.
+KEBM: Auto-flush successful. Memory freed: 10MB.
+KJC: Wait for IPC connections
+KJC: connection to instance 2 established
+KJC: message sent successfully
+KJC: memory allocation of 4096 bytes successful.
+KGL: Library cache lock released.
+KGL: Pin released.
+
+*** 2024-03-16T08:01:00.123+05:30
+KEBM: Auto-task ADDM execution starting...
+KEBM: ADDM execution completed in 1.2 seconds.
+KEBM: Found 0 significant findings.
+KGL: Pin requested for object 0x12345678.
+KGL: Pin acquired successfully.
+
+*** 2024-03-16T08:02:00.123+05:30
+KEBM: Auto-task ASH execution starting...
+KEBM: ASH execution completed in 0.5 seconds.
+KEBM: Buffer dump complete.
+KGL: Library cache pin released.
+
+*** 2024-03-16T08:03:00.123+05:30
+KEBM: Segment Advisor execution starting...
+KEBM: Segment Advisor completed in 2.5 seconds.
+KEBM: 0 segments recommended for shrink.
+KGL: Library cache lock acquired.
+KGL: Library cache lock released.
+
+*** 2024-03-16T08:04:00.123+05:30
+KEBM: AWR snapshot 1234 starting...
+KEBM: AWR snapshot 1234 completed in 3.1 seconds.
+
+*** 2024-03-16T08:05:00.123+05:30
+KEBM: AWR snapshot 1235 starting...
+KEBM: AWR snapshot 1235 completed in 3.1 seconds.
+
+*** 2024-03-16T08:06:00.123+05:30
+KEBM: AWR snapshot 1236 starting...
+KEBM: AWR snapshot 1236 completed in 3.1 seconds.
+
+*** 2024-03-16T08:07:00.123+05:30
+KEBM: AWR snapshot 1237 starting...
+KEBM: AWR snapshot 1237 completed in 3.1 seconds.
+
+*** 2024-03-16T08:08:00.123+05:30
+KEBM: AWR snapshot 1238 starting...
+KEBM: AWR snapshot 1238 completed in 3.1 seconds.
+
+*** 2024-03-16T08:09:00.123+05:30
+KEBM: AWR snapshot 1239 starting...
+KEBM: AWR snapshot 1239 completed in 3.1 seconds.
+
+*** 2024-03-16T08:10:00.123+05:30
+KEBM: AWR snapshot 1240 starting...
+KEBM: AWR snapshot 1240 completed in 3.1 seconds.
+
+*** 2024-03-16T08:11:00.123+05:30
+KEBM: AWR snapshot 1241 starting...
+KEBM: AWR snapshot 1241 completed in 3.1 seconds.
+
+*** 2024-03-16T08:12:00.123+05:30
+KEBM: AWR snapshot 1242 starting...
+KEBM: AWR snapshot 1242 completed in 3.1 seconds.
+
+*** 2024-03-16T08:13:00.123+05:30
+KEBM: AWR snapshot 1243 starting...
+KEBM: AWR snapshot 1243 completed in 3.1 seconds.
+
+*** 2024-03-16T08:14:00.123+05:30
+KEBM: AWR snapshot 1244 starting...
+KEBM: AWR snapshot 1244 completed in 3.1 seconds.
+
+*** 2024-03-16T08:15:00.123+05:30
+KEBM: AWR snapshot 1245 starting...
+KEBM: AWR snapshot 1245 completed in 3.1 seconds.
+
+*** 2024-03-16T08:16:00.123+05:30
+KEBM: AWR snapshot 1246 starting...
+KEBM: AWR snapshot 1246 completed in 3.1 seconds.
+
+*** 2024-03-16T08:17:00.123+05:30
+KEBM: AWR snapshot 1247 starting...
+KEBM: AWR snapshot 1247 completed in 3.1 seconds.
+
+*** 2024-03-16T08:18:00.123+05:30
+KEBM: AWR snapshot 1248 starting...
+KEBM: AWR snapshot 1248 completed in 3.1 seconds.
+
+*** 2024-03-16T08:19:00.123+05:30
+KEBM: AWR snapshot 1249 starting...
+KEBM: AWR snapshot 1249 completed in 3.1 seconds.
+
+*** 2024-03-16T08:20:00.123+05:30
+KEBM: AWR snapshot 1250 starting...
+KEBM: AWR snapshot 1250 completed in 3.1 seconds.
+
+*** 2024-03-16T08:21:00.123+05:30
+KEBM: AWR snapshot 1251 starting...
+KEBM: AWR snapshot 1251 completed in 3.1 seconds.
+
+*** 2024-03-16T08:22:00.123+05:30
+KEBM: AWR snapshot 1252 starting...
+KEBM: AWR snapshot 1252 completed in 3.1 seconds.
+
+*** 2024-03-16T08:23:00.123+05:30
+KEBM: AWR snapshot 1253 starting...
+KEBM: AWR snapshot 1253 completed in 3.1 seconds.
+
+*** 2024-03-16T08:24:00.123+05:30
+KEBM: AWR snapshot 1254 starting...
+KEBM: AWR snapshot 1254 completed in 3.1 seconds.
+
+*** 2024-03-16T08:25:00.123+05:30
+KEBM: AWR snapshot 1255 starting...
+KEBM: AWR snapshot 1255 completed in 3.1 seconds.
+
+*** 2024-03-16T08:26:00.123+05:30
+KEBM: AWR snapshot 1256 starting...
+KEBM: AWR snapshot 1256 completed in 3.1 seconds.
+
+*** 2024-03-16T08:27:00.123+05:30
+KEBM: AWR snapshot 1257 starting...
+KEBM: AWR snapshot 1257 completed in 3.1 seconds.
+
+*** 2024-03-16T08:28:00.123+05:30
+KEBM: AWR snapshot 1258 starting...
+KEBM: AWR snapshot 1258 completed in 3.1 seconds.
+
+*** 2024-03-16T08:29:00.123+05:30
+KEBM: AWR snapshot 1259 starting...
+KEBM: AWR snapshot 1259 completed in 3.1 seconds.
+
+*** 2024-03-16T08:30:00.123+05:30
+KJC: Message send failed.
+KJC: Connection to instance 2 lost.
+KJC: IPC error 100.
+KJC: Attempting reconnect...
+KJC: Reconnect failed.
+KSIPC: Wait for message timeout.
+PMON (ospid: 1200): terminating the instance due to error 603
+ORA-00603: ORACLE server session terminated by fatal error
+ORA-27140: attach to SGA failed
+ORA-27300: OS system dependent operation:semop failed with status: 43
+ORA-27301: OS failure message: Identifier removed
+ORA-27302: failure occurred at: sskgpas1
+Incident 12345 created, dump file: /u01/app/oracle/diag/rdbms/orcl/orcl/incident/incdir_12345/orcl_mmon_1234_i12345.trc
+Process terminating...

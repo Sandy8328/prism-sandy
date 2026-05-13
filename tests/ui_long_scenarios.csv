@@ -1,0 +1,337 @@
+scenario_id,input_mode,title,expected_status,expected_root_pattern,expected_ora_code,expected_confidence_label,expected_follow_up,log_text
+LONG_001,paste,"Linux I/O timeout cascade with ORA","SUCCESS","IO_QUEUE_TIMEOUT","ORA-27072","MEDIUM","no","2024-03-07T03:13:40.000+05:30
+dbhost01 kernel: system monitor heartbeat normal
+2024-03-07T03:13:41.000+05:30
+dbhost01 kernel: blk_update_request: temporary queue depth warning on sdc
+2024-03-07T03:13:42.000+05:30
+dbhost01 oracle: background stats collection started
+2024-03-07T03:13:43.000+05:30
+dbhost01 kernel: ext4 lazyinit thread completed one pass
+2024-03-07T03:13:44.000+05:30
+dbhost01 kernel: audit subsystem active
+2024-03-07T03:13:45.000+05:30
+dbhost01 kernel: vm pressure normal
+2024-03-07T03:13:46.000+05:30
+dbhost01 kernel: dentry cache prune not required
+2024-03-07T03:13:47.000+05:30
+dbhost01 kernel: page allocator watermark stable
+2024-03-07T03:13:48.000+05:30
+dbhost01 kernel: multipathd checker loop complete
+2024-03-07T03:13:49.000+05:30
+dbhost01 kernel: io scheduler slice idle set to 0
+2024-03-07T03:13:50.000+05:30
+dbhost01 kernel: nvme polling skipped no devices
+2024-03-07T03:13:51.000+05:30
+dbhost01 kernel: sd 0:0:0:0: [sdc] tag#184 CDB: Read(10) 28 00 0c 5a 8e c0 00 00 20 00
+2024-03-07T03:13:52.000+05:30
+dbhost01 kernel: blk_mq_timeout_work detected delayed completion for sdc
+2024-03-07T03:13:53.000+05:30
+dbhost01 kernel: INFO: task ora_lgwr_db01:24531 blocked for more than 120 seconds
+2024-03-07T03:13:54.000+05:30
+dbhost01 kernel: INFO: task jbd2/sdc-8:982 blocked for more than 120 seconds
+2024-03-07T03:13:55.000+05:30
+dbhost01 kernel: sd 0:0:0:0: [sdc] IO QUEUE TIMEOUT. Task blocked for more than 120 seconds.
+2024-03-07T03:13:56.000+05:30
+dbhost01 kernel: scsi eh_3: recovery requested by timed out command
+2024-03-07T03:13:57.000+05:30
+dbhost01 kernel: buffer io error on dev sdc logical block 102400 async page read
+2024-03-07T03:13:58.000+05:30
+dbhost01 kernel: blk_update_request: I/O error dev sdc sector 207120000
+2024-03-07T03:13:59.000+05:30
+dbhost01 oracle: ORA-27072: File I/O error
+2024-03-07T03:14:00.000+05:30
+dbhost01 oracle: Linux-x86_64 Error: 5: Input/output error
+2024-03-07T03:14:01.000+05:30
+dbhost01 oracle: additional information: 4
+2024-03-07T03:14:02.000+05:30
+dbhost01 oracle: Errors in file /u01/app/oracle/diag/rdbms/db01/trace/db01_lgwr_24531.trc
+2024-03-07T03:14:03.000+05:30
+dbhost01 oracle: ORA-00312: online log 3 thread 1
+2024-03-07T03:14:04.000+05:30
+dbhost01 oracle: waiting for checkpoint progress
+2024-03-07T03:14:05.000+05:30
+dbhost01 kernel: sd 0:0:0:0: [sdc] tag#185 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_TIMEOUT
+2024-03-07T03:14:06.000+05:30
+dbhost01 kernel: sd 0:0:0:0: [sdc] Sense Key : Hardware Error [current]
+2024-03-07T03:14:07.000+05:30
+dbhost01 kernel: sd 0:0:0:0: [sdc] Add. Sense: Internal target failure
+2024-03-07T03:14:08.000+05:30
+dbhost01 kernel: blk_update_request: critical medium error dev sdc sector 207120200
+2024-03-07T03:14:09.000+05:30
+dbhost01 oracle: ORA-00603: ORACLE server session terminated by fatal error
+2024-03-07T03:14:10.000+05:30
+dbhost01 oracle: Process LGWR failed due to I/O subsystem fault
+2024-03-07T03:14:11.000+05:30
+dbhost01 kernel: service watchdog noticed storage stall window 18s
+2024-03-07T03:14:12.000+05:30
+dbhost01 kernel: multipathd: checker timeout on path 0:0:0:0
+2024-03-07T03:14:13.000+05:30
+dbhost01 kernel: multipathd: path down event for sdc
+2024-03-07T03:14:14.000+05:30
+dbhost01 kernel: multipathd: remaining active paths: 0
+2024-03-07T03:14:15.000+05:30
+dbhost01 kernel: attempting path revalidation
+2024-03-07T03:14:16.000+05:30
+dbhost01 kernel: path still down
+2024-03-07T03:14:17.000+05:30
+dbhost01 kernel: queueing policy switched to fail
+2024-03-07T03:14:18.000+05:30
+dbhost01 oracle: archiver background process heartbeat delayed
+2024-03-07T03:14:19.000+05:30
+dbhost01 oracle: db writer retry issued
+2024-03-07T03:14:20.000+05:30
+dbhost01 oracle: system state dump requested
+2024-03-07T03:14:21.000+05:30
+dbhost01 oracle: MMON marked instance health degraded
+2024-03-07T03:14:22.000+05:30
+dbhost01 oracle: diag incident package requested
+2024-03-07T03:14:23.000+05:30
+dbhost01 oracle: incident package completed
+2024-03-07T03:14:24.000+05:30
+dbhost01 kernel: monitor exiting critical window"
+LONG_002,paste,"Health check mentions ORA but no incident","NO_MATCH","","","NO_MATCH","yes","2024-03-16T12:00:00.000+05:30
+health-agent: cycle start
+2024-03-16T12:00:01.000+05:30
+health-agent: collecting memory metrics
+2024-03-16T12:00:02.000+05:30
+health-agent: pga usage current 41 percent
+2024-03-16T12:00:03.000+05:30
+health-agent: shared pool free space normal
+2024-03-16T12:00:04.000+05:30
+health-agent: inspecting top wait events
+2024-03-16T12:00:05.000+05:30
+Checking if ORA-04031 occurred in the last 24 hours... None found.
+2024-03-16T12:00:06.000+05:30
+health-agent: inspecting incident dump inventory
+2024-03-16T12:00:07.000+05:30
+health-agent: no incident package pending
+2024-03-16T12:00:08.000+05:30
+health-agent: parsing alert log summary
+2024-03-16T12:00:09.000+05:30
+health-agent: no fatal stack traces found
+2024-03-16T12:00:10.000+05:30
+System memory health check passed. Shared pool is at 45% capacity.
+2024-03-16T12:00:11.000+05:30
+health-agent: checking ORA-00600 frequency none found
+2024-03-16T12:00:12.000+05:30
+health-agent: checking ORA-07445 frequency none found
+2024-03-16T12:00:13.000+05:30
+health-agent: checking ORA-27102 frequency none found
+2024-03-16T12:00:14.000+05:30
+health-agent: listener port response normal
+2024-03-16T12:00:15.000+05:30
+health-agent: archive log destination utilization 52 percent
+2024-03-16T12:00:16.000+05:30
+health-agent: datafile io latency baseline
+2024-03-16T12:00:17.000+05:30
+health-agent: lru latch sleeps stable
+2024-03-16T12:00:18.000+05:30
+health-agent: cpu run queue baseline
+2024-03-16T12:00:19.000+05:30
+health-agent: swap in swap out baseline
+2024-03-16T12:00:20.000+05:30
+health-agent: no blocked tasks
+2024-03-16T12:00:21.000+05:30
+health-agent: io wait under threshold
+2024-03-16T12:00:22.000+05:30
+health-agent: no filesystem alert
+2024-03-16T12:00:23.000+05:30
+health-agent: no nfs timeout
+2024-03-16T12:00:24.000+05:30
+health-agent: no conntrack saturation
+2024-03-16T12:00:25.000+05:30
+health-agent: no hba reset event
+2024-03-16T12:00:26.000+05:30
+health-agent: no kernel lockup event
+2024-03-16T12:00:27.000+05:30
+health-agent: no panic signature
+2024-03-16T12:00:28.000+05:30
+health-agent: no ohasd restart
+2024-03-16T12:00:29.000+05:30
+health-agent: no css eviction event
+2024-03-16T12:00:30.000+05:30
+health-agent: no acl denial signature
+2024-03-16T12:00:31.000+05:30
+health-agent: no audit kill-9 event
+2024-03-16T12:00:32.000+05:30
+health-agent: no endpoint packet drop
+2024-03-16T12:00:33.000+05:30
+health-agent: gc waits within expected range
+2024-03-16T12:00:34.000+05:30
+health-agent: log switch average stable
+2024-03-16T12:00:35.000+05:30
+health-agent: db writer checkpoints normal
+2024-03-16T12:00:36.000+05:30
+health-agent: standby apply lag none
+2024-03-16T12:00:37.000+05:30
+health-agent: backup catalog sync complete
+2024-03-16T12:00:38.000+05:30
+health-agent: memory advisor recommends no change
+2024-03-16T12:00:39.000+05:30
+health-agent: host diagnostics completed
+2024-03-16T12:00:40.000+05:30
+Health check completed successfully.
+2024-03-16T12:00:41.000+05:30
+health-agent: cycle end"
+LONG_003,paste,"Exadata flash disk failure from long merged logs","SUCCESS","EXA_FLASH_FAIL","","MEDIUM","no","2024-03-07T03:14:20.000+05:30
+cell01 exawatcher: normal metrics sample
+2024-03-07T03:14:21.000+05:30
+cell01 exawatcher: smartscan efficiency 96 percent
+2024-03-07T03:14:22.000+05:30
+cell01 exawatcher: ib throughput normal
+2024-03-07T03:14:23.000+05:30
+cell01 exawatcher: celldisk status normal
+2024-03-07T03:14:24.000+05:30
+cell01 exawatcher: flash cache occupancy 68 percent
+2024-03-07T03:14:25.000+05:30
+cell01 exawatcher: error counters stable
+2024-03-07T03:14:26.000+05:30
+cell01 exawatcher: rs process heartbeat normal
+2024-03-07T03:14:27.000+05:30
+cell01 exawatcher: ms process heartbeat normal
+2024-03-07T03:14:28.000+05:30
+cell01 exawatcher: cellsrv heartbeat normal
+2024-03-07T03:14:29.000+05:30
+cell01 exawatcher: alert queue empty
+2024-03-07T03:14:30.000+05:30
+name: AFR_2024-03-07T03:14:30_cell01
+2024-03-07T03:14:31.000+05:30
+alertType: Stateless
+2024-03-07T03:14:32.000+05:30
+message: Smart Scan Metrics Generated
+2024-03-07T03:14:33.000+05:30
+severity: clear
+2024-03-07T03:14:34.000+05:30
+smartscan bytes returned 204857600
+2024-03-07T03:14:35.000+05:30
+smartscan bytes saved 198457600
+2024-03-07T03:14:36.000+05:30
+smartscan efficiency 97 percent
+2024-03-07T03:14:37.000+05:30
+cell01 exawatcher: next cycle start
+2024-03-07T03:14:38.000+05:30
+cell01 exawatcher: celldisk check complete
+2024-03-07T03:14:39.000+05:30
+cell01 exawatcher: flashdisk check complete
+2024-03-07T03:14:40.000+05:30
+cell01 exawatcher: no critical alarms
+2024-03-07T03:14:41.000+05:30
+cell01 exawatcher: health score 100
+2024-03-07T03:14:42.000+05:30
+cell01 exawatcher: fc path normal
+2024-03-07T03:14:43.000+05:30
+cell01 exawatcher: io profile steady
+2024-03-07T03:14:44.000+05:30
+cell01 exawatcher: queue depth steady
+2024-03-07T03:14:45.000+05:30
+cell01 exawatcher: wear level nominal
+2024-03-07T03:14:46.000+05:30
+cell01 exawatcher: no relocation task
+2024-03-07T03:14:47.000+05:30
+cell01 exawatcher: no rebalance task
+2024-03-07T03:14:48.000+05:30
+cell01 exawatcher: no throttling
+2024-03-07T03:14:49.000+05:30
+cell01 exawatcher: no checksum fault
+2024-03-07T03:14:50.000+05:30
+cell01 exawatcher: flash cache normal
+2024-03-07T03:14:51.000+05:30
+cell01 exawatcher: collector timestamp sync ok
+2024-03-07T03:14:52.000+05:30
+cell01 exawatcher: collector cpu normal
+2024-03-07T03:14:53.000+05:30
+cell01 exawatcher: collector memory normal
+2024-03-07T03:14:54.000+05:30
+cell01 exawatcher: collector io normal
+2024-03-07T03:14:55.000+05:30
+name: AFR_2024-03-07T03:15:00_cell01
+2024-03-07T03:14:56.000+05:30
+alertType: Stateful
+2024-03-07T03:14:57.000+05:30
+message: Flash disk FD_00_cell01 failed
+2024-03-07T03:14:58.000+05:30
+metricObjectName: FD_00_cell01
+2024-03-07T03:14:59.000+05:30
+severity: critical
+2024-03-07T03:15:00.000+05:30
+name: FD_00_cell01
+2024-03-07T03:15:01.000+05:30
+cellDiskType: FlashDisk
+2024-03-07T03:15:02.000+05:30
+status: failed
+2024-03-07T03:15:03.000+05:30
+errorCount: 182
+2024-03-07T03:15:04.000+05:30
+CellCLI list flashdisk attributes name status errorCount
+2024-03-07T03:15:05.000+05:30
+FD_00_cell01 failed 182
+2024-03-07T03:15:06.000+05:30
+FD_01_cell01 normal 0
+2024-03-07T03:15:07.000+05:30
+FD_02_cell01 normal 0
+2024-03-07T03:15:08.000+05:30
+FD_03_cell01 normal 0
+2024-03-07T03:15:09.000+05:30
+cell01 exawatcher: failover recommendation generated
+2024-03-07T03:15:10.000+05:30
+cell01 exawatcher: event persisted"
+LONG_004,paste,"Unknown application crash log should request more evidence","NO_MATCH","","","NO_MATCH","yes","2024-05-12 14:02:00 [INFO] [MyApp-WebUI] Daily scheduler started
+2024-05-12 14:02:01 [DEBUG] [MyApp-WebUI] Warmup cache begin
+2024-05-12 14:02:02 [DEBUG] [MyApp-WebUI] Warmup cache end
+2024-05-12 14:02:03 [INFO] [MyApp-WebUI] Session manager heartbeat
+2024-05-12 14:02:04 [INFO] [MyApp-WebUI] Received login request for tenant blue
+2024-05-12 14:02:05 [INFO] [MyApp-WebUI] Authentication provider loaded
+2024-05-12 14:02:06 [WARN] [MyApp-WebUI] Slow response from avatar service
+2024-05-12 14:02:07 [INFO] [MyApp-WebUI] Retrying avatar service call
+2024-05-12 14:02:08 [INFO] [MyApp-WebUI] Avatar service recovered
+2024-05-12 14:02:09 [INFO] [MyApp-WebUI] Analytics event queued
+2024-05-12 14:02:10 [INFO] [MyApp-WebUI] Metrics flush complete
+2024-05-12 14:02:11 [ERROR] [MyApp-WebUI] NullPointerException in module UserAuthenticationController.java:402
+2024-05-12 14:02:12 [WARN] [MyApp-WebUI] Failed to parse custom UI payload. Missing token X-CSRF-TOKEN
+2024-05-12 14:02:13 [INFO] [MyApp-WebUI] Attempting graceful recovery
+2024-05-12 14:02:14 [INFO] [MyApp-WebUI] Recovery failed due to state mismatch
+2024-05-12 14:02:15 [FATAL] [MyApp-WebUI] Node.js server crashed during garbage collection. V8 heap out of memory.
+2024-05-12 14:02:16 [INFO] [MyApp-WebUI] Restart policy max_retries=3
+2024-05-12 14:02:17 [INFO] [MyApp-WebUI] Restart attempt 1
+2024-05-12 14:02:18 [INFO] [MyApp-WebUI] Process started pid 9931
+2024-05-12 14:02:19 [INFO] [MyApp-WebUI] Startup scripts loading
+2024-05-12 14:02:20 [INFO] [MyApp-WebUI] Startup scripts completed
+2024-05-12 14:02:21 [WARN] [MyApp-WebUI] Background job backlog high
+2024-05-12 14:02:22 [WARN] [MyApp-WebUI] Queue lag 2100 ms
+2024-05-12 14:02:23 [INFO] [MyApp-WebUI] Queue lag reduced 1500 ms
+2024-05-12 14:02:24 [INFO] [MyApp-WebUI] Queue lag reduced 900 ms
+2024-05-12 14:02:25 [INFO] [MyApp-WebUI] Queue lag reduced 400 ms
+2024-05-12 14:02:26 [INFO] [MyApp-WebUI] Queue lag nominal
+2024-05-12 14:02:27 [INFO] [MyApp-WebUI] Health endpoint returns ok
+2024-05-12 14:02:28 [INFO] [MyApp-WebUI] Dependency graph stable
+2024-05-12 14:02:29 [INFO] [MyApp-WebUI] UI worker pool size 16
+2024-05-12 14:02:30 [DEBUG] [MyApp-WebUI] cache hit ratio 0.96
+2024-05-12 14:02:31 [DEBUG] [MyApp-WebUI] garbage collector idle
+2024-05-12 14:02:32 [INFO] [MyApp-WebUI] run loop normal
+2024-05-12 14:02:33 [INFO] [MyApp-WebUI] streaming channel connected
+2024-05-12 14:02:34 [INFO] [MyApp-WebUI] streaming channel active
+2024-05-12 14:02:35 [INFO] [MyApp-WebUI] session cleanup complete
+2024-05-12 14:02:36 [INFO] [MyApp-WebUI] no oracle signal present
+2024-05-12 14:02:37 [INFO] [MyApp-WebUI] no os kernel message present
+2024-05-12 14:02:38 [INFO] [MyApp-WebUI] no storage telemetry present
+2024-05-12 14:02:39 [INFO] [MyApp-WebUI] no cluster telemetry present
+2024-05-12 14:02:40 [INFO] [MyApp-WebUI] canary checks complete
+2024-05-12 14:02:41 [INFO] [MyApp-WebUI] perf baseline stored
+2024-05-12 14:02:42 [INFO] [MyApp-WebUI] request id 12fd done
+2024-05-12 14:02:43 [INFO] [MyApp-WebUI] request id 12fe done
+2024-05-12 14:02:44 [INFO] [MyApp-WebUI] request id 12ff done
+2024-05-12 14:02:45 [INFO] [MyApp-WebUI] request id 1300 done
+2024-05-12 14:02:46 [INFO] [MyApp-WebUI] request id 1301 done
+2024-05-12 14:02:47 [INFO] [MyApp-WebUI] request id 1302 done
+2024-05-12 14:02:48 [INFO] [MyApp-WebUI] request id 1303 done
+2024-05-12 14:02:49 [INFO] [MyApp-WebUI] request id 1304 done
+2024-05-12 14:02:50 [INFO] [MyApp-WebUI] request id 1305 done
+2024-05-12 14:02:51 [INFO] [MyApp-WebUI] request id 1306 done
+2024-05-12 14:02:52 [INFO] [MyApp-WebUI] request id 1307 done
+2024-05-12 14:02:53 [INFO] [MyApp-WebUI] request id 1308 done
+2024-05-12 14:02:54 [INFO] [MyApp-WebUI] request id 1309 done
+2024-05-12 14:02:55 [INFO] [MyApp-WebUI] request id 1310 done
+2024-05-12 14:02:56 [INFO] [MyApp-WebUI] request id 1311 done
+2024-05-12 14:02:57 [INFO] [MyApp-WebUI] request id 1312 done
+2024-05-12 14:02:58 [INFO] [MyApp-WebUI] request id 1313 done
+2024-05-12 14:02:59 [INFO] [MyApp-WebUI] end of diagnostic excerpt"

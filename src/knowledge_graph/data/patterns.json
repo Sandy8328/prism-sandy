@@ -1,0 +1,464 @@
+{
+  "SCSI_DISK_TIMEOUT": {
+    "match_any": ["sd\\s+\\d+:\\d+:\\d+:\\d+:.*FAILED Result:.*DRIVER_TIMEOUT","sd\\s+\\d+:\\d+:\\d+:\\d+:.*FAILED Result:.*DID_TIME_OUT","blk_update_request: I/O error, dev sd[a-z]+","Buffer I/O error on dev sd[a-z]+, logical block","sd\\s+\\d+:\\d+:\\d+:\\d+: \\[sd[a-z]+\\] Stopping disk","sd\\s+\\d+:\\d+:\\d+:\\d+: \\[sd[a-z]+\\] Sense Key\\s*:\\s*Hardware Error","sd\\s+\\d+:\\d+:\\d+:\\d+: rejecting I/O to offline device"],
+    "match_all": ["sd\\s+\\d+:\\d+:\\d+:\\d+:.*FAILED","I/O error"],
+    "exclude": ["Synchronizing SCSI cache"],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "device_extract": "\\[sd([a-z]+)\\]",
+    "ora_codes_triggered": ["ORA-27072","ORA-15080","ORA-00353"]
+  },
+  "FC_HBA_RESET": {
+    "match_any": ["qla2xxx.*Abort command issued","qla2xxx.*LOGO nexus reestablished","qla2xxx.*PLOGI IOCB timeout","qla2xxx.*Adapter reset issued nexus=","qla2xxx.*Adapter aborted all outstanding I/O","qla2xxx.*Abort ISP active.*Resetting","qla2xxx.*kill adapter.*command timeout","lpfc.*Link Down Event","lpfc.*0x102 Lost connection"],
+    "match_all": ["qla2xxx|lpfc"],
+    "exclude": ["Ready to login"],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "device_extract": "qla2xxx \\[([0-9a-f:\\.]+)\\]",
+    "ora_codes_triggered": ["ORA-27072","ORA-15080","ORA-00353"]
+  },
+  "MULTIPATH_ALL_PATHS_DOWN": {
+    "match_any": ["multipathd.*remaining active paths: 0","multipathd.*Fail all paths","multipathd.*path.*is down","multipathd.*Failing path \\d+:\\d+","multipathd.*Changing queueing policy to 'fail'","device-mapper: multipath: Failing path \\d+:\\d+"],
+    "match_all": ["multipathd|multipath"],
+    "exclude": ["remaining active paths: [1-9]"],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "device_extract": "(mpatha?\\w*): remaining",
+    "ora_codes_triggered": ["ORA-15080","ORA-15040","ORA-15130"]
+  },
+  "IO_QUEUE_TIMEOUT": {
+    "match_any": ["blk_queue_timeout: request timeout \\d+ ms for dev sd[a-z]+","blk_abort_request: blk abort request","scsi_abort_command: abort SCSI cmd","sd\\s+\\d+:\\d+:\\d+:\\d+: \\[sd[a-z]+\\] Aborting command","IO QUEUE TIMEOUT","task .* blocked for more than \\d+ seconds"],
+    "match_all": ["abort|timeout"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "device_extract": "for dev (sd[a-z]+)",
+    "ora_codes_triggered": ["ORA-27072","ORA-15080"]
+  },
+  "EXT4_JOURNAL_ABORT": {
+    "match_any": ["EXT4-fs error.*ext4_journal_check_start.*Detected aborted journal","EXT4-fs \\(.*\\): Remounting filesystem read-only","EXT4-fs error.*bad block bitmap checksum","JBD2: recovery failed","EXT4-fs.*error loading journal"],
+    "match_all": ["EXT4-fs"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "device_extract": "EXT4-fs error \\(device ([\\w-]+)\\)",
+    "ora_codes_triggered": ["ORA-00257","ORA-19809","ORA-16038"]
+  },
+  "XFS_FILESYSTEM_SHUTDOWN": {
+    "match_any": ["XFS \\([\\w\\d]+\\): metadata I/O error in .* error \\d+","XFS \\([\\w\\d]+\\): Filesystem has been shut down due to log error","XFS \\([\\w\\d]+\\): log I/O error","XFS \\([\\w\\d]+\\): Please unmount the filesystem"],
+    "match_all": ["XFS"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "device_extract": "XFS \\(([\\w\\d]+)\\):",
+    "ora_codes_triggered": ["ORA-27072"]
+  },
+  "FILESYSTEM_ARCH_FULL": {
+    "match_any": ["/arch\\s+.*\\s+100%","100%\\s+/arch","/arch.*Available\\s+0","Filesystem.*100%.*arch"],
+    "match_all": ["/arch"],
+    "exclude": [],
+    "log_sources": ["DF_OUTPUT"],
+    "severity": "CRITICAL",
+    "device_extract": "(/\\S*arch\\S*)",
+    "ora_codes_triggered": ["ORA-00257","ORA-19504","ORA-16038"]
+  },
+  "FILESYSTEM_ANY_FULL": {
+    "match_any": ["\\s+100%\\s+/","\\s+9[5-9]%\\s+/"],
+    "match_all": [],
+    "exclude": ["tmpfs|devtmpfs|udev"],
+    "log_sources": ["DF_OUTPUT"],
+    "severity": "ERROR",
+    "device_extract": "\\d+%\\s+(/\\S+)",
+    "threshold_field": "use_pct",
+    "threshold_value": 95,
+    "ora_codes_triggered": ["ORA-00257","ORA-19504"]
+  },
+  "SMARTCTL_PENDING_SECTOR": {
+    "match_any": ["SMART overall-health self-assessment test result: FAILED","Drive failure expected in less than 24 hours","197 Current_Pending_Sector.*[1-9]\\d*$","198 Offline_Uncorrectable.*[1-9]\\d*$"],
+    "match_all": ["SMART|smartctl"],
+    "exclude": ["test result: PASSED"],
+    "log_sources": ["SMARTCTL_OUTPUT"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27072","ORA-01578"]
+  },
+  "ISCSI_SESSION_FAIL": {
+    "match_any": ["iscsid:.*connection timed out","iscsid: detected conn error \\(\\d+\\)","kernel:.*ping timeout of \\d+ secs expired","kernel: scsi \\d+:\\d+:\\d+:\\d+: rejecting I/O to dead device","kernel: sd \\d+:\\d+:\\d+:\\d+: \\[sd[a-z]+\\] killing request"],
+    "match_all": ["iscsid|iscsi"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27072","ORA-15080"]
+  },
+  "LVM_DEVICE_FAIL": {
+    "match_any": ["device-mapper: table:.*dm-linear: Device lookup failed","device-mapper: ioctl: error adding target to table","EXT4-fs error.*delayed block allocation failed.*error -5"],
+    "match_all": ["device-mapper|dm-"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "device_extract": "device (dm-\\d+)",
+    "ora_codes_triggered": ["ORA-27072","ORA-00257"]
+  },
+  "OOM_KILLER_ACTIVE": {
+    "match_any": ["oracle invoked oom-killer","oom-killer: gfp_mask=.*oracle","Memory cgroup out of memory: Kill process \\d+ \\(oracle\\)","Killed process \\d+ \\(oracle\\) total-vm:","oom_reaper: reaped process \\d+ \\(oracle\\)","Out of memory: Kill process.*oracle"],
+    "match_all": ["oracle"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "pid_extract": "Kill(?:ed)? process (\\d+)",
+    "ora_codes_triggered": ["ORA-00603","ORA-07445"]
+  },
+  "CGROUP_OOM_KILL": {
+    "match_any": ["oracle-ohasd\\.service: A process.*killed by the OOM killer","oracle-ohasd\\.service: Failed with result 'oom-kill'","systemd.*oracle-ohasd\\.service: Main process exited.*status=9/KILL","Failed to start OHAS Daemon"],
+    "match_all": ["oracle-ohasd"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": []
+  },
+  "SHMGET_EINVAL": {
+    "match_any": ["shmget.*errno=22.*Invalid argument","Cannot create shared memory segment.*size=\\d+","kernel: shm: shm_tot.*exceeds shm_ctlmax","shmget.*failed.*errno = 28.*ENOSPC"],
+    "match_all": ["shmget"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27102"]
+  },
+  "HUGEPAGES_FREE_ZERO": {
+    "match_any": ["HugePages_Free:\\s+0","hugetlb: allocating \\d+ of page size.*failed","HugePages allocation failed"],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","PROC_MEMINFO"],
+    "severity": "ERROR",
+    "ora_codes_triggered": ["ORA-27102","ORA-04031"]
+  },
+  "MEMORY_SWAP_STORM": {
+    "match_any": ["^\\s*\\d+\\s+\\d+\\s+\\d+\\s+\\d+\\s+\\d+\\s+\\d+\\s+[5-9]\\d{2,}\\s+[5-9]\\d{2,}"],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["VMSTAT_OUTPUT"],
+    "severity": "CRITICAL",
+    "threshold_fields": ["si","so"],
+    "threshold_value": 500,
+    "ora_codes_triggered": ["ORA-04031"]
+  },
+  "SEMAPHORE_LIMIT_EXHAUSTED": {
+    "match_any": ["semget.*errno=28.*No space left on device","Unable to allocate semaphore set.*semmni limit reached","semget.*failed.*ENOSPC"],
+    "match_all": ["semget"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27300","ORA-27301","ORA-27302"]
+  },
+  "FD_LIMIT_EXHAUSTED": {
+    "match_any": ["error: open: Too many open files.*errno: 24","Could not open.*trace.*Too many open files","VFS: file-max limit \\d+ reached","Too many open files \\(errno: 24\\)"],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27300","ORA-27301","ORA-27302"]
+  },
+  "MEMLOCK_ULIMIT_TOO_LOW": {
+    "match_any": ["ORADISM.*mlock failed with errno=1.*EPERM","ORADISM: shmctl\\(SHM_LOCK\\) failed with errno=12","Cannot lock SGA: Operation not permitted","oradism.*SGA will not be memory-locked"],
+    "match_all": ["ORADISM|oradism"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "ERROR",
+    "ora_codes_triggered": ["ORA-27125"]
+  },
+  "DEVSHM_TOO_SMALL": {
+    "match_any": ["shmget.*errno = 28.*ENOSPC.*dev.shm","Cannot create SGA segment.*No space left on device.*dev.shm","oracle.*shmget.*failed.*errno = 28"],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27102"]
+  },
+  "THP_LATENCY_STALL": {
+    "match_any": ["khugepaged: huge page allocated","THP allocation failed due to page fragmentation","page allocation failure: order:9.*GFP_KERNEL.*__GFP_COMP"],
+    "match_all": ["khugepaged|THP|transparent_hugepage"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "WARNING",
+    "ora_codes_triggered": []
+  },
+  "SOFT_LOCKUP": {
+    "match_any": ["BUG: soft lockup - CPU#\\d+ stuck for \\d+s! \\[oracle:\\d+\\]","BUG: soft lockup - CPU#\\d+ stuck for \\d+s!.*oracle","soft lockup.*oracle.*stuck"],
+    "match_all": ["soft lockup"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "pid_extract": "\\[oracle:(\\d+)\\]",
+    "ora_codes_triggered": []
+  },
+  "HARD_LOCKUP": {
+    "match_any": ["Watchdog detected hard LOCKUP on cpu \\d+","NMI backtrace for cpu \\d+","native_queued_spin_lock_slowpath"],
+    "match_all": ["hard LOCKUP|LOCKUP on cpu"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": []
+  },
+  "KERNEL_PANIC": {
+    "match_any": ["Kernel panic - not syncing: Fatal exception","Kernel panic - not syncing: hung_task","Kernel panic - not syncing: softlockup","Marking controller dead, do not restart","megaraid_sas.*kill adapter.*command timeout"],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": []
+  },
+  "MCE_CORRECTED_MEMORY": {
+    "match_any": ["EDAC MC\\d+: \\d+ CE memory read error on CPU_SrcID","mcelog: MCE.*Memory corrected error count.*CORE=\\d+","Hardware Error.*Corrected error, no action required"],
+    "match_all": ["CE|Corrected error"],
+    "exclude": ["UE|Uncorrected"],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "WARNING",
+    "ora_codes_triggered": []
+  },
+  "MCE_UNCORRECTED_MEMORY": {
+    "match_any": ["EDAC MC\\d+: \\d+ UE memory read error on CPU_SrcID","Machine Check Exception.*Uncorrected","Hardware Error.*Uncorrected","mce.*Uncorrected error"],
+    "match_all": ["UE|Uncorrected"],
+    "exclude": ["Corrected error, no action required"],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27072","ORA-01578","ORA-00600"]
+  },
+  "KERNEL_NULL_PTR_DEREF": {
+    "match_any": ["BUG: unable to handle kernel NULL pointer dereference","Oops: 0000 \\[#\\d+\\] SMP","IP:.*qla2xxx_eh_abort","RIP:.*qla2xxx"],
+    "match_all": ["BUG:|Oops:"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27072"]
+  },
+  "SELINUX_BLOCKING": {
+    "match_any": ["avc: denied \\{ (read|write|open|connectto|execute) \\}.*comm=\\\"oracle\\\"","avc: denied.*scontext=.*oracle_db_t","avc: denied.*tcontext=.*oracle","type=AVC.*oracle.*denied","avc: denied \\{ read \\}.*comm=\\\"tnslsnr\\\""],
+    "match_all": ["avc: denied"],
+    "exclude": ["permissive=1"],
+    "log_sources": ["AUDIT_LOG"],
+    "severity": "ERROR",
+    "operation_extract": "avc: denied \\{ (\\w+) \\}",
+    "ora_codes_triggered": ["ORA-27300","ORA-27301","ORA-27302"]
+  },
+  "BONDING_FAILOVER_EVENT": {
+    "match_any": ["bonding: bond\\d+: link status definitely down for interface eth\\d+, disabling it","bonding: bond\\d+: making interface eth\\d+ the new active one","bonding: bond\\d+: link status definitely up for interface eth\\d+"],
+    "match_all": ["bonding.*bond\\d+"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "ERROR",
+    "interface_extract": "bond(\\d+)",
+    "ora_codes_triggered": ["ORA-03113"]
+  },
+  "BOTH_NICS_DOWN": {
+    "match_any": ["bonding: bond\\d+: Warning: No active slaves\\. Using last resort","NIC.*Link is Down.*eth0","bnx2.*eth\\d+: NIC Copper Link is Down"],
+    "match_all": [],
+    "exclude": ["link status definitely up"],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-03113","ORA-12541"]
+  },
+  "NF_CONNTRACK_FULL": {
+    "match_any": ["nf_conntrack: nf_conntrack: table full, dropping packet","nf_conntrack.*table full"],
+    "match_all": ["nf_conntrack"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-12541","ORA-12170","ORA-03113"]
+  },
+  "IB_LINK_DEGRADED": {
+    "match_any": ["mlx4_en: mlx4_en_restart_port called for ib\\d+","mlx4.*command 0x\\w+ failed: fw status","ib\\d+: Link Speed: 10 Gb/s \\(disabled 40Gb\\)"],
+    "match_all": ["ib\\d+|mlx4|InfiniBand"],
+    "exclude": ["Link Speed: 40 Gb/s"],
+    "log_sources": ["VAR_LOG_MESSAGES","DMESG"],
+    "severity": "ERROR",
+    "interface_extract": "(ib\\d+)",
+    "ora_codes_triggered": []
+  },
+  "NTP_TIME_JUMP": {
+    "match_any": ["chronyd.*System clock wrong by \\d+\\.\\d+ seconds","chronyd.*Forward time jump detected","chronyd.*System clock was stepped by \\d+\\.\\d+ seconds","ntpd.*time stepped by \\d+\\.\\d+","kernel:.*Clock: inserting leap second"],
+    "match_all": ["chronyd|ntpd|time.*step|clock.*step"],
+    "exclude": ["System clock wrong by 0\\.\\d+"],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "step_extract": "stepped by (\\d+\\.\\d+) seconds",
+    "ora_codes_triggered": ["ORA-29740"]
+  },
+  "EXA_CELL_STOP": {
+    "match_any": ["CELLSRV: Cell Server stopped","RS-.*CELLSRV.*terminated","MS-.*CELLSRV.*down","Cell service is shutting down"],
+    "match_all": ["CELLSRV|Cell Server"],
+    "exclude": [],
+    "log_sources": ["CELL_ALERT_LOG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27072","ORA-15080","ORA-15130"]
+  },
+  "EXA_FLASH_FAIL": {
+    "match_any": ["FLASH_IO_TIMEOUT","flashCache read error","Flash cache device.*failed","Flash disk.*OFFLINE","FPD-.*Flash disk.*failure","Unrecoverable error on Flash cache","Flash disk .* failed","status:\\s*failed"],
+    "match_all": ["Flash"],
+    "exclude": [],
+    "log_sources": ["CELL_ALERT_LOG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-27072"]
+  },
+  "EXA_IB_LINK_DOWN": {
+    "match_any": ["InfiniBand link is DOWN","RoCE port.*down","RDS:.*link down","RDS:.*peer.*dead"],
+    "match_all": ["InfiniBand|RoCE|RDS"],
+    "exclude": [],
+    "log_sources": ["CELL_ALERT_LOG","EXAWATCHER"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-03113","ORA-12541"]
+  },
+  "EXA_SMART_SCAN_DISABLED": {
+    "match_any": ["Smart Scan disabled due to.*","Offload failed.*cell","Storage Server Smart Scan error"],
+    "match_all": ["Smart Scan|Offload"],
+    "exclude": [],
+    "log_sources": ["CELL_ALERT_LOG","TRACE"],
+    "severity": "ERROR",
+    "ora_codes_triggered": ["ORA-00600","ORA-07445"]
+  },
+  "IPTABLES_BLOCKING_1521": {
+    "match_any": ["FINAL_REJECT:.*DPT=1521","FINAL_REJECT:.*DPT=1522","kernel:.*DROP.*DPT=1521","kernel:.*REJECT.*DPT=1521"],
+    "match_all": ["DPT=152[12]"],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "ERROR",
+    "src_ip_extract": "SRC=(\\d+\\.\\d+\\.\\d+\\.\\d+)",
+    "ora_codes_triggered": ["ORA-12541","ORA-12170"]
+  },
+  "NFS_MOUNT_TIMEOUT": {
+    "match_any": [
+      "nfs: server \\S+ not responding, timed out",
+      "nfs: server \\S+ not responding, still trying",
+      "kernel: nfs: server \\S+ not responding",
+      "nfs-client\\.target failed",
+      "nfs.*server.*not responding",
+      "server.*not responding.*nfs"
+    ],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["VAR_LOG_MESSAGES"],
+    "severity": "CRITICAL",
+    "server_extract": "nfs: server (\\S+) not responding",
+    "ora_codes_triggered": ["ORA-27054", "ORA-00257", "ORA-03113"]
+  },
+  "UDP_BUFFER_OVERFLOW": {
+    "match_any": ["^\\s+\\d{3,} packet receive errors","^\\s+\\d{3,} receive buffer errors"],
+    "match_all": [],
+    "exclude": ["^\\s+0 packet receive errors"],
+    "log_sources": ["NETSTAT_S_OUTPUT"],
+    "severity": "ERROR",
+    "threshold_value": 100,
+    "ora_codes_triggered": []
+  },
+  "SOCKET_EXHAUSTION": {
+    "match_any": ["TCP:.*alloc (\\d+)","TCP.*inuse (\\d{4,})"],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["SOCKSTAT_OUTPUT"],
+    "severity": "ERROR",
+    "threshold_field": "tcp_alloc",
+    "threshold_pct": 0.95,
+    "ora_codes_triggered": ["ORA-12519","ORA-12520"]
+  },
+  "CPU_RUNQUEUE_SATURATION": {
+    "match_any": [],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["SAR_Q_OUTPUT"],
+    "severity": "ERROR",
+    "threshold_fields": ["runq-sz"],
+    "threshold_formula": "runq_sz > 2 * cpu_count",
+    "ora_codes_triggered": []
+  },
+  "CPU_STEAL_TIME": {
+    "match_any": [],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["SAR_CPU_OUTPUT"],
+    "severity": "ERROR",
+    "threshold_fields": ["%steal"],
+    "threshold_value": 20,
+    "ora_codes_triggered": []
+  },
+  "ASM_DISMOUNT_CRITICAL": {
+    "match_any": ["ORA-15130: diskgroup.*is being dismounted","ORA-15130.*dismounted"],
+    "match_all": ["ORA-15130"],
+    "exclude": [],
+    "log_sources": ["ALERT_LOG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-15130"]
+  },
+  "EXA_CELL_IO_ERROR": {
+    "match_any": ["Read Failed. group:\\d+ disk:\\d+ AU:\\d+","WARNING: Read Failed.*group:\\d+"],
+    "match_all": ["Read Failed"],
+    "exclude": [],
+    "log_sources": ["ALERT_LOG","CELL_ALERT_LOG"],
+    "severity": "CRITICAL",
+    "ora_codes_triggered": ["ORA-15080","ORA-15130"]
+  },
+  "ORA_ANY_GENERIC": {
+    "match_any": ["ORA-\\d{5}"],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": ["ALERT_LOG", "TRACE", "DIRECT_INPUT", "DIRECT_ORA"],
+    "severity": "ERROR",
+    "device_extract": "",
+    "ora_codes_triggered": []
+  },
+  "_metric_patterns": {
+    "IOSTAT_HIGH_AWAIT": {"source":"IOSTAT_OUTPUT","field":"await_ms","operator":">","threshold":100,"severity_map":{"100":"WARNING","200":"ERROR","500":"CRITICAL"},"ora_codes_triggered":[]},
+    "IOSTAT_FULL_UTIL": {"source":"IOSTAT_OUTPUT","field":"util_pct","operator":">=","threshold":95,"severity":"CRITICAL","ora_codes_triggered":[]},
+    "SAR_CPU_IDLE_ZERO": {"source":"SAR_CPU_OUTPUT","field":"idle_pct","operator":"<","threshold":5,"severity":"CRITICAL","ora_codes_triggered":[]},
+    "SAR_STEAL_HIGH": {"source":"SAR_CPU_OUTPUT","field":"steal_pct","operator":">","threshold":20,"severity":"ERROR","ora_codes_triggered":[]},
+    "SAR_RUNQUEUE_HIGH": {"source":"SAR_Q_OUTPUT","field":"runq_sz","threshold_formula":"runq_sz > 2 * cpu_count","severity":"CRITICAL","ora_codes_triggered":[]},
+    "VMSTAT_SWAP_ACTIVE": {"source":"VMSTAT_OUTPUT","fields":["si","so"],"operator":">","threshold":500,"severity":"CRITICAL","ora_codes_triggered":["ORA-04031"]},
+    "VMSTAT_IOWAIT_HIGH": {"source":"VMSTAT_OUTPUT","field":"wa","operator":">","threshold":30,"severity":"ERROR","ora_codes_triggered":[]},
+    "DF_FILESYSTEM_FULL": {"source":"DF_OUTPUT","field":"use_pct","operator":">=","threshold":100,"severity":"CRITICAL","ora_codes_triggered":["ORA-00257"]}
+  },
+  "_alert_log_patterns": {
+    "TIMESTAMP_LINE": "^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s+\\d+\\s+\\d{2}:\\d{2}:\\d{2}\\s+\\d{4}$",
+    "ORA_CODE": "(ORA-\\d{5})",
+    "LINUX_ERRNO": "Linux-x86_64 Error: (\\d+): (.+)",
+    "AIX_ERRNO": "IBM AIX RISC System/6000 Error: (\\d+): (.+)",
+    "SOLARIS_ERRNO": "Solaris-AMD64 Error: (\\d+): (.+)",
+    "WINDOWS_ERRNO": "O/S-Error: \\(OS (\\d+)\\) (.+)",
+    "ADDITIONAL_INFO": "Additional information: (\\d+)",
+    "TRACE_FILE": "Errors in file (.+\\.trc):",
+    "INSTANCE_START": "Starting ORACLE instance \\((\\w+)\\)",
+    "INSTANCE_SHUTDOWN": "Shutting down instance \\((\\w+)\\)",
+    "INSTANCE_ABNORMAL": "Instance terminated by (ORADISM|MMON|USER|PMON|LGWR)",
+    "ARCHIVER_STUCK": "ARC\\d+: Archival stopped, error occurred\\. Will continue retrying",
+    "ASM_DISMOUNT": "ORA-15130.*diskgroup.*being dismounted",
+    "INSTANCE_EVICTED": "ORA-29740.*Evicted by member",
+    "BGPROCESS_DIED": "(LGWR|DBWR|MMON|PMON|SMON|CKPT|ARC\\d+).*process \\d+ died"
+  },
+  "GENERIC_ORA_EXTRACT": {
+    "match_any": ["ORA-\\d{5}"],
+    "match_all": [],
+    "exclude": [],
+    "log_sources": [],
+    "severity": "ERROR",
+    "device_extract": "",
+    "ora_codes_triggered": []
+  },
+  "_false_positives": [
+    "Thread \\d+ advanced to log sequence",
+    "Checkpoint not complete",
+    "ARC\\d+: Evaluating archive log",
+    "LGWR: STARTING LGWR ARCHIVAL",
+    "Completed checkpoint up to RBA",
+    "SMON: enabling cache recovery",
+    "SMON: enabling tx recovery",
+    "Reconfiguration started \\(old inc",
+    "Beginning log switch checkpoint",
+    "ARC\\d+: Archive log written",
+    "alter database open",
+    "Database mounted\\.",
+    "Starting ORACLE instance \\(normal\\)",
+    "Shutting down instance \\(normal\\)",
+    "multipathd.*add missing path",
+    "multipathd.*bind_paths",
+    "chronyd: Selected source",
+    "CRS-6011: The resource.*is online",
+    "CRS-2676: Start of.*succeeded",
+    "qla2xxx.*Link Up -- F_Port"
+  ]
+}

@@ -1,0 +1,620 @@
+
+================================================================================
+ 🧪 EXTENDED QA MATRIX EXECUTION (qa_matrix_extended.csv)
+================================================================================
+[init] Loading graph engine ...
+[init] Loading syslog translator ...
+[init] Loading orchestrator (full pipeline) ...
+[init] All engines ready.
+
+[QA-0001] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-27072 (File I/O error)
+  -> [SessionManager] Successfully attached 1 chunks to INC-534171F3
+         ✅ PASS
+[QA-0002] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-15080 (Synchronous I/O request
+  -> [SessionManager] Successfully attached 1 chunks to INC-A44BCF79
+         ✅ PASS
+[QA-0003] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-15130 (Diskgroup being dismoun
+  -> [SessionManager] Successfully attached 1 chunks to INC-926C2173
+         ✅ PASS
+[QA-0004] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-00257 (Archiver error)
+  -> [SessionManager] Successfully attached 1 chunks to INC-894A52AF
+         ✅ PASS
+[QA-0005] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-19809 (Limit exceeded for reco
+  -> [SessionManager] Successfully attached 1 chunks to INC-3B735B01
+         ✅ PASS
+[QA-0006] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-16038 (Log cannot be archived)
+  -> [SessionManager] Successfully attached 1 chunks to INC-1AAEEE5D
+         ✅ PASS
+[QA-0007] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-00603 (Oracle server session t
+  -> [SessionManager] Successfully attached 1 chunks to INC-6679FE24
+         ✅ PASS
+[QA-0008] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-04031 (Unable to allocate shar
+  -> [SessionManager] Successfully attached 1 chunks to INC-688BA8C6
+         ✅ PASS
+[QA-0009] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-27102 (Out of memory)
+  -> [SessionManager] Successfully attached 1 chunks to INC-A85415C8
+         ✅ PASS
+[QA-0010] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-27300 (OS operation failed)
+  -> [SessionManager] Successfully attached 1 chunks to INC-E71970E8
+         ✅ PASS
+[QA-0011] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-29740 (Evicted by cluster memb
+  -> [SessionManager] Successfully attached 1 chunks to INC-7A7469FB
+         ✅ PASS
+[QA-0012] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-03113 (End-of-file on communic
+  -> [SessionManager] Successfully attached 1 chunks to INC-52892298
+         ✅ PASS
+[QA-0013] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-12541 (TNS: no listener)
+  -> [SessionManager] Successfully attached 1 chunks to INC-C586F64E
+         ✅ PASS
+[QA-0014] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-12170 (TNS: Connect timeout oc
+  -> [SessionManager] Successfully attached 1 chunks to INC-28D8A1B2
+         ✅ PASS
+[QA-0015] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-00353 (Log corruption near blo
+  -> [SessionManager] Successfully attached 1 chunks to INC-09524574
+         ✅ PASS
+[QA-0016] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-00470 (LGWR process terminated
+  -> [SessionManager] Successfully attached 1 chunks to INC-42FC17FD
+         ✅ PASS
+[QA-0017] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-01578 (Oracle data block corru
+  -> [SessionManager] Successfully attached 1 chunks to INC-DA72296D
+         ✅ PASS
+[QA-0018] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-07445 (Exception encountered: 
+  -> [SessionManager] Successfully attached 1 chunks to INC-D5578421
+         ✅ PASS
+[QA-0019] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-27125 (Unable to create shared
+  -> [SessionManager] Successfully attached 1 chunks to INC-21FC6E61
+         ✅ PASS
+[QA-0020] Positive         | ORA_CODE         | Tier1 direct lookup: ORA-27054 (NFS file system not mou
+  -> [SessionManager] Successfully attached 1 chunks to INC-B3163A38
+         ✅ PASS
+[QA-0021] Positive         | OS_PATTERN       | OS pattern lookup: OS_OOM_KILLER (MEMORY/OOM)
+  -> [SessionManager] Successfully attached 1 chunks to INC-CAB824C9
+         ✅ PASS
+[QA-0022] Positive         | OS_PATTERN       | OS pattern lookup: OS_SCSI_TIMEOUT (DISK/SCSI)
+  -> [SessionManager] Successfully attached 1 chunks to INC-D4E25B4C
+         ✅ PASS
+[QA-0023] Positive         | OS_PATTERN       | OS pattern lookup: OS_NET_DROP (NETWORK/BONDING)
+  -> [SessionManager] Successfully attached 1 chunks to INC-57BC13DD
+         ✅ PASS
+[QA-0024] Positive         | OS_PATTERN       | OS pattern lookup: OS_NFS_STALE (NETWORK/NFS)
+  -> [SessionManager] Successfully attached 1 chunks to INC-F621F53B
+         ✅ PASS
+[QA-0025] Positive         | OS_PATTERN       | OS pattern lookup: OS_HUGEPAGE_FAIL (MEMORY/HUGEPAGES)
+  -> [SessionManager] Successfully attached 1 chunks to INC-4D6969E3
+         ✅ PASS
+[QA-0026] Positive         | OS_PATTERN       | OS pattern lookup: OS_SEMAPHORE_LIMIT (MEMORY/IPC)
+  -> [SessionManager] Successfully attached 1 chunks to INC-51B9904E
+         ✅ PASS
+[QA-0027] Positive         | OS_PATTERN       | OS pattern lookup: OS_KERNEL_PANIC (KERNEL/PANIC)
+  -> [SessionManager] Successfully attached 1 chunks to INC-31C596DE
+         ✅ PASS
+[QA-0028] Positive         | OS_PATTERN       | OS pattern lookup: OS_DISK_FULL (DISK/FILESYSTEM)
+  -> [SessionManager] Successfully attached 1 chunks to INC-E5E0E070
+         ✅ PASS
+[QA-0029] Positive         | OS_PATTERN       | OS pattern lookup: OS_CPU_SATURATION (CPU/RUNQUEUE)
+  -> [SessionManager] Successfully attached 1 chunks to INC-D2FCDFFA
+         ✅ PASS
+[QA-0030] Positive         | OS_PATTERN       | OS pattern lookup: OS_NTP_JUMP (NETWORK/NTP)
+  -> [SessionManager] Successfully attached 1 chunks to INC-AA5BA44B
+         ✅ PASS
+[QA-0031] Positive         | OS_PATTERN       | OS pattern lookup: OS_MULTIPATH_DOWN (DISK/MULTIPATH)
+  -> [SessionManager] Successfully attached 1 chunks to INC-E88B1A94
+         ✅ PASS
+[QA-0032] Positive         | OS_PATTERN       | OS pattern lookup: OS_SWAP_STORM (MEMORY/SWAP)
+  -> [SessionManager] Successfully attached 1 chunks to INC-B1EC7CD8
+         ✅ PASS
+[QA-0033] Positive         | OS_PATTERN       | OS pattern lookup: OS_ISCSI_FAIL (DISK/ISCSI)
+  -> [SessionManager] Successfully attached 1 chunks to INC-75039D1E
+         ✅ PASS
+[QA-0034] Positive         | OS_PATTERN       | OS pattern lookup: OS_CONNTRACK_FULL (NETWORK/FIREWALL)
+  -> [SessionManager] Successfully attached 1 chunks to INC-D101C987
+         ✅ PASS
+[QA-0035] Positive         | OS_PATTERN       | OS pattern lookup: OS_SELINUX_BLOCK (KERNEL/SECURITY)
+  -> [SessionManager] Successfully attached 1 chunks to INC-2E9B875A
+         ✅ PASS
+[QA-0036] Positive         | OS_PATTERN       | OS pattern lookup: OS_MCE_UNCORRECTED (KERNEL/MCE)
+  -> [SessionManager] Successfully attached 1 chunks to INC-704B136C
+         ✅ PASS
+[QA-0037] Positive         | OS_PATTERN       | OS pattern lookup: SCSI_DISK_TIMEOUT (DISK/SCSI)
+  -> [SessionManager] Successfully attached 1 chunks to INC-A5C50A20
+         ✅ PASS
+[QA-0038] Positive         | OS_PATTERN       | OS pattern lookup: FC_HBA_RESET (DISK/FC)
+  -> [SessionManager] Successfully attached 1 chunks to INC-80CCB68A
+         ✅ PASS
+[QA-0039] Positive         | OS_PATTERN       | OS pattern lookup: MULTIPATH_ALL_PATHS_DOWN (DISK/MULTI
+  -> [SessionManager] Successfully attached 1 chunks to INC-2D636761
+         ✅ PASS
+[QA-0040] Positive         | OS_PATTERN       | OS pattern lookup: IO_QUEUE_TIMEOUT (DISK/IO)
+  -> [SessionManager] Successfully attached 1 chunks to INC-72CDE2D1
+         ✅ PASS
+[QA-0041] Positive         | OS_PATTERN       | OS pattern lookup: EXT4_JOURNAL_ABORT (DISK/FILESYSTEM)
+  -> [SessionManager] Successfully attached 1 chunks to INC-48EC7020
+         ✅ PASS
+[QA-0042] Positive         | OS_PATTERN       | OS pattern lookup: XFS_FILESYSTEM_SHUTDOWN (DISK/FILESY
+  -> [SessionManager] Successfully attached 1 chunks to INC-57DD0E8E
+         ✅ PASS
+[QA-0043] Positive         | OS_PATTERN       | OS pattern lookup: FILESYSTEM_ARCH_FULL (DISK/FILESYSTE
+  -> [SessionManager] Successfully attached 1 chunks to INC-A16BE7BF
+         ✅ PASS
+[QA-0044] Positive         | OS_PATTERN       | OS pattern lookup: ISCSI_SESSION_FAIL (DISK/ISCSI)
+  -> [SessionManager] Successfully attached 1 chunks to INC-9BC2361E
+         ✅ PASS
+[QA-0045] Positive         | OS_PATTERN       | OS pattern lookup: OOM_KILLER_ACTIVE (MEMORY/OOM)
+  -> [SessionManager] Successfully attached 1 chunks to INC-8AA1999A
+         ✅ PASS
+[QA-0046] Positive         | OS_PATTERN       | OS pattern lookup: CGROUP_OOM_KILL (MEMORY/CGROUP)
+  -> [SessionManager] Successfully attached 1 chunks to INC-B498A636
+         ✅ PASS
+[QA-0047] Positive         | OS_PATTERN       | OS pattern lookup: SHMGET_EINVAL (MEMORY/IPC)
+  -> [SessionManager] Successfully attached 1 chunks to INC-98FDA7C1
+         ✅ PASS
+[QA-0048] Positive         | OS_PATTERN       | OS pattern lookup: HUGEPAGES_FREE_ZERO (MEMORY/HUGEPAGE
+  -> [SessionManager] Successfully attached 1 chunks to INC-720E995A
+         ✅ PASS
+[QA-0049] Positive         | OS_PATTERN       | OS pattern lookup: MEMORY_SWAP_STORM (MEMORY/SWAP)
+  -> [SessionManager] Successfully attached 1 chunks to INC-1649E97E
+         ✅ PASS
+[QA-0050] Positive         | OS_PATTERN       | OS pattern lookup: SEMAPHORE_LIMIT_EXHAUSTED (MEMORY/IP
+  -> [SessionManager] Successfully attached 1 chunks to INC-E858871C
+         ✅ PASS
+[QA-0051] Positive         | OS_PATTERN       | OS pattern lookup: FD_LIMIT_EXHAUSTED (MEMORY/LIMITS)
+  -> [SessionManager] Successfully attached 1 chunks to INC-6BAB70F1
+         ✅ PASS
+[QA-0052] Positive         | OS_PATTERN       | OS pattern lookup: MEMLOCK_ULIMIT_TOO_LOW (MEMORY/LIMIT
+  -> [SessionManager] Successfully attached 1 chunks to INC-44B200A7
+         ✅ PASS
+[QA-0053] Positive         | OS_PATTERN       | OS pattern lookup: CPU_RUNQUEUE_SATURATION (CPU/RUNQUEU
+  -> [SessionManager] Successfully attached 1 chunks to INC-C6B548A2
+         ✅ PASS
+[QA-0054] Positive         | OS_PATTERN       | OS pattern lookup: CPU_STEAL_TIME (CPU/VIRTUALIZATION)
+  -> [SessionManager] Successfully attached 1 chunks to INC-EC4B40A4
+         ✅ PASS
+[QA-0055] Positive         | OS_PATTERN       | OS pattern lookup: SOFT_LOCKUP (KERNEL/LOCKUP)
+  -> [SessionManager] Successfully attached 1 chunks to INC-6DB6008C
+         ✅ PASS
+[QA-0056] Positive         | OS_PATTERN       | OS pattern lookup: HARD_LOCKUP (KERNEL/LOCKUP)
+  -> [SessionManager] Successfully attached 1 chunks to INC-A73D429A
+         ✅ PASS
+[QA-0057] Positive         | OS_PATTERN       | OS pattern lookup: KERNEL_PANIC (KERNEL/PANIC)
+  -> [SessionManager] Successfully attached 1 chunks to INC-A5D60FDE
+         ✅ PASS
+[QA-0058] Positive         | OS_PATTERN       | OS pattern lookup: MCE_CORRECTED_MEMORY (KERNEL/MCE)
+  -> [SessionManager] Successfully attached 1 chunks to INC-C85F8C0F
+         ✅ PASS
+[QA-0059] Positive         | OS_PATTERN       | OS pattern lookup: MCE_UNCORRECTED_MEMORY (KERNEL/MCE)
+  -> [SessionManager] Successfully attached 1 chunks to INC-9AB137A6
+         ✅ PASS
+[QA-0060] Positive         | OS_PATTERN       | OS pattern lookup: SELINUX_BLOCKING (KERNEL/SECURITY)
+  -> [SessionManager] Successfully attached 1 chunks to INC-F9245B00
+         ✅ PASS
+[QA-0061] Positive         | OS_PATTERN       | OS pattern lookup: BONDING_FAILOVER_EVENT (NETWORK/BOND
+  -> [SessionManager] Successfully attached 1 chunks to INC-EE4D0F0C
+         ✅ PASS
+[QA-0062] Positive         | OS_PATTERN       | OS pattern lookup: BOTH_NICS_DOWN (NETWORK/BONDING)
+  -> [SessionManager] Successfully attached 1 chunks to INC-7D90CCB1
+         ✅ PASS
+[QA-0063] Positive         | OS_PATTERN       | OS pattern lookup: NF_CONNTRACK_FULL (NETWORK/FIREWALL)
+  -> [SessionManager] Successfully attached 1 chunks to INC-03D84090
+         ✅ PASS
+[QA-0064] Positive         | OS_PATTERN       | OS pattern lookup: NTP_TIME_JUMP (NETWORK/NTP)
+  -> [SessionManager] Successfully attached 1 chunks to INC-F7B6B35B
+         ✅ PASS
+[QA-0065] Positive         | OS_PATTERN       | OS pattern lookup: IPTABLES_BLOCKING_1521 (NETWORK/FIRE
+  -> [SessionManager] Successfully attached 1 chunks to INC-FA2C15F8
+         ✅ PASS
+[QA-0066] Positive         | OS_PATTERN       | OS pattern lookup: NFS_MOUNT_TIMEOUT (NETWORK/NFS)
+  -> [SessionManager] Successfully attached 1 chunks to INC-ADC7F257
+         ✅ PASS
+[QA-0067] Positive         | OS_PATTERN       | OS pattern lookup: OS_SCSI_TIMEOUT (Storage/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-4A0A486D
+         ✅ PASS
+[QA-0068] Positive         | OS_PATTERN       | OS pattern lookup: OS_NET_DROP (Network/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-1C55BFA2
+         ✅ PASS
+[QA-0069] Positive         | OS_PATTERN       | OS pattern lookup: ASM_DISK_DROP (ASM/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-6BB81C59
+         ✅ PASS
+[QA-0070] Positive         | OS_PATTERN       | OS pattern lookup: DB_CRASH_ORA_00603 (DB/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-B862B5CC
+         ✅ PASS
+[QA-0071] Positive         | OS_PATTERN       | OS pattern lookup: DB_EVICTION_ORA_29740 (CLUSTER/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-26DB1027
+         ✅ PASS
+[QA-0072] Positive         | OS_PATTERN       | OS pattern lookup: OS_OOM_KILLER (OS_TRIGGERED/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-515773A2
+         ✅ PASS
+[QA-0073] Positive         | OS_PATTERN       | OS pattern lookup: OS_NFS_STALE (Storage/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-6E9249D4
+         ✅ PASS
+[QA-0074] Positive         | OS_PATTERN       | OS pattern lookup: OS_HUGEPAGE_FAIL (OS_TRIGGERED/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-8A14BABB
+         ✅ PASS
+[QA-0075] Positive         | OS_PATTERN       | OS pattern lookup: OS_KERNEL_PANIC (OS_TRIGGERED/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-8A4E33C1
+         ✅ PASS
+[QA-0076] Positive         | OS_PATTERN       | OS pattern lookup: OS_HBA_FAILURE (Storage/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-309FB0CB
+         ✅ PASS
+[QA-0077] Positive         | OS_PATTERN       | OS pattern lookup: OS_FILESYSTEM_FULL (OS_TRIGGERED/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-6A4A5924
+         ✅ PASS
+[QA-0078] Positive         | OS_PATTERN       | OS pattern lookup: OS_SWAP_FULL (OS_TRIGGERED/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-65A0F266
+         ✅ PASS
+[QA-0079] Positive         | OS_PATTERN       | OS pattern lookup: OS_BONDING_FAIL (Network/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-ECB05177
+         ✅ PASS
+[QA-0080] Positive         | OS_PATTERN       | OS pattern lookup: OS_RAID_DEGRADED (Storage/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-ACDDA852
+         ✅ PASS
+[QA-0081] Positive         | OS_PATTERN       | OS pattern lookup: OS_VMWARE_SNAPSHOT (Storage/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-934F6785
+         ✅ PASS
+[QA-0082] Positive         | OS_PATTERN       | OS pattern lookup: OS_LPAR_CPU_CAP (OS_TRIGGERED/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-C589B1F6
+         ✅ PASS
+[QA-0083] Positive         | OS_PATTERN       | OS pattern lookup: CRS_RESOURCE_FAILED (CLUSTER/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-A30264D2
+         ✅ PASS
+[QA-0084] Positive         | OS_PATTERN       | OS pattern lookup: DG_APPLY_LAG (DATAGUARD/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-4B11D054
+         ✅ PASS
+[QA-0085] Positive         | OS_PATTERN       | OS pattern lookup: RMAN_BACKUP_FAILED (RMAN/)
+  -> [SessionManager] Successfully attached 1 chunks to INC-38849D52
+         ✅ PASS
+[QA-0086] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_OOM_KILLER
+         ❌ FAIL: 'OS_OOM_KILLER' not found in translated codes: [(none)]
+[QA-0087] Translator       | TRANSLATOR       | Syslog translator: raw text → CGROUP_OOM_KILL
+         ✅ PASS
+[QA-0088] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_HUGEPAGE_FAIL
+         ❌ FAIL: 'OS_HUGEPAGE_FAIL' not found in translated codes: [(none)]
+[QA-0089] Translator       | TRANSLATOR       | Syslog translator: raw text → HUGEPAGES_FREE_ZERO
+         ❌ FAIL: 'HUGEPAGES_FREE_ZERO' not found in translated codes: [(none)]
+[QA-0090] Translator       | TRANSLATOR       | Syslog translator: raw text → SHMGET_EINVAL
+         ✅ PASS
+[QA-0091] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_SWAP_STORM
+         ❌ FAIL: 'OS_SWAP_STORM' not found in translated codes: [(none)]
+[QA-0092] Translator       | TRANSLATOR       | Syslog translator: raw text → MEMORY_SWAP_STORM
+         ❌ FAIL: 'MEMORY_SWAP_STORM' not found in translated codes: [(none)]
+[QA-0093] Translator       | TRANSLATOR       | Syslog translator: raw text → MEMLOCK_ULIMIT_TOO_LOW
+         ❌ FAIL: 'MEMLOCK_ULIMIT_TOO_LOW' not found in translated codes: [(none)]
+[QA-0094] Translator       | TRANSLATOR       | Syslog translator: raw text → SEMAPHORE_LIMIT_EXHAUSTED
+         ✅ PASS
+[QA-0095] Translator       | TRANSLATOR       | Syslog translator: raw text → FD_LIMIT_EXHAUSTED
+         ❌ FAIL: 'FD_LIMIT_EXHAUSTED' not found in translated codes: [(none)]
+[QA-0096] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_SCSI_TIMEOUT
+         ✅ PASS
+[QA-0097] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_MULTIPATH_DOWN
+         ❌ FAIL: 'OS_MULTIPATH_DOWN' not found in translated codes: [(none)]
+[QA-0098] Translator       | TRANSLATOR       | Syslog translator: raw text → MULTIPATH_ALL_PATHS_DOWN
+         ❌ FAIL: 'MULTIPATH_ALL_PATHS_DOWN' not found in translated codes: [OS_MULTIPATH_DOWN]
+[QA-0099] Translator       | TRANSLATOR       | Syslog translator: raw text → FC_HBA_RESET
+         ✅ PASS
+[QA-0100] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_ISCSI_FAIL
+         ❌ FAIL: 'OS_ISCSI_FAIL' not found in translated codes: [(none)]
+[QA-0101] Translator       | TRANSLATOR       | Syslog translator: raw text → IO_QUEUE_TIMEOUT
+         ❌ FAIL: 'IO_QUEUE_TIMEOUT' not found in translated codes: [(none)]
+[QA-0102] Translator       | TRANSLATOR       | Syslog translator: raw text → EXT4_JOURNAL_ABORT
+         ✅ PASS
+[QA-0103] Translator       | TRANSLATOR       | Syslog translator: raw text → XFS_FILESYSTEM_SHUTDOWN
+         ✅ PASS
+[QA-0104] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_DISK_FULL
+         ❌ FAIL: 'OS_DISK_FULL' not found in translated codes: [(none)]
+[QA-0105] Translator       | TRANSLATOR       | Syslog translator: raw text → FILESYSTEM_ARCH_FULL
+         ❌ FAIL: 'FILESYSTEM_ARCH_FULL' not found in translated codes: [OS_DISK_FULL]
+[QA-0106] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_KERNEL_PANIC
+         ✅ PASS
+[QA-0107] Translator       | TRANSLATOR       | Syslog translator: raw text → KERNEL_PANIC
+         ❌ FAIL: 'KERNEL_PANIC' not found in translated codes: [OS_KERNEL_PANIC]
+[QA-0108] Translator       | TRANSLATOR       | Syslog translator: raw text → SOFT_LOCKUP
+         ✅ PASS
+[QA-0109] Translator       | TRANSLATOR       | Syslog translator: raw text → HARD_LOCKUP
+         ✅ PASS
+[QA-0110] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_MCE_UNCORRECTED
+         ❌ FAIL: 'OS_MCE_UNCORRECTED' not found in translated codes: [MCE_CORRECTED_MEMORY]
+[QA-0111] Translator       | TRANSLATOR       | Syslog translator: raw text → MCE_CORRECTED_MEMORY
+         ✅ PASS
+[QA-0112] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_SELINUX_BLOCK
+         ❌ FAIL: 'OS_SELINUX_BLOCK' not found in translated codes: [(none)]
+[QA-0113] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_CPU_SATURATION
+         ❌ FAIL: 'OS_CPU_SATURATION' not found in translated codes: [(none)]
+[QA-0114] Translator       | TRANSLATOR       | Syslog translator: raw text → CPU_STEAL_TIME
+         ❌ FAIL: 'CPU_STEAL_TIME' not found in translated codes: [(none)]
+[QA-0115] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_NET_DROP
+         ❌ FAIL: 'OS_NET_DROP' not found in translated codes: [(none)]
+[QA-0116] Translator       | TRANSLATOR       | Syslog translator: raw text → BONDING_FAILOVER_EVENT
+         ✅ PASS
+[QA-0117] Translator       | TRANSLATOR       | Syslog translator: raw text → BOTH_NICS_DOWN
+         ❌ FAIL: 'BOTH_NICS_DOWN' not found in translated codes: [OS_NET_DROP]
+[QA-0118] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_CONNTRACK_FULL
+         ✅ PASS
+[QA-0119] Translator       | TRANSLATOR       | Syslog translator: raw text → NF_CONNTRACK_FULL
+         ✅ PASS
+[QA-0120] Translator       | TRANSLATOR       | Syslog translator: raw text → IPTABLES_BLOCKING_1521
+         ❌ FAIL: 'IPTABLES_BLOCKING_1521' not found in translated codes: [(none)]
+[QA-0121] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_NFS_STALE
+         ✅ PASS
+[QA-0122] Translator       | TRANSLATOR       | Syslog translator: raw text → NFS_MOUNT_TIMEOUT
+         ❌ FAIL: 'NFS_MOUNT_TIMEOUT' not found in translated codes: [(none)]
+[QA-0123] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_NTP_JUMP
+         ❌ FAIL: 'OS_NTP_JUMP' not found in translated codes: [(none)]
+[QA-0124] Translator       | TRANSLATOR       | Syslog translator: raw text → NTP_TIME_JUMP
+         ❌ FAIL: 'NTP_TIME_JUMP' not found in translated codes: [OS_NTP_JUMP]
+[QA-0125] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_LPAR_CPU_CAP
+         ✅ PASS
+[QA-0126] Translator       | TRANSLATOR       | Syslog translator: raw text → OS_VMWARE_SNAPSHOT
+         ✅ PASS
+[QA-0127] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00000
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0128] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00001
+         ❌ FAIL: Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output
+[QA-0129] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00017
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0130] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00018
+         ❌ FAIL: Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output
+[QA-0131] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00019
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0132] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00020
+         ❌ FAIL: Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output
+[QA-0133] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00021
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0134] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00022
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0135] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00023
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0136] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00024
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0137] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00025
+         ❌ FAIL: Layer mismatch: got 'NEEDS_MORE_INFO', expected 'MEMORY'; Regex 'tier.*2|inferred|memory' not in output
+[QA-0138] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00026
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0139] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00027
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0140] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00028
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0141] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00029
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0142] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00030
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0143] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00031
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0144] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00032
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0145] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00033
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0146] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00034
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0147] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00035
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0148] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00036
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0149] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00037
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0150] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00038
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0151] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00039
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0152] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00040
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0153] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00041
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0154] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00042
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0155] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00043
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0156] Tier2_Inference  | ORA_PDF          | Tier2 PDF inference: oracle_ora_00044
+         ❌ FAIL: Regex 'tier.*2|inferred|needs_more_info' not in output
+[QA-0157] Positive         | DATAGUARD        | DataGuard apply lag pattern detected
+  -> [SessionManager] Successfully attached 1 chunks to INC-ABB1C110
+         ❌ FAIL: Regex 'DATAGUARD|apply.lag|standby' not in output
+[QA-0158] Positive         | DATAGUARD        | DataGuard redo transport failure
+  -> [SessionManager] Successfully attached 1 chunks to INC-AD0211C4
+         ❌ FAIL: Regex 'DATAGUARD|redo.transport' not in output
+[QA-0159] Positive         | DATAGUARD        | MRP process stopped on standby
+  -> [SessionManager] Successfully attached 1 chunks to INC-2EF20C04
+         ❌ FAIL: Regex 'DATAGUARD|managed recovery' not in output
+[QA-0160] Positive         | RMAN             | RMAN backup piece not found
+  -> [SessionManager] Successfully attached 1 chunks to INC-6099A56B
+         ❌ FAIL: Regex 'RMAN|backup.set|backup.piece' not in output
+[QA-0161] Positive         | RMAN             | RMAN archived log not found during recovery
+  -> [SessionManager] Successfully attached 1 chunks to INC-991A411D
+         ❌ FAIL: Regex 'RMAN|archived.log.not.found' not in output
+[QA-0162] Positive         | RMAN             | RMAN catalog database connection failure
+  -> [SessionManager] Successfully attached 1 chunks to INC-60B92CCF
+         ❌ FAIL: Regex 'RMAN|catalog.database' not in output
+[QA-0163] Positive         | SECURITY         | Oracle user account locked after failed logins
+  -> [SessionManager] Successfully attached 1 chunks to INC-B4D585D4
+         ❌ FAIL: Regex 'SECURITY|account.is.locked|too many authentication' not in output
+[QA-0164] Positive         | SECURITY         | Oracle user password expired
+  -> [SessionManager] Successfully attached 1 chunks to INC-158E78BA
+         ❌ FAIL: Regex 'SECURITY|password.has.expired' not in output
+[QA-0165] Positive         | SECURITY         | Audit trail write failure
+  -> [SessionManager] Successfully attached 1 chunks to INC-19DB57DF
+         ❌ FAIL: Regex 'SECURITY|audit.trail' not in output
+[QA-0166] Negative         | TIER3            | Unknown ORA code not in graph or PDF — must ask for mor
+         ✅ PASS
+[QA-0167] Negative         | TIER3            | No logs uploaded — agent must not guess
+         ✅ PASS
+[QA-0168] Negative         | TIER3            | Log content contains only INFO-level messages — no ORA 
+         ✅ PASS
+[QA-0169] Positive         | CLUSTER          | CRS resource failed — cluster resource offline
+  -> [SessionManager] Successfully attached 1 chunks to INC-22BB7E6C
+         ❌ FAIL: Regex 'CLUSTER|crs.*resource|node.*eviction' not in output
+[QA-0170] Positive         | CLUSTER          | NTP time jump causing CSS eviction
+  -> [SessionManager] Successfully attached 1 chunks to INC-77C95C69
+         ❌ FAIL: Regex 'CLUSTER|ntp.*jump|time.*offset|css.*eviction' not in output
+[QA-0171] Positive         | CLUSTER          | RAC node eviction via ORA-29740
+  -> [SessionManager] Successfully attached 1 chunks to INC-8D5F52C0
+         ✅ PASS
+[QA-0172] Positive         | ASM              | ASM disk drop causes diskgroup dismount
+  -> [SessionManager] Successfully attached 1 chunks to INC-741E7D0E
+         ❌ FAIL: Regex 'ASM|diskgroup|asm.*disk' not in output
+[QA-0173] Negative         | FALSE_POSITIVE   | Java OutOfMemoryError — must NOT match OS_OOM_KILLER
+         ✅ PASS
+[QA-0174] Negative         | FALSE_POSITIVE   | Benign Oracle log line — LGWR switch — no signal
+         ✅ PASS
+[QA-0175] Negative         | INJECTION        | Command injection attempt via user query
+         ✅ PASS
+[QA-0176] Negative         | INJECTION        | SQL injection attempt DROP TABLE
+         ✅ PASS
+
+================================================================================
+ 📊 EXTENDED QA MATRIX — FINAL REPORT
+================================================================================
+  Total Tests Run : 176
+  ✅ Passed       : 110
+  ❌ Failed       : 66
+  ⚠️  Skipped      : 0
+  Pass Rate       : 62.5%
+
+── Domain breakdown ─────────────────────────────────────────────
+  ASM                   pass=  0  fail=  1  skip= 0  ❌
+  CLUSTER               pass=  1  fail=  2  skip= 0  ✅❌❌
+  DATAGUARD             pass=  0  fail=  3  skip= 0  ❌❌❌
+  FALSE_POSITIVE        pass=  2  fail=  0  skip= 0  ✅✅
+  INJECTION             pass=  2  fail=  0  skip= 0  ✅✅
+  ORA_CODE              pass= 20  fail=  0  skip= 0  ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+  ORA_PDF               pass=  0  fail= 30  skip= 0  ❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌
+  OS_PATTERN            pass= 65  fail=  0  skip= 0  ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+  RMAN                  pass=  0  fail=  3  skip= 0  ❌❌❌
+  SECURITY              pass=  0  fail=  3  skip= 0  ❌❌❌
+  TIER3                 pass=  3  fail=  0  skip= 0  ✅✅✅
+  TRANSLATOR            pass= 17  fail= 24  skip= 0  ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅❌❌❌❌❌❌❌❌❌❌❌❌❌
+
+── Failed Tests ─────────────────────────────────────────────────
+  [QA-0086] TRANSLATOR       | Syslog translator: raw text → OS_OOM_KILLER
+           Reason: 'OS_OOM_KILLER' not found in translated codes: [(none)]
+  [QA-0088] TRANSLATOR       | Syslog translator: raw text → OS_HUGEPAGE_FAIL
+           Reason: 'OS_HUGEPAGE_FAIL' not found in translated codes: [(none)]
+  [QA-0089] TRANSLATOR       | Syslog translator: raw text → HUGEPAGES_FREE_ZERO
+           Reason: 'HUGEPAGES_FREE_ZERO' not found in translated codes: [(none)]
+  [QA-0091] TRANSLATOR       | Syslog translator: raw text → OS_SWAP_STORM
+           Reason: 'OS_SWAP_STORM' not found in translated codes: [(none)]
+  [QA-0092] TRANSLATOR       | Syslog translator: raw text → MEMORY_SWAP_STORM
+           Reason: 'MEMORY_SWAP_STORM' not found in translated codes: [(none)]
+  [QA-0093] TRANSLATOR       | Syslog translator: raw text → MEMLOCK_ULIMIT_TOO_L
+           Reason: 'MEMLOCK_ULIMIT_TOO_LOW' not found in translated codes: [(none)]
+  [QA-0095] TRANSLATOR       | Syslog translator: raw text → FD_LIMIT_EXHAUSTED
+           Reason: 'FD_LIMIT_EXHAUSTED' not found in translated codes: [(none)]
+  [QA-0097] TRANSLATOR       | Syslog translator: raw text → OS_MULTIPATH_DOWN
+           Reason: 'OS_MULTIPATH_DOWN' not found in translated codes: [(none)]
+  [QA-0098] TRANSLATOR       | Syslog translator: raw text → MULTIPATH_ALL_PATHS_
+           Reason: 'MULTIPATH_ALL_PATHS_DOWN' not found in translated codes: [OS_MULTIPATH_DOWN]
+  [QA-0100] TRANSLATOR       | Syslog translator: raw text → OS_ISCSI_FAIL
+           Reason: 'OS_ISCSI_FAIL' not found in translated codes: [(none)]
+  [QA-0101] TRANSLATOR       | Syslog translator: raw text → IO_QUEUE_TIMEOUT
+           Reason: 'IO_QUEUE_TIMEOUT' not found in translated codes: [(none)]
+  [QA-0104] TRANSLATOR       | Syslog translator: raw text → OS_DISK_FULL
+           Reason: 'OS_DISK_FULL' not found in translated codes: [(none)]
+  [QA-0105] TRANSLATOR       | Syslog translator: raw text → FILESYSTEM_ARCH_FULL
+           Reason: 'FILESYSTEM_ARCH_FULL' not found in translated codes: [OS_DISK_FULL]
+  [QA-0107] TRANSLATOR       | Syslog translator: raw text → KERNEL_PANIC
+           Reason: 'KERNEL_PANIC' not found in translated codes: [OS_KERNEL_PANIC]
+  [QA-0110] TRANSLATOR       | Syslog translator: raw text → OS_MCE_UNCORRECTED
+           Reason: 'OS_MCE_UNCORRECTED' not found in translated codes: [MCE_CORRECTED_MEMORY]
+  [QA-0112] TRANSLATOR       | Syslog translator: raw text → OS_SELINUX_BLOCK
+           Reason: 'OS_SELINUX_BLOCK' not found in translated codes: [(none)]
+  [QA-0113] TRANSLATOR       | Syslog translator: raw text → OS_CPU_SATURATION
+           Reason: 'OS_CPU_SATURATION' not found in translated codes: [(none)]
+  [QA-0114] TRANSLATOR       | Syslog translator: raw text → CPU_STEAL_TIME
+           Reason: 'CPU_STEAL_TIME' not found in translated codes: [(none)]
+  [QA-0115] TRANSLATOR       | Syslog translator: raw text → OS_NET_DROP
+           Reason: 'OS_NET_DROP' not found in translated codes: [(none)]
+  [QA-0117] TRANSLATOR       | Syslog translator: raw text → BOTH_NICS_DOWN
+           Reason: 'BOTH_NICS_DOWN' not found in translated codes: [OS_NET_DROP]
+  [QA-0120] TRANSLATOR       | Syslog translator: raw text → IPTABLES_BLOCKING_15
+           Reason: 'IPTABLES_BLOCKING_1521' not found in translated codes: [(none)]
+  [QA-0122] TRANSLATOR       | Syslog translator: raw text → NFS_MOUNT_TIMEOUT
+           Reason: 'NFS_MOUNT_TIMEOUT' not found in translated codes: [(none)]
+  [QA-0123] TRANSLATOR       | Syslog translator: raw text → OS_NTP_JUMP
+           Reason: 'OS_NTP_JUMP' not found in translated codes: [(none)]
+  [QA-0124] TRANSLATOR       | Syslog translator: raw text → NTP_TIME_JUMP
+           Reason: 'NTP_TIME_JUMP' not found in translated codes: [OS_NTP_JUMP]
+  [QA-0127] ORA_PDF          | Tier2 PDF inference: oracle_ora_00000
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0128] ORA_PDF          | Tier2 PDF inference: oracle_ora_00001
+           Reason: Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output
+  [QA-0129] ORA_PDF          | Tier2 PDF inference: oracle_ora_00017
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0130] ORA_PDF          | Tier2 PDF inference: oracle_ora_00018
+           Reason: Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output
+  [QA-0131] ORA_PDF          | Tier2 PDF inference: oracle_ora_00019
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0132] ORA_PDF          | Tier2 PDF inference: oracle_ora_00020
+           Reason: Layer mismatch: got 'NEEDS_MORE_INFO', expected 'DB'; Regex 'tier.*2|inferred|db' not in output
+  [QA-0133] ORA_PDF          | Tier2 PDF inference: oracle_ora_00021
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0134] ORA_PDF          | Tier2 PDF inference: oracle_ora_00022
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0135] ORA_PDF          | Tier2 PDF inference: oracle_ora_00023
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0136] ORA_PDF          | Tier2 PDF inference: oracle_ora_00024
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0137] ORA_PDF          | Tier2 PDF inference: oracle_ora_00025
+           Reason: Layer mismatch: got 'NEEDS_MORE_INFO', expected 'MEMORY'; Regex 'tier.*2|inferred|memory' not in output
+  [QA-0138] ORA_PDF          | Tier2 PDF inference: oracle_ora_00026
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0139] ORA_PDF          | Tier2 PDF inference: oracle_ora_00027
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0140] ORA_PDF          | Tier2 PDF inference: oracle_ora_00028
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0141] ORA_PDF          | Tier2 PDF inference: oracle_ora_00029
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0142] ORA_PDF          | Tier2 PDF inference: oracle_ora_00030
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0143] ORA_PDF          | Tier2 PDF inference: oracle_ora_00031
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0144] ORA_PDF          | Tier2 PDF inference: oracle_ora_00032
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0145] ORA_PDF          | Tier2 PDF inference: oracle_ora_00033
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0146] ORA_PDF          | Tier2 PDF inference: oracle_ora_00034
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0147] ORA_PDF          | Tier2 PDF inference: oracle_ora_00035
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0148] ORA_PDF          | Tier2 PDF inference: oracle_ora_00036
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0149] ORA_PDF          | Tier2 PDF inference: oracle_ora_00037
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0150] ORA_PDF          | Tier2 PDF inference: oracle_ora_00038
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0151] ORA_PDF          | Tier2 PDF inference: oracle_ora_00039
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0152] ORA_PDF          | Tier2 PDF inference: oracle_ora_00040
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0153] ORA_PDF          | Tier2 PDF inference: oracle_ora_00041
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0154] ORA_PDF          | Tier2 PDF inference: oracle_ora_00042
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0155] ORA_PDF          | Tier2 PDF inference: oracle_ora_00043
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0156] ORA_PDF          | Tier2 PDF inference: oracle_ora_00044
+           Reason: Regex 'tier.*2|inferred|needs_more_info' not in output
+  [QA-0157] DATAGUARD        | DataGuard apply lag pattern detected
+           Reason: Regex 'DATAGUARD|apply.lag|standby' not in output
+  [QA-0158] DATAGUARD        | DataGuard redo transport failure
+           Reason: Regex 'DATAGUARD|redo.transport' not in output
+  [QA-0159] DATAGUARD        | MRP process stopped on standby
+           Reason: Regex 'DATAGUARD|managed recovery' not in output
+  [QA-0160] RMAN             | RMAN backup piece not found
+           Reason: Regex 'RMAN|backup.set|backup.piece' not in output
+  [QA-0161] RMAN             | RMAN archived log not found during recovery
+           Reason: Regex 'RMAN|archived.log.not.found' not in output
+  [QA-0162] RMAN             | RMAN catalog database connection failure
+           Reason: Regex 'RMAN|catalog.database' not in output
+  [QA-0163] SECURITY         | Oracle user account locked after failed logins
+           Reason: Regex 'SECURITY|account.is.locked|too many authentication' not in output
+  [QA-0164] SECURITY         | Oracle user password expired
+           Reason: Regex 'SECURITY|password.has.expired' not in output
+  [QA-0165] SECURITY         | Audit trail write failure
+           Reason: Regex 'SECURITY|audit.trail' not in output
+  [QA-0169] CLUSTER          | CRS resource failed — cluster resource offline
+           Reason: Regex 'CLUSTER|crs.*resource|node.*eviction' not in output
+  [QA-0170] CLUSTER          | NTP time jump causing CSS eviction
+           Reason: Regex 'CLUSTER|ntp.*jump|time.*offset|css.*eviction' not in output
+  [QA-0172] ASM              | ASM disk drop causes diskgroup dismount
+           Reason: Regex 'ASM|diskgroup|asm.*disk' not in output
+
+[!] Full audit report → /Users/kommanasaisandilya/Downloads/dba_agent/tests/qa_results_extended.csv
+
+[❌] VERDICT: 66 tests failed. Do NOT deploy until fixed.

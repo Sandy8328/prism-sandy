@@ -1,0 +1,119 @@
+Mar 16 07:00:01 node-async systemd: Started Session 100 of user root.
+Mar 16 07:01:01 node-async CROND[1200]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:02:01 node-async systemd: Started Session 101 of user oracle.
+Mar 16 07:03:01 node-async CROND[1205]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:04:01 node-async systemd: Started Session 102 of user root.
+Mar 16 07:05:01 node-async CROND[1210]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:06:01 node-async systemd: Started Session 103 of user oracle.
+Mar 16 07:07:01 node-async CROND[1215]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:08:01 node-async systemd: Started Session 104 of user root.
+Mar 16 07:09:01 node-async CROND[1220]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:10:01 node-async systemd: Started Session 105 of user oracle.
+Mar 16 07:11:01 node-async CROND[1225]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:12:01 node-async systemd: Started Session 106 of user root.
+Mar 16 07:13:01 node-async CROND[1230]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:14:01 node-async systemd: Started Session 107 of user oracle.
+Mar 16 07:15:01 node-async CROND[1235]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:16:01 node-async systemd: Started Session 108 of user root.
+Mar 16 07:17:01 node-async CROND[1240]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:18:01 node-async systemd: Started Session 109 of user oracle.
+Mar 16 07:19:01 node-async CROND[1245]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:20:01 node-async systemd: Started Session 110 of user root.
+Mar 16 07:21:01 node-async CROND[1250]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:22:01 node-async systemd: Started Session 111 of user oracle.
+Mar 16 07:23:01 node-async CROND[1255]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:24:01 node-async systemd: Started Session 112 of user root.
+Mar 16 07:25:01 node-async CROND[1260]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:26:01 node-async systemd: Started Session 113 of user oracle.
+Mar 16 07:27:01 node-async CROND[1265]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:28:01 node-async systemd: Started Session 114 of user root.
+Mar 16 07:29:01 node-async CROND[1270]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:30:01 node-async systemd: Started Session 115 of user oracle.
+Mar 16 07:31:01 node-async CROND[1275]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:32:01 node-async systemd: Started Session 116 of user root.
+Mar 16 07:33:01 node-async CROND[1280]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:34:01 node-async systemd: Started Session 117 of user oracle.
+Mar 16 07:35:01 node-async CROND[1285]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:36:01 node-async systemd: Started Session 118 of user root.
+Mar 16 07:37:01 node-async CROND[1290]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:38:01 node-async systemd: Started Session 119 of user oracle.
+Mar 16 07:39:01 node-async CROND[1295]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:40:01 node-async systemd: Started Session 120 of user root.
+Mar 16 07:41:01 node-async CROND[1300]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:42:01 node-async systemd: Started Session 121 of user oracle.
+Mar 16 07:43:01 node-async CROND[1305]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:44:01 node-async systemd: Started Session 122 of user root.
+Mar 16 07:45:01 node-async CROND[1310]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:46:01 node-async systemd: Started Session 123 of user oracle.
+Mar 16 07:47:01 node-async CROND[1315]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:48:01 node-async systemd: Started Session 124 of user root.
+Mar 16 07:49:01 node-async CROND[1320]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:50:01 node-async systemd: Started Session 125 of user oracle.
+Mar 16 07:51:01 node-async CROND[1325]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:52:01 node-async systemd: Started Session 126 of user root.
+Mar 16 07:53:01 node-async CROND[1330]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:54:01 node-async systemd: Started Session 127 of user oracle.
+Mar 16 07:55:01 node-async CROND[1335]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:56:01 node-async systemd: Started Session 128 of user root.
+Mar 16 07:57:01 node-async CROND[1340]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:58:01 node-async systemd: Started Session 129 of user oracle.
+Mar 16 07:59:01 node-async CROND[1345]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar 16 07:59:15 node-async kernel: [10000.0000] Checking if OOM Killer is active... NO
+Mar 16 07:59:15 node-async kernel: [10000.0001] Checking if ORA-04031 occurred... None found
+Mar 16 07:59:20 node-async kernel: [10000.0002] System memory health check passed.
+Mar 16 07:59:30 node-async systemd-logind[900]: Removed session 129.
+Mar 16 07:59:45 node-async kernel: [10045.0000] TCP: time wait bucket table overflow
+Mar 16 07:59:50 node-async kernel: [10050.0000] EXT4-fs (sda1): INFO: recovery complete
+Mar 16 07:59:55 node-async kernel: [10055.0000] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+Mar 16 08:00:00 node-async kernel: [10060.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:05 node-async kernel: [10065.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:10 node-async kernel: [10070.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:15 node-async kernel: [10075.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:20 node-async kernel: [10080.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:25 node-async kernel: [10085.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:30 node-async kernel: [10090.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:35 node-async kernel: [10095.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:40 node-async kernel: [10100.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:45 node-async kernel: [10105.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:50 node-async kernel: [10110.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:00:55 node-async kernel: [10115.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:00 node-async kernel: [10120.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:05 node-async kernel: [10125.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:10 node-async kernel: [10130.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:15 node-async kernel: [10135.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:20 node-async kernel: [10140.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:25 node-async kernel: [10145.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:30 node-async kernel: [10150.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:35 node-async kernel: [10155.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:40 node-async kernel: [10160.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:45 node-async kernel: [10165.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:50 node-async kernel: [10170.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:01:55 node-async kernel: [10175.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:00 node-async kernel: [10180.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:05 node-async kernel: [10185.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:10 node-async kernel: [10190.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:15 node-async kernel: [10195.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:20 node-async kernel: [10200.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:25 node-async kernel: [10205.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:30 node-async kernel: [10210.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:35 node-async kernel: [10215.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:40 node-async kernel: [10220.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:45 node-async kernel: [10225.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:50 node-async kernel: [10230.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:02:55 node-async kernel: [10235.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:00 node-async kernel: [10240.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:05 node-async kernel: [10245.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:10 node-async kernel: [10250.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:15 node-async kernel: [10255.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:20 node-async kernel: [10260.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:25 node-async kernel: [10265.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:30 node-async kernel: [10270.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:35 node-async kernel: [10275.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:40 node-async kernel: [10280.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:45 node-async kernel: [10285.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:50 node-async kernel: [10290.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:03:55 node-async kernel: [10295.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:04:00 node-async kernel: [10300.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:04:05 node-async kernel: [10305.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:04:10 node-async kernel: [10310.0000] nfs: server storage-nas-01 not responding, still trying
+Mar 16 08:04:15 node-async kernel: [10315.0000] nfs: server storage-nas-01 not responding, still trying

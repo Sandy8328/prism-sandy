@@ -1,0 +1,12 @@
+2024-03-16T07:00:00.000+00:00
+Thread 1 advanced to log sequence 8891 (LGWR switch)
+  Current log# 3 seq# 8891 mem# 0: /u01/app/oracle/oradata/PRD/redo03.log
+2024-03-16T07:08:10.000+00:00
+Errors in file /u01/app/oracle/diag/rdbms/prd/prd/trace/prd_lgwr_22011.trc:
+ORA-27072: File I/O error
+Linux-x86_64 Error: 5: Input/output error
+Additional information: 4
+ORA-00353: log corruption near block 1024 change 19726233 time 03/16/2024 07:08:10
+ORA-00312: online log 3 thread 1: '/u01/app/oracle/oradata/PRD/redo03.log'
+2024-03-16T07:08:12.000+00:00
+LGWR (ospid: 22011): terminating the instance due to error 353

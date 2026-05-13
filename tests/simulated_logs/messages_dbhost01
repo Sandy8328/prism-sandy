@@ -1,0 +1,5 @@
+Mar  7 02:44:00 dbhost01 kernel: [12345.6789] scsi host0: mpt2sas
+Mar  7 02:44:04 dbhost01 kernel: [12345.6790] sd 0:0:0:0: [sdb] tag#0 FAILED Result: hostbyte=DID_BAD_TARGET driverbyte=DRIVER_OK
+Mar  7 02:44:04 dbhost01 kernel: [12345.6791] sd 0:0:0:0: [sdb] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 08 00
+Mar  7 02:44:04 dbhost01 kernel: [12345.6792] blk_update_request: I/O error, dev sdb, sector 123456
+Mar  7 02:44:04 dbhost01 multipathd[892]: sdb: path checker failed

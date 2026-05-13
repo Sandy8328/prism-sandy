@@ -1,0 +1,16 @@
+2024-03-16T07:18:02.000+00:00
+WARNING: Read Failed. group:3 disk:1 AU:781244 offset:8192 size:8192
+2024-03-16T07:18:03.000+00:00
+WARNING: failed to read mirror side 1 of virtual extent 92 logical extent 0 of file 258 in group 3.
+2024-03-16T07:18:04.000+00:00
+NOTE: cache dismounting group 3/0x7f5f0012 (DATA)
+2024-03-16T07:18:05.000+00:00
+NOTE: cache dismounted group 3/0x7f5f0012 (DATA)
+2024-03-16T07:18:06.000+00:00
+ORA-15080: synchronous I/O operation to a disk failed
+2024-03-16T07:18:07.000+00:00
+ORA-15130: diskgroup "DATA" is being dismounted
+2024-03-16T07:18:08.000+00:00
+Errors in file /u01/app/oracle/diag/rdbms/prd/prd/trace/prd_lgwr_22011.trc:
+ORA-15081: failed to submit an I/O operation to a disk
+ORA-27072: File I/O error

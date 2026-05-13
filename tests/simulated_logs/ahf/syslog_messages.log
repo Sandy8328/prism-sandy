@@ -1,0 +1,35 @@
+Mar  7 03:10:01 dbhost01 systemd: Started Session 1452 of user root.
+Mar  7 03:10:01 dbhost01 systemd: Starting Session 1452 of user root.
+Mar  7 03:11:01 dbhost01 systemd: Started Session 1453 of user oracle.
+Mar  7 03:11:01 dbhost01 systemd: Starting Session 1453 of user oracle.
+Mar  7 03:11:15 dbhost01 sshd[12345]: Accepted publickey for oracle from 10.0.0.5 port 54321 ssh2: RSA SHA256:...
+Mar  7 03:11:15 dbhost01 sshd[12345]: pam_unix(sshd:session): session opened for user oracle by (uid=0)
+Mar  7 03:12:01 dbhost01 CROND[12400]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar  7 03:12:15 dbhost01 su: (to oracle) root on none
+Mar  7 03:12:15 dbhost01 su: pam_unix(su-l:session): session opened for user oracle by (uid=0)
+Mar  7 03:13:01 dbhost01 systemd: Started Session 1454 of user root.
+Mar  7 03:13:01 dbhost01 systemd: Starting Session 1454 of user root.
+Mar  7 03:13:45 dbhost01 kernel: [10000.0000] Checking if OOM Killer is active... NO
+Mar  7 03:13:45 dbhost01 kernel: [10000.0001] Checking if ORA-04031 occurred... None found
+Mar  7 03:13:50 dbhost01 kernel: [10000.0002] System memory health check passed.
+Mar  7 03:14:01 dbhost01 CROND[12500]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar  7 03:14:15 dbhost01 sshd[12550]: Connection closed by 10.0.0.5 port 54321 [preauth]
+Mar  7 03:14:30 dbhost01 systemd-logind[900]: Removed session 1453.
+Mar  7 03:14:45 dbhost01 kernel: [10045.0000] TCP: time wait bucket table overflow
+Mar  7 03:14:50 dbhost01 kernel: [10050.0000] EXT4-fs (sda1): INFO: recovery complete
+Mar  7 03:14:55 dbhost01 kernel: [10055.0000] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+Mar  7 03:15:00 dbhost01 kernel: [10060.0000] qla2xxx [0000:04:00.0]-801c:1: Abort command issued nexus=1:0:0 --  1 2002.
+Mar  7 03:15:01 dbhost01 kernel: [10061.0000] qla2xxx [0000:04:00.0]-801c:1: Abort command issued nexus=1:0:1 --  1 2002.
+Mar  7 03:15:02 dbhost01 kernel: [10062.0000] qla2xxx [0000:04:00.0]-801c:1: Abort command issued nexus=1:0:2 --  1 2002.
+Mar  7 03:15:05 dbhost01 multipathd[892]: sdc: path checker failed
+Mar  7 03:15:06 dbhost01 multipathd[892]: sdd: path checker failed
+Mar  7 03:15:07 dbhost01 multipathd[892]: sde: path checker failed
+Mar  7 03:15:08 dbhost01 multipathd[892]: sdf: path checker failed
+Mar  7 03:15:10 dbhost01 multipathd[892]: mpatha: remaining active paths: 0
+Mar  7 03:15:12 dbhost01 kernel: [10072.0000] device-mapper: multipath: Failing path 8:32.
+Mar  7 03:15:13 dbhost01 kernel: [10073.0000] MULTIPATH_ALL_PATHS_DOWN on mpatha
+Mar  7 03:15:15 dbhost01 kernel: [10075.0000] Aborting journal on device dm-0-8.
+Mar  7 03:15:20 dbhost01 kernel: [10080.0000] EXT4-fs (dm-0): Remounting filesystem read-only
+Mar  7 03:15:30 dbhost01 CROND[12600]: (root) CMD (/usr/lib64/sa/sa1 1 1)
+Mar  7 03:15:45 dbhost01 systemd: Started Session 1455 of user root.
+Mar  7 03:16:00 dbhost01 systemd: Starting Session 1455 of user root.
