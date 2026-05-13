@@ -19,7 +19,7 @@ from datetime import datetime
 # Project root (absolute; do not chdir — avoids breaking paths in multi-process runs)
 _ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if _ROOT not in sys.path:
-    sys.path.insert(0, _ROOT)
+sys.path.insert(0, _ROOT)
 
 import streamlit as st
 import yaml
@@ -521,15 +521,15 @@ def _prism_execute_diagnosis(
         raise ValueError("Nothing to analyze in this session.")
     hn = override_hostname or "" if hostname is None else hostname
     plat = platform_val if platform is None else platform
-    agent = load_agent()
+            agent = load_agent()
     return agent.diagnose_prism_session(
         merged_text=merged,
         zip_paths=zips,
         hostname=hn,
         platform=plat,
-        ora_code=override_ora or "",
-        timestamp_str=override_ts or "",
-        top_k=top_k,
+                ora_code=override_ora or "",
+                timestamp_str=override_ts or "",
+                top_k=top_k,
         session_incident_id=st.session_state["prism_session_id"],
         max_zip_files=mzf,
     )
@@ -551,8 +551,8 @@ if run_btn:
                 _append_incident_history(report)
             except ValueError as e:
                 st.warning(str(e))
-            except Exception as e:
-                st.error(f"Error: {e}")
+        except Exception as e:
+            st.error(f"Error: {e}")
 
 if lab_btn:
     lab_txt = build_lab_merged_text(lab_db_log, lab_os_log, lab_cell_log, lab_trace_log)
@@ -575,9 +575,9 @@ if lab_btn:
                 _append_incident_history(report)
             except ValueError as e:
                 st.warning(str(e))
-            except Exception as e:
-                st.error(f"Lab Simulation Error: {e}")
-                st.exception(e)
+        except Exception as e:
+            st.error(f"Lab Simulation Error: {e}")
+            st.exception(e)
 
 if file_btn and uploaded:
     fb = uploaded.getvalue()
