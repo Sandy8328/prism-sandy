@@ -15,6 +15,22 @@ llm:
   timeout_sec: 20
   max_events: 200
   max_candidates: 6
+  # RAG + graph pool: Gemini picks indices only; expanded text is verbatim from graph + retrieved chunks.
+  rag_remediation:
+    enabled: true
+    top_k: 12
+  # Option A: generic operator playbook (Markdown). LLM-authored; advisory only — not verified for this cluster.
+  remediation_playbook_advisory:
+    enabled: true
+    max_context_chars: 800000
+    max_markdown_chars: 1400000
+    timeout_sec: 55
+  # When status is NO_MATCH: Gemini may only cite KB command bundle IDs; shell text is expanded from graph/fixes.
+  no_match_grounded:
+    enabled: true
+    cache_enabled: true
+    cache_dir: "./data/.no_match_llm_cache"
+    max_digest_events: 150
 
 # Bundled ORA message extract (see scripts/build_ora_meanings_from_pdf.py)
 ora_meanings:
@@ -52,11 +68,23 @@ evidence_store:
   db_path: "./data/duckdb/evidence_store.duckdb"
 
 # Streamlit session: merged raw size limits (Option C — full session re-diagnose each run).
+# 0 = unlimited (no truncation of merged session text or per-turn paste/file/lab bodies). Uses more RAM/time.
 prism_session:
-  max_merged_chars: 450000
-  max_turn_chars: 400000
+  max_merged_chars: 0
+  max_turn_chars: 0
   max_zip_bytes: 125829120   # 120 MiB per ZIP turn
   max_zip_files: 120
+
+# ZIP / nested archive ingest (sosreport, nested SRDC zips, tarballs)
+zip_evidence:
+  max_uncompressed_bytes_per_member: 209715200   # 200 MiB per archive member
+  max_zip_members: 8000
+  max_tar_members: 250000
+  max_tar_member_bytes: 209715200
+  max_nesting_depth: 6
+  max_nested_archive_expansions: 80
+  max_text_bytes_per_file: 12582912             # 12 MiB read cap per parsed text file
+  max_parse_files: 3000                         # text files to run through parsers after priority sort
 
 seeds:
   jsonl_path: "./data/seeds/errors.jsonl"

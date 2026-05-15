@@ -23,6 +23,7 @@ Output structure (from input_output_contract.md):
 
 from __future__ import annotations
 import os
+import re
 import yaml
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
@@ -212,7 +213,87 @@ def _extract_trace_files(fused_results: list[dict]) -> dict | None:
     return None
 
 
-def _get_solicitation(layer: str, provided_sources: set[str]) -> list[str]:
+def _normalized_session_source_tokens(normalized_events: list[dict] | None) -> set[str]:
+    """Filenames/paths/log_source labels from evidence-first normalized events (upload turns)."""
+    out: set[str] = set()
+    for ev in normalized_events or []:
+        if not isinstance(ev, dict):
+            continue
+        for k in ("source_file", "source_path", "log_source"):
+            v = str(ev.get(k) or "").strip()
+            if not v:
+                continue
+            out.add(v)
+            base = os.path.basename(v.replace("\\", "/"))
+            if base and base != v:
+                out.add(base)
+    return out
+
+
+def _solicitation_already_covered(
+    suggestion: str,
+    provided_sources: set[str],
+    normalized_events: list[dict] | None,
+) -> bool:
+    """
+    True when retrieval evidence or session uploads already satisfy this checklist line.
+    Evidence-first runs often have empty fused evidence; then we use normalized_events only.
+    """
+    n_events = list(normalized_events or [])
+    tokens: set[str] = {str(x).strip() for x in provided_sources if str(x).strip()}
+    tokens |= _normalized_session_source_tokens(n_events)
+    tokens_upper = {t.upper() for t in tokens}
+
+    sug = suggestion.strip()
+    sug_u = sug.upper()
+    hay = " | ".join(sorted(tokens_upper))
+    prev_blob = ""
+    for ev in n_events[:500]:
+        for k in ("preview", "raw", "message"):
+            blob = ev.get(k)
+            if isinstance(blob, str) and blob:
+                prev_blob += blob[:500].upper() + "\n"
+    scan = hay + "\n" + prev_blob
+
+    # ASM alert log (upload may be asm.log, +ASM path in preview, diag/asm, etc.)
+    if "ASM ALERT" in sug_u or sug_u == "ASM ALERT LOG":
+        if re.search(r"(DIAG/ASM|DIAG\\ASM|\+ASM|ASM/TRACE|ALERT_.*\+ASM|ASM.*ALERT)", scan, re.I):
+            return True
+        for ev in n_events:
+            fn = str(ev.get("source_file") or "").lower()
+            sp = str(ev.get("source_path") or "").lower()
+            layer = str(ev.get("layer") or "").upper()
+            if layer == "ASM" and (fn.endswith(".log") or "alert" in fn or "trace" in fn):
+                return True
+            if "asm" in fn and fn.endswith(".log"):
+                return True
+            if "asm" in sp and (".log" in sp or "alert" in sp or "trace" in sp):
+                return True
+
+    # OS / syslog
+    if "MESSAGES" in sug_u or "DMESG" in sug_u or "SYSLOG" in sug_u:
+        if re.search(r"(MESSAGES|DMESG|SYSLOG|/VAR/LOG)", scan, re.I):
+            return True
+
+    # Grid / CRS checklist
+    if "CRSCTL" in sug_u or "OCRCHECK" in sug_u:
+        if re.search(r"(CRS_|CRSD|CRS\.LOG|GI_|GRID|OCR|EVMD|CSSD)", scan, re.I):
+            return True
+
+    # Generic token overlap (retrieval log_source labels)
+    for ps in tokens_upper:
+        if len(ps) < 4:
+            continue
+        if ps in sug_u or sug_u in ps:
+            return True
+    return False
+
+
+def _get_solicitation(
+    layer: str,
+    provided_sources: set[str],
+    normalized_events: list[dict] | None = None,
+) -> list[str]:
     """
     Chatbot Logic: Suggest missing logs based on the identified problem layer.
     """
@@ -223,12 +304,11 @@ def _get_solicitation(layer: str, provided_sources: set[str]) -> list[str]:
         "NETWORK":      ["lsnrctl status", "netstat -anp", "ping/traceroute"],
         "MEMORY":       ["/proc/meminfo", "ipcs -ma", "slabtop"],
     }
-    
+
     suggested = requests.get(layer, [])
-    # Filter out what we already have
-    final = []
+    final: list[str] = []
     for s in suggested:
-        if not any(ps.upper() in s.upper() or s.upper() in ps.upper() for ps in provided_sources):
+        if not _solicitation_already_covered(s, provided_sources, normalized_events):
             final.append(s)
     return final
 
@@ -565,7 +645,8 @@ def build_report(
     provided_sources = {e["log_source"] for e in evidence}
     solicitation = _get_solicitation(
         (root_cause_chain or {}).get("category") or _get_ora_info(ora_code)["layer"],
-        provided_sources
+        provided_sources,
+        parsed_input.get("normalized_events"),
     )
 
     # ── Final Report Assembly ───────────────────────────────────

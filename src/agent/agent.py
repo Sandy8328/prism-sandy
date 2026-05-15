@@ -116,14 +116,17 @@ def _collect_structured_session_memory(events: list[dict[str, Any]]) -> dict[str
     devices: set[str] = set()
     diskgroups: set[str] = set()
     patterns: Counter = Counter()
+    sig_counter: Counter = Counter()
     for ev in events or []:
         code = str(ev.get("code") or "").strip().upper()
         ctype = str(ev.get("code_type") or "").strip().upper()
         if _is_ora(code, ctype):
             ora_codes.add(code)
         else:
-            for raw in (ev.get("raw") or "", ev.get("preview") or ""):
-                for m in re.findall(r"\bORA-\d{5}\b", raw, flags=re.I):
+            for blob in (ev.get("message"), ev.get("raw"), ev.get("preview")):
+                if not isinstance(blob, str) or not blob:
+                    continue
+                for m in re.findall(r"\bORA-\d{5}\b", blob, flags=re.I):
                     ora_codes.add(m.upper())
         layer = str(ev.get("layer") or "UNKNOWN").strip().upper()
         if layer:
@@ -140,14 +143,136 @@ def _collect_structured_session_memory(events: list[dict[str, Any]]) -> dict[str
         p = str(ev.get("pattern_id") or "").strip().upper()
         if p:
             patterns[p] += 1
+        if code and not code.startswith("GENERIC_"):
+            sig_counter[code] += 1
     return {
         "ora_codes": sorted(ora_codes),
+        "signal_codes": [k for k, _ in sig_counter.most_common(25)],
         "layers": sorted(x for x in layers if x),
         "hosts": sorted(hosts),
         "devices": sorted(devices),
         "diskgroups": sorted(diskgroups),
         "pattern_ids": [k for k, _ in patterns.most_common(20)],
     }
+
+
+def _advisory_observed_codes(events: list[dict[str, Any]]) -> list[str]:
+    """
+    Codes visible to the advisory LLM + policy: event.code plus ORA/signal scan from message/raw
+    (same idea as structured session memory, so ORA-in-body is not invisible to the model).
+    """
+    mem = _collect_structured_session_memory(events)
+    oc: set[str] = set()
+    for c in mem.get("ora_codes") or []:
+        if c:
+            oc.add(str(c).upper())
+    for c in (mem.get("signal_codes") or [])[:60]:
+        if c and not str(c).startswith("GENERIC_"):
+            oc.add(str(c).upper())
+    for e in events or []:
+        code = str(e.get("code") or "").strip().upper()
+        if code:
+            oc.add(code)
+    return sorted(oc)
+
+
+def _looks_like_executable_dba_command(text: str) -> bool:
+    """
+    True when a graph line is plausibly an operator command (SQL/shell/tool), not a documentation blob.
+    """
+    t = (text or "").strip()
+    if not t or len(t) > 8000:
+        return False
+    u = t.lstrip().upper()
+    if "CAUSE:" in u and "ACTION:" in u:
+        return False
+    if u.count("\n\n") >= 2 and len(t) > 900:
+        return False
+    first_line = u.split("\n", 1)[0].strip()
+    prefixes = (
+        "SELECT ",
+        "WITH ",
+        "ALTER ",
+        "CREATE ",
+        "DROP ",
+        "GRANT ",
+        "REVOKE ",
+        "EXEC ",
+        "EXECUTE ",
+        "BEGIN ",
+        "DECLARE ",
+        "CALL ",
+        "RMAN",
+        "SQLPLUS",
+        "CRSCTL ",
+        "ASMCMD ",
+        "ADRCI ",
+        "SRVCTL ",
+        "ODACLI",
+        "KFOD ",
+        "KFED ",
+        "EXPDP ",
+        "IMPDP ",
+        "LISTENERCTL",
+        "LSNRCTL",
+    )
+    if any(first_line.startswith(p) for p in prefixes):
+        return True
+    if ";" in first_line and any(k in first_line for k in ("SELECT", "ALTER", "INSERT", "UPDATE", "DELETE")):
+        return True
+    if first_line.startswith("$") or first_line.startswith("ORAPWD"):
+        return True
+    return False
+
+
+def _kb_runbook_attachments_for_oras(ora_codes: list[str]) -> dict[str, Any]:
+    """
+    Knowledge graph lines for observed ORA codes: split into executable commands vs doc excerpts.
+
+    Many graph nodes only ship oracle_action_plan prose (Cause/Action); DBAs still value that as
+    context, but it must not masquerade as runnable 'remediation'.
+    """
+    from src.knowledge_graph.graph import get_commands_for_ora
+
+    seen_cmd: set[str] = set()
+    cmd_rows: list[dict[str, Any]] = []
+    hint_rows: list[dict[str, Any]] = []
+    seen_hint_ora: set[str] = set()
+
+    for raw in ora_codes:
+        ora = str(raw).strip().upper()
+        if not ora.startswith("ORA-"):
+            continue
+        info = get_commands_for_ora(ora)
+        cmds = [str(c).strip() for c in (info.get("commands") or []) if str(c).strip()]
+        if not cmds:
+            continue
+        title = (info.get("title") or "")[:240]
+        src = str(info.get("source") or "graph")
+        for c in cmds[:10]:
+            if _looks_like_executable_dba_command(c):
+                if c in seen_cmd:
+                    continue
+                seen_cmd.add(c)
+                cmd_rows.append({"ora_code": ora, "title": title, "source": src, "command": c})
+                if len(cmd_rows) >= 24:
+                    return {"runbook_remediation": cmd_rows, "runbook_doc_hints": hint_rows}
+            else:
+                if ora in seen_hint_ora or len(hint_rows) >= 10:
+                    continue
+                seen_hint_ora.add(ora)
+                excerpt = " ".join(t for t in c.split() if t)[:360]
+                if len(c) > 360:
+                    excerpt += "…"
+                hint_rows.append(
+                    {
+                        "ora_code": ora,
+                        "source": src,
+                        "title": title,
+                        "excerpt": excerpt or (c[:360] + ("…" if len(c) > 360 else "")),
+                    }
+                )
+    return {"runbook_remediation": cmd_rows, "runbook_doc_hints": hint_rows}
 
 
 def _build_bundle_candidates_from_events(events: list[dict]) -> list[dict]:
@@ -184,9 +309,7 @@ def _compute_llm_advisory_for_bundle(
     if not candidates_raw:
         return {"used": False, "mode": mode, "reason": "no_candidates"}
 
-    observed_codes = sorted(
-        {(e.get("code") or "").upper() for e in events if (e.get("code") or "").strip()}
-    )
+    observed_codes = _advisory_observed_codes(events)
     observed_layers = sorted(
         {(e.get("layer") or "UNKNOWN").upper() for e in events if e.get("layer")}
     )
@@ -234,9 +357,15 @@ def _compute_llm_advisory_for_bundle(
         out["used"] = True
         out["mode"] = mode
         out["model"] = str(getattr(advisory, "_used_model", "") or llm_cfg.get("model", "gemini-1.5-pro"))
+        out.update(_kb_runbook_attachments_for_oras(observed_codes))
         return out
     except Exception as e:
-        return {"used": False, "mode": mode, "reason": f"llm_call_failed: {e}"}
+        return {
+            "used": False,
+            "mode": mode,
+            "reason": f"llm_call_failed: {e}",
+            **_kb_runbook_attachments_for_oras(observed_codes),
+        }
 
 
 def _attach_llm_advisory_to_report(
@@ -252,6 +381,24 @@ def _attach_llm_advisory_to_report(
         incident_id=incident_id,
         root_pattern_hint=(report.get("root_cause") or {}).get("pattern", ""),
     )
+    try:
+        from src.agent.no_match_grounded import compute_no_match_grounded_advisory
+
+        report["no_match_grounded_advisory"] = compute_no_match_grounded_advisory(report, evs)
+    except Exception as e:
+        report["no_match_grounded_advisory"] = {"used": False, "reason": f"sidecar_error:{e}"}
+    try:
+        from src.agent.rag_remediation_outline import attach_rag_remediation_outline
+
+        attach_rag_remediation_outline(report, evs, incident_id=incident_id)
+    except Exception as e:
+        report["rag_remediation_outline"] = {"used": False, "reason": f"sidecar_error:{e}"}
+    try:
+        from src.agent.remediation_playbook_advisory import attach_advisory_remediation_playbook
+
+        attach_advisory_remediation_playbook(report, evs, incident_id=incident_id)
+    except Exception as e:
+        report["advisory_remediation_playbook"] = {"used": False, "reason": f"sidecar_error:{e}"}
 
 
 class OracleDiagnosticAgent:
@@ -779,11 +926,13 @@ class OracleDiagnosticAgent:
             "merged_text_capped": "# [PRISM: merged session text size cap reached;" in merged_text,
             "structured_memory": {
                 "ora_codes": mem.get("ora_codes", []),
+                "signal_codes": mem.get("signal_codes", []),
                 "layers": mem.get("layers", []),
                 "hosts": mem.get("hosts", []),
                 "devices": mem.get("devices", []),
                 "diskgroups": mem.get("diskgroups", []),
             },
+            "normalized_event_count": len(events),
         }
 
         inc = (session_incident_id or "").strip() or hashlib.sha256(

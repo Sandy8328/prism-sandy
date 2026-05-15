@@ -1,0 +1,14 @@
+{
+"advisory": {
+"used": true,
+"cache_hit": false,
+"cache_key": "4e461f0984292bd103269eb515b246060e7c38c229c5cc28149bb8bc5d17462d",
+"prompt_version": "no_match_grounded_v1",
+"policy_passed": true,
+"violations": [],
+"summary": "The system's deterministic engine could not finalize a diagnosis due to insufficient confidence. The collected logs indicate issues with device access, specifically for paths under /dev/asm!, and several failures during the startup of the Oracle High Availability Services Daemon (OHASD), including errors related to pipe creation and filesystem access timeouts. Kernel messages also show connection errors. To improve diagnostic accuracy, please upload additional correlated logs from the same host and time window, focusing on storage, clusterware, and operating system logs.",
+"recommended_command_ids": [],
+"materialized_commands": [],
+"allowed_command_count": 0
+}
+}

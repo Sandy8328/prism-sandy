@@ -25,6 +25,13 @@ def test_merge_respects_max_merged():
     assert len(merged) <= 500
 
 
+def test_merge_max_merged_zero_is_unlimited():
+    turns = [{"kind": "paste", "label": "x", "content": "A" * 800}]
+    merged = merge_turns_to_raw(turns, max_merged=0)
+    assert "size cap reached" not in merged.lower()
+    assert merged.count("A") == 800
+
+
 def test_pinned_signals_preserved_when_capped():
     turns = [
         {

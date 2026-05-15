@@ -59,7 +59,12 @@ def _extract_pinned_signal_lines(turns: list[dict[str, Any]], max_lines: int = 2
 
 
 def load_prism_limits(cfg_path: str | None) -> tuple[int, int, int, int]:
-    """Returns max_merged_chars, max_turn_chars, max_zip_bytes, max_zip_files."""
+    """
+    Returns max_merged_chars, max_turn_chars, max_zip_bytes, max_zip_files.
+
+    ``max_merged_chars`` / ``max_turn_chars``: use ``0`` or a negative value in YAML for **no limit**
+    (full merged string or full per-turn paste/file/lab body). Large values use more RAM and time.
+    """
     max_merged = 450_000
     max_turn = 400_000
     max_zip_bytes = 120 * 1024 * 1024
@@ -97,7 +102,8 @@ def merge_turns_to_raw(turns: list[dict[str, Any]], max_merged: int) -> str:
         body = t.get("content") or ""
         parts.append(hdr + body)
     out = TURN_BOUNDARY.join(parts).strip()
-    if len(out) > max_merged:
+    # max_merged <= 0 means no merged-session cap (entire concatenation is passed through).
+    if max_merged and max_merged > 0 and len(out) > max_merged:
         pins = _extract_pinned_signal_lines(turns)
         pin_block = ""
         if pins:
@@ -123,9 +129,12 @@ def turn_append_paste(turns: list[dict[str, Any]], text: str, max_turn: int) -> 
     text = (text or "").strip()
     if not text:
         return turns
-    chunk = text[:max_turn]
-    if len(text) > max_turn:
-        chunk += "\n# [PRISM: this paste was truncated to max_turn_chars]\n"
+    if max_turn and max_turn > 0:
+        chunk = text[:max_turn]
+        if len(text) > max_turn:
+            chunk += "\n# [PRISM: this paste was truncated to max_turn_chars]\n"
+    else:
+        chunk = text
     out = list(turns)
     out.append({"kind": "paste", "label": "log_paste", "content": chunk})
     return out
@@ -136,9 +145,12 @@ def turn_append_file(turns: list[dict[str, Any]], filename: str, text: str, max_
     if not text:
         return turns
     fn = (filename or "uploaded.log").strip() or "uploaded.log"
-    chunk = text[:max_turn]
-    if len(text) > max_turn:
-        chunk += "\n# [PRISM: this file body was truncated to max_turn_chars]\n"
+    if max_turn and max_turn > 0:
+        chunk = text[:max_turn]
+        if len(text) > max_turn:
+            chunk += "\n# [PRISM: this file body was truncated to max_turn_chars]\n"
+    else:
+        chunk = text
     out = list(turns)
     out.append({"kind": "file", "label": fn, "content": chunk})
     return out
@@ -149,9 +161,12 @@ def turn_append_lab(turns: list[dict[str, Any]], merged_lab_text: str, max_turn:
     merged_lab_text = (merged_lab_text or "").strip()
     if not merged_lab_text:
         return turns
-    chunk = merged_lab_text[:max_turn]
-    if len(merged_lab_text) > max_turn:
-        chunk += "\n# [PRISM: lab bundle truncated to max_turn_chars]\n"
+    if max_turn and max_turn > 0:
+        chunk = merged_lab_text[:max_turn]
+        if len(merged_lab_text) > max_turn:
+            chunk += "\n# [PRISM: lab bundle truncated to max_turn_chars]\n"
+    else:
+        chunk = merged_lab_text
     out = list(turns)
     out.append({"kind": "lab", "label": "forensic_lab", "content": chunk})
     return out

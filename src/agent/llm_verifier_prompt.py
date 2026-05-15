@@ -105,8 +105,22 @@ NEXT_COMMANDS (string array only — each element ONE plain string):
 - Read-only / diagnostic intent only. No state-changing or destructive actions (no open resetlogs,
   recover, drop, alter database, alter diskgroup, startup/shutdown, kill session, format, rm, etc.).
 - When observed_codes is non-empty OR the selected candidate clearly implies trace/alert/diagnostic
-  follow-up (e.g. trace-related pattern ids), provide **3 to 6** distinct commands — not a single
-  command. Each must be a different action. Do not duplicate lines.
+  follow-up (e.g. trace-related pattern ids), provide a **rich, copy-pastable** checklist:
+  - If len(observed_codes) >= 4: **6 to 10** distinct commands; else **4 to 8**. Never a single command.
+  - Cover **several categories** where the payload supports them: (1) ADR / alert discovery,
+    (2) Grid/CRS read-only status, (3) SQL against V$ or GV$ catalog/diagnostic views, (4) ASM
+    catalog if ASM is in observed_layers or any observed_codes looks like ORA-15xxx, (5) OS memory
+    / cgroup hints if OOM or OS_* codes appear, (6) RAC interconnect / cache fusion only if CLUSTER
+    is in observed_layers or CRS/GIPC-style codes appear in observed_codes.
+- For SQL: prefer **complete** SELECT statements (multiple columns, clear aliases), not one-column
+  toy queries. **Each next_commands entry must be a single physical line** (no newline characters
+  inside the JSON string — join SQL clauses with spaces). Raw newlines inside strings break JSON parsers.
+  When CLUSTER is in observed_layers, prefer **GV$** (or gv$) over V$ for instance-wide
+  RAC views where applicable. Use read-only predicates (e.g. LIKE '%MEMORY%', status filters); do not
+  hard-code instance names, trace paths, or disk group names unless that **exact substring** appears
+  in the payload strings.
+- For shell / CRS / asmcmd: use **standard, documented** read-only forms (e.g. crsctl stat res -t,
+  crsctl check crs, ocrcheck read-only usage, asmcmd lsdg when ASM layer applies). No invented paths.
 - Justify the set as a whole using this payload (observed_codes, observed_layers, pattern_id). Use
   **generic, standard** read-only forms that do not invent incident-specific paths, trace file names,
   file numbers, hosts, or disk groups (catalog views, ADR CLI without hard-coded paths, parameters
@@ -115,17 +129,24 @@ NEXT_COMMANDS (string array only — each element ONE plain string):
 - Do not embed literal paths, trace file names, or hostnames unless that **exact substring** appears
   in the payload strings. Never invent $ORACLE_BASE or bespoke globs for this incident.
 - If the payload truly has no codes and no diagnostic angle, return an empty array and explain in
-  needs_more_evidence; otherwise meet the 3–6 command expectation.
+  needs_more_evidence; otherwise meet the count expectation above.
 - Do not return objects inside next_commands; only strings.
+- Do not output remediation here (no ALTER SYSTEM, recover, drop, crsctl modify, diskgroup changes).
+  Those belong in the main report **Fixes** / runbook block from the knowledge graph, not in next_commands.
 
 NEEDS_MORE_EVIDENCE:
-- 2–5 bullets or short lines. Complement next_commands: what to read next, without inventing file
-  names or codes not in observed_codes. Use neutral wording where paths are unknown.
+- 2–5 short strings in the JSON array (each string one line; no raw newlines inside a string).
+  Complement next_commands: what to read next, without inventing file names or codes not in
+  observed_codes. Use neutral wording where paths are unknown.
+
+JSON hygiene (mandatory):
+- Do not place raw newline characters inside any JSON string value (rationale, next_commands lines,
+  needs_more_evidence, rejected_hypotheses). Use spaces instead of line breaks inside SQL/shell strings.
 
 ANTI-HALLUCINATION SUMMARY:
 - No invented codes, ids, paths, timestamps, layers, or infrastructure facts.
-- Prefer 3–6 generic read-only diagnostic commands when the payload supports follow-up; avoid both
-  one-command minimalism and invented path templates.
+- Prefer 4–10 generic read-only diagnostic commands (richer SQL/shell mix) when the payload supports
+  follow-up; avoid both one-command minimalism and invented path templates.
 - Strict JSON only, no markdown, no prose outside the JSON object.
 - Keys ONLY: selected_hypothesis, confidence_band, rationale, rejected_hypotheses, next_commands,
   needs_more_evidence. Do not add extra keys.
