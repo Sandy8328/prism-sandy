@@ -66,6 +66,7 @@ Main config file: `config/settings.yaml`
 Common sections:
 
 - `prism_session`: turn/session/zip limits
+- `zip_evidence`: nested `.zip`, `.tar`, `.tar.gz`, `.tar.xz` expansion and per-member size limits (large sosreport bundles)
 - `llm`: advisory model settings
 - `ora_meanings`: JSON path for ORA meaning lookup
 - `retrieval`, `scoring`, `thresholds`: correlation/retrieval behavior

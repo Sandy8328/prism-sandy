@@ -11,6 +11,8 @@ import json
 import re
 import shutil
 import tempfile
+from collections import deque
+from pathlib import Path
 from typing import Any
 
 from src.parsers.normalized_event_schema import (
@@ -23,6 +25,7 @@ from src.parsers.normalized_adapters import (
     syslog_entries_to_normalized_events,
 )
 from src.parsers.evidence_timestamp import parse_line_timestamp
+from src.parsers.zip_evidence import _tar_open_mode, safe_extract_tar, safe_extract_zip
 
 _READ_FAIL = re.compile(
     r"Read Failed\.\s*group:(\d+)\s+disk:(\d+)\s+AU:(\d+)\s+offset:(\d+)\s+size:(\d+)",
@@ -733,6 +736,126 @@ def extract_normalized_events_unified(
     return dedupe_normalized_events(out)
 
 
+def _zip_evidence_cfg() -> dict[str, Any]:
+    try:
+        import yaml
+
+        p = Path(__file__).resolve().parents[2] / "config" / "settings.yaml"
+        with open(p, encoding="utf-8") as f:
+            y = yaml.safe_load(f) or {}
+        z = y.get("zip_evidence") or {}
+        return z if isinstance(z, dict) else {}
+    except Exception:
+        return {}
+
+
+def _leaf_archive_kind(path: str) -> str | None:
+    pl = (path or "").lower()
+    if pl.endswith(".zip"):
+        return "zip"
+    if _tar_open_mode(path):
+        return "tar"
+    return None
+
+
+def _expand_archive_tree(
+    initial_paths: list[str],
+    temp_root: str,
+    *,
+    max_uncompressed_zip: int,
+    max_zip_members: int,
+    max_tar_members: int,
+    max_tar_member_bytes: int,
+    max_depth: int,
+    max_nested_ops: int,
+    diagnostics: dict[str, Any],
+) -> list[str]:
+    """
+    Flatten nested .zip and tar.* bundles into leaf file paths for text parsing.
+    Archives beyond max_depth or max_nested_ops are skipped with diagnostics only.
+    """
+    leaves: list[str] = []
+    seen_leaf: set[str] = set()
+    ops_used = 0
+    q: deque[tuple[str, int]] = deque((p, 0) for p in initial_paths)
+
+    while q:
+        path, depth = q.popleft()
+        if not os.path.isfile(path):
+            continue
+        kind = _leaf_archive_kind(path)
+        if kind == "zip" and depth < max_depth:
+            if ops_used >= max_nested_ops:
+                diagnostics.setdefault("skipped_nested", []).append(
+                    {"path": path, "reason": "max_nested_archive_expansions"}
+                )
+                continue
+            ops_used += 1
+            nest_dir = tempfile.mkdtemp(prefix="nested_zip_", dir=temp_root)
+            out = safe_extract_zip(
+                path,
+                nest_dir,
+                max_uncompressed_bytes=max_uncompressed_zip,
+                max_members=max_zip_members,
+            )
+            for s in out.get("skipped") or []:
+                diagnostics.setdefault("skipped_from_nested_zip", []).append({"parent": path, **s})
+            for child in out.get("extracted") or []:
+                ck = _leaf_archive_kind(child)
+                if ck and (depth + 1) < max_depth:
+                    q.append((child, depth + 1))
+                elif ck:
+                    diagnostics.setdefault("skipped_nested", []).append(
+                        {"path": child, "reason": "max_nesting_depth"}
+                    )
+                else:
+                    ap = os.path.abspath(child)
+                    if ap not in seen_leaf:
+                        seen_leaf.add(ap)
+                        leaves.append(ap)
+            continue
+        if kind == "tar" and depth < max_depth:
+            if ops_used >= max_nested_ops:
+                diagnostics.setdefault("skipped_nested", []).append(
+                    {"path": path, "reason": "max_nested_archive_expansions"}
+                )
+                continue
+            ops_used += 1
+            nest_dir = tempfile.mkdtemp(prefix="nested_tar_", dir=temp_root)
+            out = safe_extract_tar(
+                path,
+                nest_dir,
+                max_member_bytes=max_tar_member_bytes,
+                max_members=max_tar_members,
+            )
+            for s in out.get("skipped") or []:
+                diagnostics.setdefault("skipped_from_nested_tar", []).append({"parent": path, **s})
+            for child in out.get("extracted") or []:
+                ck = _leaf_archive_kind(child)
+                if ck and (depth + 1) < max_depth:
+                    q.append((child, depth + 1))
+                elif ck:
+                    diagnostics.setdefault("skipped_nested", []).append(
+                        {"path": child, "reason": "max_nesting_depth"}
+                    )
+                else:
+                    ap = os.path.abspath(child)
+                    if ap not in seen_leaf:
+                        seen_leaf.add(ap)
+                        leaves.append(ap)
+            continue
+        if kind in ("zip", "tar") and depth >= max_depth:
+            diagnostics.setdefault("skipped_nested", []).append(
+                {"path": path, "reason": "max_nesting_depth_unopened"}
+            )
+            continue
+        ap = os.path.abspath(path)
+        if ap not in seen_leaf:
+            seen_leaf.add(ap)
+            leaves.append(ap)
+    return leaves
+
+
 def _diag_file_priority_score(rel: str, fname_lower: str) -> int:
     """
     Higher = parse first for AHF/TFA ZIP bundles (before max_files cap).
@@ -788,29 +911,62 @@ def extract_normalized_events_from_zip(
     zip_path: str,
     *,
     max_files: int = 120,
-    max_text_bytes: int = 2_000_000,
+    max_text_bytes: int | None = None,
     cell_name: str = "unknown",
 ) -> dict[str, Any]:
     """
-    Safe extract → sniff text → infer incident year across bundle → per-file unified extraction.
+    Safe extract → optional nested archive expansion → sniff text → infer incident year
+    across bundle → per-file unified extraction.
     Returns {"events": [...], "ingest_diagnostics": {...}}.
     """
-    from src.parsers.zip_evidence import safe_extract_zip
+    cfg = _zip_evidence_cfg()
+    max_uncompressed = int(cfg.get("max_uncompressed_bytes_per_member", 200 * 1024 * 1024))
+    max_zip_members = int(cfg.get("max_zip_members", 8000))
+    max_tar_members = int(cfg.get("max_tar_members", 250_000))
+    max_tar_member_bytes = int(cfg.get("max_tar_member_bytes", max_uncompressed))
+    max_depth = int(cfg.get("max_nesting_depth", 6))
+    max_nested_ops = int(cfg.get("max_nested_archive_expansions", 80))
+    max_parse_files = int(cfg.get("max_parse_files", 3000))
+    if max_text_bytes is None:
+        max_text_bytes = int(cfg.get("max_text_bytes_per_file", 12 * 1024 * 1024))
+
+    parse_budget = max(max_files, max_parse_files) if max_parse_files else max_files
 
     temp_dir = tempfile.mkdtemp(prefix="zip_evidence_")
     diagnostics: dict[str, Any] = {
         "skipped": [],
         "parsed_files": [],
         "skipped_from_extract": [],
+        "skipped_from_nested_zip": [],
+        "skipped_from_nested_tar": [],
+        "skipped_nested": [],
     }
     all_events: list[dict[str, Any]] = []
     try:
-        zip_out = safe_extract_zip(zip_path, temp_dir)
+        zip_out = safe_extract_zip(
+            zip_path,
+            temp_dir,
+            max_uncompressed_bytes=max_uncompressed,
+            max_members=max_zip_members,
+        )
         written = zip_out.get("extracted") or []
         diagnostics["skipped_from_extract"] = list(zip_out.get("skipped") or [])
 
+        expanded = _expand_archive_tree(
+            written,
+            temp_dir,
+            max_uncompressed_zip=max_uncompressed,
+            max_zip_members=max_zip_members,
+            max_tar_members=max_tar_members,
+            max_tar_member_bytes=max_tar_member_bytes,
+            max_depth=max_depth,
+            max_nested_ops=max_nested_ops,
+            diagnostics=diagnostics,
+        )
+        diagnostics["expanded_leaf_count"] = len(expanded)
+
         staged: list[tuple[str, str, str]] = []
-        for abs_path in _prioritize_zip_abs_paths(written, temp_dir, max_files):
+        for abs_path in _prioritize_zip_abs_paths(expanded, temp_dir, parse_budget):
             rel = os.path.relpath(abs_path, temp_dir).replace("\\", "/")
             try:
                 sz = os.path.getsize(abs_path)

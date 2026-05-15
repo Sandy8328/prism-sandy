@@ -19,7 +19,7 @@ from datetime import datetime
 # Project root (absolute; do not chdir — avoids breaking paths in multi-process runs)
 _ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if _ROOT not in sys.path:
-sys.path.insert(0, _ROOT)
+    sys.path.insert(0, _ROOT)
 
 import streamlit as st
 import yaml
@@ -457,12 +457,23 @@ with tab_query:
     run_btn = st.button("🔍 Diagnose", type="primary", use_container_width=True)
 
 with tab_file:
-    uploaded = st.file_uploader(
+    uploaded_files = st.file_uploader(
         "Upload alert.log, /var/log/messages, errpt output, dmesg, iostat...",
         type=["log", "txt", "out", "csv", "trc", "dat", "html", "xml"],
+        accept_multiple_files=True,
+        key="main_tab_file_upload",
     )
-    if uploaded:
-        st.success(f"✅ File ready: **{uploaded.name}** ({len(uploaded.getvalue()):,} bytes) — click Diagnose File below.")
+    st.caption(
+        "Select **one or more files** in the dialog (macOS: **Cmd+click**). Without multi-select, the browser "
+        "only keeps a **single** file and picking another **replaces** the first."
+    )
+    if uploaded_files:
+        names = ", ".join(f"**{f.name}**" for f in uploaded_files[:6])
+        more = f" (+{len(uploaded_files) - 6} more)" if len(uploaded_files) > 6 else ""
+        total_b = sum(len(f.getvalue()) for f in uploaded_files)
+        st.success(
+            f"✅ {len(uploaded_files)} file(s) ready: {names}{more} — **{total_b:,}** bytes total — click **Diagnose File** below."
+        )
     file_btn = st.button("🔍 Diagnose File", type="primary", use_container_width=True)
 
 with tab_zip:
@@ -521,15 +532,15 @@ def _prism_execute_diagnosis(
         raise ValueError("Nothing to analyze in this session.")
     hn = override_hostname or "" if hostname is None else hostname
     plat = platform_val if platform is None else platform
-            agent = load_agent()
+    agent = load_agent()
     return agent.diagnose_prism_session(
         merged_text=merged,
         zip_paths=zips,
         hostname=hn,
         platform=plat,
-                ora_code=override_ora or "",
-                timestamp_str=override_ts or "",
-                top_k=top_k,
+        ora_code=override_ora or "",
+        timestamp_str=override_ts or "",
+        top_k=top_k,
         session_incident_id=st.session_state["prism_session_id"],
         max_zip_files=mzf,
     )
@@ -551,8 +562,8 @@ if run_btn:
                 _append_incident_history(report)
             except ValueError as e:
                 st.warning(str(e))
-        except Exception as e:
-            st.error(f"Error: {e}")
+            except Exception as e:
+                st.error(f"Error: {e}")
 
 if lab_btn:
     lab_txt = build_lab_merged_text(lab_db_log, lab_os_log, lab_cell_log, lab_trace_log)
@@ -575,17 +586,22 @@ if lab_btn:
                 _append_incident_history(report)
             except ValueError as e:
                 st.warning(str(e))
-        except Exception as e:
-            st.error(f"Lab Simulation Error: {e}")
-            st.exception(e)
+            except Exception as e:
+                st.error(f"Lab Simulation Error: {e}")
+                st.exception(e)
 
-if file_btn and uploaded:
-    fb = uploaded.getvalue()
-    text = fb.decode("utf-8", errors="replace")
+if file_btn and uploaded_files:
     turns0 = list(st.session_state["prism_session_turns"])
-    turns1 = turn_append_file(turns0, uploaded.name, text, mt)
+    turns1 = turns0
+    for uf in uploaded_files:
+        fb = uf.getvalue()
+        text = fb.decode("utf-8", errors="replace")
+        turns1 = turn_append_file(turns1, uf.name, text, mt)
     st.session_state["prism_session_turns"] = turns1
-    with st.spinner(f"Parsing '{uploaded.name}' — full session diagnostic..."):
+    label = ", ".join(f.name for f in uploaded_files[:4])
+    if len(uploaded_files) > 4:
+        label += ", …"
+    with st.spinner(f"Parsing {len(uploaded_files)} file(s) ({label}) — full session diagnostic..."):
         try:
             report = _prism_execute_diagnosis(turns1)
             merged = merge_turns_to_raw(turns1, mm)
@@ -597,8 +613,8 @@ if file_btn and uploaded:
         except Exception as e:
             st.error(f"Error: {e}")
             st.exception(e)
-elif file_btn and not uploaded:
-    st.warning("⚠️ Please upload a log file first, then click Diagnose File.")
+elif file_btn and not uploaded_files:
+    st.warning("⚠️ Please upload at least one log file first, then click Diagnose File.")
 
 if zip_btn and uploaded_zip:
     zb = uploaded_zip.getvalue()
@@ -683,10 +699,27 @@ if report:
             )
         sm = ps.get("structured_memory") or {}
         sm_oras = sm.get("ora_codes") or []
+        sm_sig = sm.get("signal_codes") or []
         sm_layers = sm.get("layers") or []
-        if sm_oras or sm_layers:
+        nec = int(ps.get("normalized_event_count") or 0)
+        if nec:
+            st.caption(f"Normalized events this run: **{nec}**.")
+        if sm_oras or sm_layers or sm_sig:
+            sig_preview = ", ".join(sm_sig[:8]) if sm_sig else "n/a"
             st.caption(
-                f"Structured memory: ORA signals **{len(sm_oras)}**, layers **{', '.join(sm_layers[:6]) or 'n/a'}**."
+                f"Structured memory: ORA codes **{len(sm_oras)}** · other signals **{sig_preview}** · "
+                f"layers **{', '.join(sm_layers[:6]) or 'n/a'}**."
+            )
+        if (
+            status == "NO_MATCH"
+            and int(ps.get("zip_files_used") or 0) >= 1
+            and nec >= 50
+        ):
+            st.info(
+                "The ZIP was unpacked and scanned. **NO_MATCH** means the engine did not **finalize** a "
+                "single root-cause story under the current rules (for example fusion score below the "
+                "finalization threshold or missing corroboration across layers)—not that your bundle was empty. "
+                "If this incident is DB-driven, add **alert.log** or a focused trace paste so ORA context is in the top-priority parse window."
             )
 
     if "prism_append_nonce" not in st.session_state:
@@ -735,21 +768,29 @@ if report:
     st.markdown('<div style="margin-top:12px;"></div>', unsafe_allow_html=True)
     fc1, fc2 = st.columns(2)
     with fc1:
-        comp_file = st.file_uploader(
-            "Upload a single log file (adds one turn)",
+        comp_files = st.file_uploader(
+            "Upload log file(s) (each file adds one turn)",
             type=["log", "txt", "out", "csv", "trc", "dat", "html", "xml"],
+            accept_multiple_files=True,
             key="prism_composer_file_up",
         )
+        st.caption(
+            "In the file dialog, select **several files at once** (e.g. Cmd+click on macOS), or add one batch, "
+            "click **Add log file & re-diagnose**, then upload the next batch. "
+            "A single-file widget would **replace** the previous pick—multi-select avoids that."
+        )
         if st.button("Add log file & re-diagnose", type="secondary", use_container_width=True, key="prism_composer_file_btn"):
-            if comp_file is None:
-                st.warning("Choose a log file first.")
+            if not comp_files:
+                st.warning("Choose at least one log file first.")
             else:
-                fb = comp_file.getvalue()
-                text = fb.decode("utf-8", errors="replace")
                 turns0 = list(st.session_state["prism_session_turns"])
-                turns1 = turn_append_file(turns0, comp_file.name, text, mt)
+                turns1 = turns0
+                for uf in comp_files:
+                    fb = uf.getvalue()
+                    text = fb.decode("utf-8", errors="replace")
+                    turns1 = turn_append_file(turns1, uf.name, text, mt)
                 st.session_state["prism_session_turns"] = turns1
-                with st.spinner("Adding file and re-running full session diagnosis…"):
+                with st.spinner("Adding file(s) and re-running full session diagnosis…"):
                     try:
                         r = _prism_execute_diagnosis(turns1)
                         merged = merge_turns_to_raw(turns1, mm)
@@ -1200,6 +1241,13 @@ if report:
     llm_adv = report.get("llm_advisory") or {}
     if llm_adv:
         with st.expander("🤖 LLM Advisory (Constrained)", expanded=False):
+            if not llm_adv.get("used") and (
+                llm_adv.get("runbook_remediation") or llm_adv.get("runbook_doc_hints")
+            ):
+                st.info(
+                    "Gemini advisory text was not produced for this run; graph-derived **commands** / "
+                    "**documentation hints** below are still deterministic."
+                )
             st.markdown(f"**Used:** `{llm_adv.get('used', False)}` · **Mode:** `{llm_adv.get('mode', 'off')}`")
             if llm_adv.get("model"):
                 st.markdown(f"**Model:** `{llm_adv.get('model')}`")
@@ -1217,14 +1265,112 @@ if report:
                 st.warning(f"Policy violations: {llm_adv.get('violations')}")
             next_cmds = llm_adv.get("next_commands") or []
             if next_cmds:
-                st.markdown("**Suggested next commands (advisory):**")
+                st.caption(
+                    "**Suggested next commands** are read-only / triage only (policy). "
+                    "They confirm state; they do not apply changes. Use **Runbook commands** below or the main report **Fixes** for change-oriented graph lines."
+                )
+                st.markdown("**Suggested next commands (diagnostic / advisory):**")
                 for cmd in next_cmds:
                     st.code(cmd, language="bash")
+            rb = llm_adv.get("runbook_remediation") or []
+            hints = llm_adv.get("runbook_doc_hints") or []
+            if rb:
+                st.markdown("**Runbook commands (knowledge graph — executable-style lines only):**")
+                st.caption(
+                    "These strings are filtered from the graph to resemble SQL or shell/tools. "
+                    "Review **Fixes** in the main report and MOS before applying anything that changes state."
+                )
+                for row in rb:
+                    oc = row.get("ora_code") or ""
+                    st.markdown(f"`{oc}` · _{row.get('source', '')}_ — {row.get('title', '')}")
+                    st.code(row.get("command") or "", language="text")
+            elif hints:
+                st.warning(
+                    "The knowledge graph for these ORA codes only has **documentation-style** text (Cause/Action), "
+                    "not parsed executable commands. Expand **Fixes** / RCA in the main report, or enrich `graph.json` "
+                    "with `remediation_commands` for those ORAs."
+                )
+            if hints:
+                with st.expander("📄 Graph documentation excerpts (not runnable)", expanded=False):
+                    st.caption("Short Cause/Action style text from the graph — context only.")
+                    for row in hints:
+                        st.markdown(f"`{row.get('ora_code', '')}` · _{row.get('source', '')}_")
+                        st.markdown(row.get("excerpt") or "")
             need_more = llm_adv.get("needs_more_evidence") or []
             if need_more:
                 st.markdown("**Suggested additional evidence:**")
                 for item in need_more:
                     st.markdown(f"- {item}")
+
+    rag_out = report.get("rag_remediation_outline") or {}
+    if rag_out.get("used"):
+        with st.expander("🧩 RAG + graph remediation outline (grounded)", expanded=False):
+            st.caption(
+                "Gemini only ordered **indices** into a pool of knowledge-graph text plus BM25/Qdrant chunks. "
+                "Expanded bodies below are **verbatim** from that pool (not invented SQL/shell)."
+            )
+            if rag_out.get("summary"):
+                st.markdown(f"**Summary:** {rag_out.get('summary')}")
+            if rag_out.get("pool_size") is not None:
+                st.caption(f"Evidence pool size: **{rag_out.get('pool_size')}** rows.")
+            if rag_out.get("retrieval_note"):
+                st.caption(f"Retrieval note: `{rag_out.get('retrieval_note')}`")
+            for it in rag_out.get("items") or []:
+                st.markdown(
+                    f"**{it.get('id', '')}** · `{it.get('source', '')}` · `{it.get('ora_code') or '—'}`"
+                )
+                st.code(it.get("text") or "", language="text")
+    elif rag_out.get("reason") and rag_out.get("reason") != "disabled":
+        with st.expander("🧩 RAG remediation outline (unavailable)", expanded=False):
+            st.caption(f"Reason: `{rag_out.get('reason')}` · pool_size={rag_out.get('pool_size', 'n/a')}")
+
+    playbook = report.get("advisory_remediation_playbook") or {}
+    if playbook.get("used") and playbook.get("markdown"):
+        with st.expander("📘 Operator playbook — advisory (Option A, LLM)", expanded=False):
+            st.warning(
+                "**Advisory only.** This Markdown was **authored by the LLM** as generic remediation guidance. "
+                "It is **not** verified for your cluster, version, or topology. Review Oracle alert/trace, "
+                "MOS, and change control before running anything that alters state. "
+                "This is **not** a substitute for read-only triage commands or grounded runbooks."
+            )
+            if playbook.get("model"):
+                st.caption(f"Model: `{playbook.get('model')}`")
+            st.markdown(playbook.get("markdown") or "")
+    elif playbook.get("reason") and playbook.get("reason") not in ("disabled",):
+        with st.expander("📘 Operator playbook — advisory (unavailable)", expanded=False):
+            st.caption(f"Reason: `{playbook.get('reason')}`")
+
+    nmga = report.get("no_match_grounded_advisory") or {}
+    if status == "NO_MATCH" and nmga:
+        with st.expander("📎 NO_MATCH — KB-grounded LLM advisory", expanded=False):
+            st.caption(
+                "Narrative plus runbook commands are **grounded**: the model may only pick command bundle IDs; "
+                "shell text shown below is expanded from the graph or existing provisional fixes. "
+                "This does **not** change deterministic RCA or NO_MATCH policy."
+            )
+            st.markdown(f"**Used:** `{nmga.get('used', False)}`")
+            if nmga.get("reason"):
+                st.caption(f"Reason: {nmga.get('reason')}")
+            if nmga.get("cache_hit") is not None:
+                st.markdown(f"**Cache hit:** `{nmga.get('cache_hit')}`")
+            if nmga.get("cache_key"):
+                st.caption(f"Cache key: `{nmga.get('cache_key')[:24]}…`")
+            if "policy_passed" in nmga:
+                st.markdown(f"**Policy passed:** `{nmga.get('policy_passed')}`")
+            if nmga.get("violations"):
+                st.warning(f"Policy violations: {nmga.get('violations')}")
+            if nmga.get("summary"):
+                st.markdown(f"**Summary:** {nmga.get('summary')}")
+            mats = nmga.get("materialized_commands") or []
+            if mats:
+                st.markdown("**Runbook commands (from KB / report allow-list):**")
+                for block in mats:
+                    st.markdown(
+                        f"**{block.get('id')}** · `{block.get('ora_code') or 'n/a'}` · _{block.get('source')}_ — "
+                        f"{block.get('title') or ''}"
+                    )
+                    for cmd in block.get("commands") or []:
+                        st.code(cmd, language="bash")
 
     st.markdown("---")
     st.markdown(

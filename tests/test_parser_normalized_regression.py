@@ -207,6 +207,22 @@ def test_zip_extract_normalized_roundtrip():
         shutil.rmtree(td, ignore_errors=True)
 
 
+def test_zip_nested_inner_zip_expands():
+    td = tempfile.mkdtemp()
+    try:
+        inner_path = os.path.join(td, "inner.zip")
+        with zipfile.ZipFile(inner_path, "w") as iz:
+            iz.writestr("diag/alert.log", "ORA-00060: deadlock detected while waiting for resource\n")
+        outer = os.path.join(td, "outer.zip")
+        with zipfile.ZipFile(outer, "w") as oz:
+            oz.write(inner_path, "srdc/bundle/inner.zip")
+        out = extract_normalized_events_from_zip(outer, max_files=50)
+        assert out["events"]
+        assert any((e.get("code") or "").upper() == "ORA-00060" for e in out["events"])
+    finally:
+        shutil.rmtree(td, ignore_errors=True)
+
+
 def test_no_match_generic_low_confidence():
     ev = extract_normalized_events_unified("random text with no known Oracle pattern")
     assert isinstance(ev, list)
